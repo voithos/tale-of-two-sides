@@ -1,0 +1,69 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+[application]
+
+config/name="Global Game Jam 2022"
+run/main_scene="res://scenes/demos/demo_base.tscn"
+config/icon="res://icon.png"
+
+[autoload]
+
+sfx="*res://scripts/sfx.gd"
+saving="*res://scripts/saving.gd"
+progression_store="*res://scripts/progression_store.gd"
+screen="*res://scripts/screen.gd"
+music="*res://scripts/music.gd"
+global_camera="*res://scripts/global_camera.gd"
+checkpoint_store="*res://scripts/checkpoint_store.gd"
+
+[display]
+
+window/size/width=320
+window/size/height=180
+window/size/test_width=1280
+window/size/test_height=720
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
+
+[importer_defaults]
+
+texture={
+"compress/bptc_ldr": 0,
+"compress/hdr_mode": 0,
+"compress/lossy_quality": 0.7,
+"compress/mode": 0,
+"compress/normal_map": 0,
+"detect_3d": false,
+"flags/anisotropic": false,
+"flags/filter": false,
+"flags/mipmaps": false,
+"flags/repeat": 0,
+"flags/srgb": 2,
+"process/HDR_as_SRGB": false,
+"process/fix_alpha_border": true,
+"process/invert_color": false,
+"process/normal_map_invert_y": false,
+"process/premult_alpha": false,
+"size_limit": 0,
+"stream": false,
+"svg/scale": 1.0
+}
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+2d/options/use_nvidia_rect_flicker_workaround=true
+2d/snapping/use_gpu_pixel_snap=true
+environment/default_clear_color=Color( 0.0980392, 0.133333, 0.360784, 1 )
+environment/default_environment="res://default_env.tres"
