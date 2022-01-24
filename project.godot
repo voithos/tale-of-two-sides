@@ -19,6 +19,7 @@ config/icon="res://icon.png"
 sfx="*res://scripts/sfx.gd"
 saving="*res://scripts/saving.gd"
 progression_store="*res://scripts/progression_store.gd"
+screenshot="*res://scripts/lib/screenshot.gd"
 screen="*res://scripts/screen.gd"
 music="*res://scripts/music.gd"
 global_camera="*res://scripts/global_camera.gd"
@@ -55,6 +56,14 @@ texture={
 "size_limit": 0,
 "stream": false,
 "svg/scale": 1.0
+}
+
+[input]
+
+screenshot={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":89,"unicode":0,"echo":false,"script":null)
+ ]
 }
 
 [physics]
