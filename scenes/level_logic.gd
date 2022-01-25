@@ -3,7 +3,8 @@ extends Node2D
 const NEXT_LEVEL_TIMEOUT = 1 # Seconds
 
 export (String, FILE, "*.tscn") var next_level
-export (music.Music) var background_music = music.Music.EXAMPLE
+# Note, this has no type hint because of https://github.com/godotengine/godot/issues/52140. :\
+export var background_music = music.EXAMPLE
 
 func _ready():
     add_to_group("level")

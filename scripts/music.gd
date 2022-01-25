@@ -8,12 +8,12 @@ const MUSIC_DB = -24.0
 
 # Add music here
 # =======================
-enum Music {
+enum {
     EXAMPLE
 }
 
 const SAMPLES = {
-    Music.EXAMPLE: preload("res://assets/music/example.mp3"),
+    EXAMPLE: preload("res://assets/music/example.mp3"),
 }
 # =======================
 

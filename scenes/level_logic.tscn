@@ -6,6 +6,8 @@
 
 [node name="level_logic" type="Node2D"]
 script = ExtResource( 1 )
+next_level = null
+background_music = null
 
 [node name="ui" parent="." instance=ExtResource( 2 )]
 

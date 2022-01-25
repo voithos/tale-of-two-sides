@@ -10,13 +10,13 @@ const BACKGROUND_QUIET_DB = -40.0
 
 # Preloaded sound effects.
 # ========================
-enum Sfx {
+enum {
     # TODO: Replace with actual sounds
     JUMP,
 }
 
 const SAMPLES = {
-    Sfx.JUMP: preload("res://assets/sfx/jump.wav"),
+    JUMP: preload("res://assets/sfx/jump.wav"),
 }
 # ========================
 
