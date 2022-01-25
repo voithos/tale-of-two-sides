@@ -1,4 +1,5 @@
-# When creating a new release, this creates builds for various platforms, and publishes them to itch.io.
+# When creating a new release, this creates builds for various platforms and
+# publishes them to itch.io.
 name: Publish release
 
 on:
@@ -15,6 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
+        # These must match the export preset names configured within Godot.
         platform: [linux, osx, win32, win64, html5]
     steps:
       - name: Checkout repo
