@@ -31,11 +31,11 @@ jobs:
           PLATFORM: ${{ matrix.platform }}
         run: |
           if [ "$PLATFORM" = "win32" ] || [ "$PLATFORM" = "win64" ] ; then
-            echo "::set-env name=EXPORT_NAME::$ITCH_GAME.exe"
+            echo "EXPORT_NAME=$ITCH_GAME.exe" >> $GITHUB_ENV
           elif [ "$PLATFORM" = "html5" ] ] ; then
-            echo "::set-env name=EXPORT_NAME::index.html"
+            echo "EXPORT_NAME=index.html" >> $GITHUB_ENV
           else
-            echo "::set-env name=EXPORT_NAME::$ITCH_GAME" 
+            echo "EXPORT_NAME=$ITCH_GAME" >> $GITHUB_ENV
           fi
       - name: Get tag
         id: get_tag
