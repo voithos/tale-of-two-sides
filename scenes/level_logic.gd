@@ -1,10 +1,13 @@
 extends Node2D
 
+# Have to preload this to avoid a parse error when using it in a constant expression.
+const constmusic = preload("res://scripts/music.gd")
+
 const NEXT_LEVEL_TIMEOUT = 1 # Seconds
 
 export (String, FILE, "*.tscn") var next_level
 # Note, this has no type hint because of https://github.com/godotengine/godot/issues/52140. :\
-export var background_music = music.EXAMPLE
+export var background_music = constmusic.EXAMPLE
 
 func _ready():
     add_to_group("level")
