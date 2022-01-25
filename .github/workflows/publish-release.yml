@@ -10,6 +10,7 @@ on:
 env:
   ITCH_GAME: global-game-jam-2022
   ITCH_USER: voithos
+  DEBUG_MODE: 'true'
 
 jobs:
   godot:
@@ -17,8 +18,7 @@ jobs:
     strategy:
       matrix:
         # These must match the export preset names configured within Godot.
-        platform: [html5]
-#         platform: [linux, osx, win32, win64, html5]
+        platform: [linux, osx, win32, win64, html5]
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2.1.0
@@ -27,10 +27,6 @@ jobs:
 #           lfs: 'true'
 #           token: ${{ secrets.ACCESS_TOKEN_SECRET }}
           fetch-depth: 0
-      # TODO: REMOVE.
-      - name: List files in the repository
-        run: |
-          ls ${{ github.workspace }}
       - name: Configure export name
         env:
           PLATFORM: ${{ matrix.platform }}
@@ -44,27 +40,20 @@ jobs:
           fi
       - name: Get tag
         id: get_tag
-        env:
-          GITHUB_HEAD_REF: ${{ github.head_ref }}
-#           GITHUB_HEAD_REF: $${{ github.head_ref }}
-          GITHUB_BASE_REF: ${{ github.base_ref }}
         run: |
           TAG=$(jq --raw-output '.release.tag_name' $GITHUB_EVENT_PATH)
           echo ::set-output name=TAG::$TAG
-#           cd $GITHUB_WORKSPACE/client
-#           echo $TAG > VERSION.txt
       - name: Build
         id: build
         uses: josephbmanley/build-godot-action@v1.4.1
         with:
           name: ${{ env.EXPORT_NAME }}
           preset: ${{ matrix.platform }}
-#           projectDir: /
-          debugMode: 'true'
-      # - name: Push to itch.io
-      #   uses: josephbmanley/butler-publish-itchio-action@v1.0.1
-      #   env:
-      #     BUTLER_CREDENTIALS: ${{ secrets.BUTLER_API_KEY }}
-      #     CHANNEL: ${{ matrix.platform }}
-      #     PACKAGE: ${{ github.workspace }}/${{ steps.build.outputs.build }}
-      #     VERSION: ${{ steps.get_tag.outputs.TAG }}
+          debugMode: ${{ env.DEBUG_MODE }}
+      - name: Push to itch.io
+        uses: josephbmanley/butler-publish-itchio-action@v1.0.1
+        env:
+          BUTLER_CREDENTIALS: ${{ secrets.BUTLER_API_KEY }}
+          CHANNEL: ${{ matrix.platform }}
+          PACKAGE: ${{ github.workspace }}/${{ steps.build.outputs.build }}
+          VERSION: ${{ steps.get_tag.outputs.TAG }}
