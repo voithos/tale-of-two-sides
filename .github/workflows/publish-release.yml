@@ -17,7 +17,8 @@ jobs:
     strategy:
       matrix:
         # These must match the export preset names configured within Godot.
-        platform: [linux, osx, win32, win64, html5]
+        platform: [html5]
+#         platform: [linux, osx, win32, win64, html5]
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2.1.0
@@ -54,16 +55,16 @@ jobs:
 #           echo $TAG > VERSION.txt
       - name: Build
         id: build
-        uses: josephbmanley/build-godot-action@v1.4.0
+        uses: josephbmanley/build-godot-action@v1.4.1
         with:
           name: ${{ env.EXPORT_NAME }}
           preset: ${{ matrix.platform }}
 #           projectDir: /
           debugMode: 'true'
-      - name: Push to itch.io
-        uses: josephbmanley/butler-publish-itchio-action@v1.0.1
-        env:
-          BUTLER_CREDENTIALS: ${{ secrets.BUTLER_API_KEY }}
-          CHANNEL: ${{ matrix.platform }}
-          PACKAGE: ${{ github.workspace }}/${{ steps.build.outputs.build }}
-          VERSION: ${{ steps.get_tag.outputs.TAG }}
+      # - name: Push to itch.io
+      #   uses: josephbmanley/butler-publish-itchio-action@v1.0.1
+      #   env:
+      #     BUTLER_CREDENTIALS: ${{ secrets.BUTLER_API_KEY }}
+      #     CHANNEL: ${{ matrix.platform }}
+      #     PACKAGE: ${{ github.workspace }}/${{ steps.build.outputs.build }}
+      #     VERSION: ${{ steps.get_tag.outputs.TAG }}
