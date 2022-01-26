@@ -33,7 +33,7 @@ jobs:
         run: |
           if [ "$PLATFORM" = "win32" ] || [ "$PLATFORM" = "win64" ] ; then
             echo "EXPORT_NAME=$ITCH_GAME.exe" >> $GITHUB_ENV
-          elif [ "$PLATFORM" = "html5" ] ] ; then
+          elif [ "$PLATFORM" = "html5" ] ; then
             echo "EXPORT_NAME=index.html" >> $GITHUB_ENV
           else
             echo "EXPORT_NAME=$ITCH_GAME" >> $GITHUB_ENV
