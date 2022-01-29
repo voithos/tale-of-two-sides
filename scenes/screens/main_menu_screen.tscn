@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/screens/main_menu_screen.gd" type="Script" id=1]
+[ext_resource path="res://assets/ui/title.png" type="Texture" id=2]
+[ext_resource path="res://default_theme.tres" type="Theme" id=3]
+
+[node name="MainMenuScreen" type="PanelContainer"]
+margin_right = 320.0
+margin_bottom = 180.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 3 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+margin_right = 320.0
+margin_bottom = 180.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 49.0
+margin_top = 44.0
+margin_right = 270.0
+margin_bottom = 135.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/VBoxContainer"]
+margin_right = 221.0
+margin_bottom = 36.0
+texture = ExtResource( 2 )
+
+[node name="Spacer" type="Control" parent="CenterContainer/VBoxContainer"]
+margin_top = 40.0
+margin_right = 221.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 0, 20 )
+
+[node name="Button" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_left = 74.0
+margin_top = 64.0
+margin_right = 146.0
+margin_bottom = 91.0
+rect_min_size = Vector2( 72, 24 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Go!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Button" to="." method="_on_Button_pressed"]
