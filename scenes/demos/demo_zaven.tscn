@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/level_logic.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/props/test_hires.png" type="Texture" id=3]
+[ext_resource path="res://scenes/tile_set_16.tres" type="TileSet" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 69.5, 10 )
@@ -38,3 +39,11 @@ texture = ExtResource( 3 )
 
 [node name="player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 143, 106 )
+
+[node name="TileMap16" type="TileMap" parent="."]
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 16, 16 )
+cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
+collision_layer = 3
+format = 1
+tile_data = PoolIntArray( 851973, 0, 8, 851974, 0, 10, 851975, 0, 10, 851976, 0, 10, 851977, 0, 10, 851978, 0, 10, 851979, 0, 10, 851980, 0, 10, 851981, 0, 10, 851982, 0, 10, 851983, 0, 10, 851984, 0, 10, 851985, 0, 11, 917509, 0, 131076, 917510, 0, 196617, 917511, 0, 196617, 917512, 0, 196617, 917513, 0, 196617, 917514, 0, 196617, 917515, 0, 196617, 917516, 0, 196617, 917517, 0, 196617, 917518, 0, 196617, 917519, 0, 196617, 917520, 0, 196617, 917521, 0, 131079, 983045, 0, 65536, 983057, 0, 65536, 1048581, 0, 65536, 1048585, 0, 196609, 1048586, 0, 2, 1048587, 0, 196610, 1048588, 0, 2, 1048589, 0, 196611, 1048593, 0, 65536, 1114116, 0, 196609, 1114117, 0, 131074, 1114118, 0, 196611, 1114122, 0, 65536, 1114124, 0, 65536, 1114128, 0, 196609, 1114129, 0, 131074, 1114130, 0, 196611, 1179658, 0, 131073, 1179659, 0, 196610, 1179660, 0, 131075 )

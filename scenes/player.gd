@@ -22,7 +22,7 @@ var orientation_multiplier = 1
 var phase_through_enabled = false
 
 const PHASEABLE_COLLISION_LAYER = pow(2, 1)
-const PHASEABLE_RAYCAST_LENGTH = 50 # Length of the raycast to check entry/exit location for phasing.
+const PHASEABLE_RAYCAST_LENGTH = 100 # Length of the raycast to check entry/exit location for phasing.
 
 # Movement state.
 var velocity = Vector2.ZERO
@@ -166,15 +166,13 @@ func _check_phase_through(direction: Vector2) -> bool:
         var exited = results[1]
         
         if !entered.empty() and !exited.empty():
-            assert(entered.size() == 1)
-            assert(exited.size() == 1)
             # Since we're flipping orientation, calculate the offset between the exit point (of the
             # raycast) and the position we'll need to set the player at.
             var opposite_position_offset = $raycast.global_position - global_position
             # We multiply the opposite_position_offset by a slight extra amount so that we aren't
             # touching the other surface. Otherwise, move_and_slide seems to just randomly "snap"
             # and sets the velocity to 0 on the next frame.
-            global_position = exited[0]["position"] + 1.3 * opposite_position_offset
+            global_position = exited[exited.size() - 1]["position"] + 1.3 * opposite_position_offset
             _flip_orientation()
         
         phase_through_enabled = false
@@ -190,7 +188,11 @@ func _get_space_state():
     return space_state
 
 # Similar to Physics2DDirectSpaceState.intersect_ray.
+const RAY_EPSILON = 0.001
 func _double_raycast(space_state: Physics2DDirectSpaceState, from, to, collision_layer=2147483647, exclude_self=true, collide_with_bodies=true, collide_with_areas=true):
+    var dir = (to - from).normalized()
+    var rev_dir = (from - to).normalized()
+
     var exclude = [self] if exclude_self else []
     
     var entered = []
@@ -200,13 +202,14 @@ func _double_raycast(space_state: Physics2DDirectSpaceState, from, to, collision
     var result = space_state.intersect_ray(from, to, exclude, collision_layer, collide_with_bodies, collide_with_areas)
     while !result.empty():
         entered.push_back(result)
-        result = space_state.intersect_ray(result["position"], to, exclude + [result["collider"]], collision_layer, collide_with_bodies, collide_with_areas)
+        print(result)
+        result = space_state.intersect_ray(result["position"] + RAY_EPSILON * dir, to, exclude + [result["collider"]], collision_layer, collide_with_bodies, collide_with_areas)
     
     # Get backward collisions along the ray.
     result = space_state.intersect_ray(to, from, exclude, collision_layer, collide_with_bodies, collide_with_areas)
     while !result.empty():
         exited.push_back(result)
-        result = space_state.intersect_ray(result["position"], from, exclude + [result["collider"]], collision_layer, collide_with_bodies, collide_with_areas)
+        result = space_state.intersect_ray(result["position"] + RAY_EPSILON * rev_dir, from, exclude + [result["collider"]], collision_layer, collide_with_bodies, collide_with_areas)
     
     return [entered, exited]
 
