@@ -96,6 +96,7 @@ func _move_player(delta):
 
     # When we're nearing the top of the jump, decrease gravity.
     var grav_multiplier = 1.0 if is_fast_falling or abs(velocity.y) > GRAVITY_DECREASE_THRESHOLD else GRAVITY_DECREASE_MULTIPLIER
+    
     # TODO: Probably need to do something other than min/max if we want arbitrary momentum puzzles.
     velocity.y = max(-TERM_VEL, min(TERM_VEL, velocity.y + GRAVITY * grav_multiplier * fall_multiplier * orientation_multiplier))
 
@@ -136,8 +137,6 @@ func _landed():
         did_phase = _check_phase_through(previous_velocity.normalized())
         if did_phase:
             # Since we phased through, we should retain the velocity we had before the surface collision.
-            print(velocity)
-            print(previous_velocity)
             velocity = previous_velocity
     
     # Only play the sfx if we didn't phase.
@@ -167,10 +166,15 @@ func _check_phase_through(direction: Vector2) -> bool:
         var exited = results[1]
         
         if !entered.empty() and !exited.empty():
+            assert(entered.size() == 1)
+            assert(exited.size() == 1)
             # Since we're flipping orientation, calculate the offset between the exit point (of the
             # raycast) and the position we'll need to set the player at.
             var opposite_position_offset = $raycast.global_position - global_position
-            global_position = exited[0]["position"] + opposite_position_offset
+            # We multiply the opposite_position_offset by a slight extra amount so that we aren't
+            # touching the other surface. Otherwise, move_and_slide seems to just randomly "snap"
+            # and sets the velocity to 0 on the next frame.
+            global_position = exited[0]["position"] + 1.3 * opposite_position_offset
             _flip_orientation()
         
         phase_through_enabled = false
