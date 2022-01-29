@@ -13,7 +13,8 @@ var previous_state = state
 
 # Tracking variables for vertical and horizontal sprite flipping.
 export (bool) var facing_right = true
-var right_side_up = true
+# Either 1.0 if player is right-side-up, or -1.0 if player is upside down.
+var orientation_multiplier = 1
 
 # Movement state.
 var velocity = Vector2.ZERO
@@ -46,6 +47,9 @@ func _ready():
 func _physics_process(delta):
     if state != State.CONTROLLABLE:
         return
+        
+    if Input.is_action_just_pressed("debug"):
+        _flip_orientation()
 
     _animate_squash_stretch(delta)
     _move_player(delta)
@@ -53,7 +57,7 @@ func _physics_process(delta):
 
 func _move_player(delta):
     was_airborne = is_airborne
-    
+
     var target_horizontal = 0
     var fall_multiplier = 1.0
     is_moving = false
@@ -74,7 +78,7 @@ func _move_player(delta):
     # Apply gravity and fast falling
     if is_airborne and Input.is_action_just_released("jump"):
         is_fast_falling = true
-        if velocity.y < 0:
+        if velocity.y * orientation_multiplier < 0:
             velocity.y *= JUMP_RELEASE_MULTIPLIER
 
     if is_fast_falling:
@@ -82,11 +86,11 @@ func _move_player(delta):
 
     # When we're nearing the top of the jump, decrease gravity.
     var grav_multiplier = 1.0 if is_fast_falling or abs(velocity.y) > GRAVITY_DECREASE_THRESHOLD else GRAVITY_DECREASE_MULTIPLIER
-    velocity.y = min(TERM_VEL, velocity.y + GRAVITY * grav_multiplier * fall_multiplier)
+    # TODO: Probably need to do something other than min/max if we want arbitrary momentum puzzles.
+    velocity.y = max(-TERM_VEL, min(TERM_VEL, velocity.y + GRAVITY * grav_multiplier * fall_multiplier * orientation_multiplier))
 
     # Lerp horizontal movement
     velocity.x = lerp(velocity.x, target_horizontal, HORIZONTAL_ACCEL * delta)
-
 
     velocity = move_and_slide(velocity, Vector2.UP)
     
@@ -107,7 +111,7 @@ func _move_player(delta):
 func _jump():
     is_airborne = true
     is_fast_falling = false
-    velocity.y = -JUMP_VEL
+    velocity.y = -JUMP_VEL * orientation_multiplier
     #$animation.play("jump")
     _apply_jump_squash_stretch()
 
@@ -115,11 +119,17 @@ func _landed():
     is_airborne = false
 
 func _is_on_surface():
-    # TODO: Make this work with the "mirror" world.
-    return is_on_floor()
+    if orientation_multiplier == 1:
+        return is_on_floor()
+    else:
+        return is_on_ceiling()
+
+func _flip_orientation():
+    orientation_multiplier *= -1
 
 func _animate_squash_stretch(delta):
-    if is_airborne and velocity.y < 0:
+    # TODO: This doesn't quite work when you "flip" and have a lot of momentum.
+    if is_airborne and velocity.y * orientation_multiplier < 0:
         _apply_jump_squash_stretch()
     else:
         # We could make this framerate-independent by using delta properly here, but we don't
@@ -138,4 +148,4 @@ func _apply_jump_squash_stretch():
 
 func _update_sprite_flip():
     $sprite.flip_h = !facing_right
-    $sprite.flip_v = !right_side_up
+    $sprite.flip_v = orientation_multiplier != 1

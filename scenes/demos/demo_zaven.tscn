@@ -12,6 +12,13 @@ extents = Vector2( 69.5, 10 )
 [node name="level_logic" parent="." instance=ExtResource( 1 )]
 background_music = 0
 
+[node name="block2" type="StaticBody2D" parent="."]
+position = Vector2( 98, 38 )
+
+[node name="shape" type="CollisionShape2D" parent="block2"]
+position = Vector2( 59.5, 0 )
+shape = SubResource( 1 )
+
 [node name="block" type="StaticBody2D" parent="."]
 position = Vector2( 104, 126 )
 
