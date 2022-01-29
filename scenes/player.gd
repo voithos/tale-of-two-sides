@@ -161,7 +161,7 @@ func _check_phase_through(direction: Vector2) -> bool:
         var ray = direction * PHASEABLE_RAYCAST_LENGTH
         var from = $raycast.global_position
         var to = from + ray
-        var results = _double_raycast(_get_space_state(), from, to, PHASEABLE_COLLISION_LAYER)
+        var results = _levi_raycast(_get_space_state(), from, to, PHASEABLE_COLLISION_LAYER)
         var entered = results[0]
         var exited = results[1]
         
@@ -217,6 +217,47 @@ func _double_raycast(space_state: Physics2DDirectSpaceState, from, to, collision
         result = space_state.intersect_ray(result["position"] + RAY_EPSILON * rev_dir, from, exclude + [result["collider"]], collision_layer, collide_with_bodies, collide_with_areas)
     
     return [entered, exited]
+
+const RAY_MARCH_DELTA := 8.0
+func _levi_raycast(
+        space_state: Physics2DDirectSpaceState,
+        from: Vector2,
+        to: Vector2,
+        collision_layer:=2147483647,
+        exclude_self:=true,
+        collide_with_bodies:=true,
+        collide_with_areas:=true) -> Array:
+    var dir := (to - from).normalized()
+    var rev_dir := (from - to).normalized()
+    var exclude := []
+    var enter_result := space_state.intersect_ray(
+            from,
+            to,
+            exclude,
+            collision_layer,
+            collide_with_bodies,
+            collide_with_areas)
+    var exit_cast_from: Vector2 = enter_result.position + RAY_MARCH_DELTA * dir
+    var exit_cast_to := from - (to - from)
+    var exit_result := space_state.intersect_ray(
+            exit_cast_from,
+            exit_cast_to,
+            exclude,
+            collision_layer,
+            collide_with_bodies,
+            collide_with_areas)
+    while is_equal_approx(exit_result.position.x, exit_cast_from.x) and \
+            is_equal_approx(exit_result.position.y, exit_cast_from.y):
+        exit_cast_from = exit_result.position + RAY_MARCH_DELTA * dir
+        exit_result = space_state.intersect_ray(
+                exit_cast_from,
+                exit_cast_to,
+                exclude,
+                collision_layer,
+                collide_with_bodies,
+                collide_with_areas)
+    
+    return [[enter_result], [exit_result]]
 
 func _flip_orientation():
     orientation_multiplier *= -1
