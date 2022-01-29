@@ -17,5 +17,5 @@ func _dialog_end(signal_type):
 	player.exit_cutscene();
 
 func _on_Area2D_body_entered(body):
-	if !started && body.name == "player":
+	if !started && body.is_in_group("player"):
 		create_dialog();
