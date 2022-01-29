@@ -6,4 +6,5 @@ extends Node2D
 
 
 func _ready() -> void:
+    screen.set_level(GameScreen.DEMO_BASE)
     screen.open_screen(ScreenController.MAIN_MENU)

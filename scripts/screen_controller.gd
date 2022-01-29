@@ -78,3 +78,7 @@ func open_screen(screen_type: int) -> void:
         var packed_scene: PackedScene = packed_scenes[screen_type]
         current_screen = packed_scene.instance()
         screen_container.add_child(current_screen)
+
+
+func set_level(level_type: int) -> void:
+    game_screen.set_level(level_type)
