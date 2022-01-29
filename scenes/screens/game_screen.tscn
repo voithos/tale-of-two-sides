@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/screens/game_screen.gd" type="Script" id=1]
+[ext_resource path="res://default_theme.tres" type="Theme" id=3]
+
+[node name="GameScreen" type="PanelContainer"]
+pause_mode = 1
+margin_right = 320.0
+margin_bottom = 180.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 3 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ViewportContainer" type="ViewportContainer" parent="."]
+margin_right = 320.0
+margin_bottom = 180.0
+rect_clip_content = true
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Viewport" type="Viewport" parent="ViewportContainer"]
+pause_mode = 1
+size = Vector2( 320, 180 )
+usage = 0
+render_target_update_mode = 3

@@ -11,7 +11,7 @@ const BACKGROUND_QUIET_DB = -40.0
 # Preloaded sound effects.
 # ========================
 enum {
-    # TODO: Replace with actual sounds
+    BUTTON_PRESS,
     CADENCE_FAILURE,
     CADENCE_SUCCESS,
     CONTACT,
@@ -27,6 +27,8 @@ enum {
 }
 
 const SAMPLES = {
+    # TODO: Add a new button sound.
+    BUTTON_PRESS: preload("res://assets/sfx/pickup_crystal.wav"),
     CADENCE_FAILURE: preload("res://assets/sfx/cadence_failure.wav"),
     CADENCE_SUCCESS: preload("res://assets/sfx/cadence_success.wav"),
     CONTACT: preload("res://assets/sfx/contact.wav"),

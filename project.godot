@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Screen",
+"class": "CreditsScreen",
+"language": "GDScript",
+"path": "res://scenes/screens/credits_screen.gd"
+}, {
 "base": "RigidBody2D",
 "class": "Crystal",
 "language": "GDScript",
@@ -45,6 +50,16 @@ _global_script_classes=[ {
 "path": "res://addons/dialogic/Other/DialogicUtil.gd"
 }, {
 "base": "Screen",
+"class": "GameScreen",
+"language": "GDScript",
+"path": "res://scenes/screens/game_screen.gd"
+}, {
+"base": "Node2D",
+"class": "Main",
+"language": "GDScript",
+"path": "res://scenes/main.gd"
+}, {
+"base": "Screen",
 "class": "MainMenuScreen",
 "language": "GDScript",
 "path": "res://scenes/screens/main_menu_screen.gd"
@@ -53,6 +68,11 @@ _global_script_classes=[ {
 "class": "Music",
 "language": "GDScript",
 "path": "res://scripts/music.gd"
+}, {
+"base": "Screen",
+"class": "PauseScreen",
+"language": "GDScript",
+"path": "res://scenes/screens/pause_screen.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Player",
@@ -70,6 +90,7 @@ _global_script_classes=[ {
 "path": "res://scripts/sfx.gd"
 } ]
 _global_script_class_icons={
+"CreditsScreen": "",
 "Crystal": "",
 "DTS": "",
 "Dialogic": "",
@@ -77,8 +98,11 @@ _global_script_class_icons={
 "DialogicDefinitionsUtil": "",
 "DialogicResources": "",
 "DialogicUtil": "",
+"GameScreen": "",
+"Main": "",
 "MainMenuScreen": "",
 "Music": "",
+"PauseScreen": "",
 "Player": "",
 "Screen": "",
 "Sfx": ""
@@ -87,7 +111,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Global Game Jam 2022"
-run/main_scene="res://scenes/demos/demo_base.tscn"
+run/main_scene="res://scenes/main.tscn"
 config/icon="res://icon.png"
 
 [autoload]
