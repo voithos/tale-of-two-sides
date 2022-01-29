@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/phase2.wav-b86ae74d7b4ce695103fbceec3151b2b.sample"
+
+[deps]
+
+source_file="res://assets/sfx/phase2.wav"
+dest_files=[ "res://.import/phase2.wav-b86ae74d7b4ce695103fbceec3151b2b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

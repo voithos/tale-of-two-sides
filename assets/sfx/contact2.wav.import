@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/contact2.wav-0cd0f144a99db6e39638f28096378242.sample"
+
+[deps]
+
+source_file="res://assets/sfx/contact2.wav"
+dest_files=[ "res://.import/contact2.wav-0cd0f144a99db6e39638f28096378242.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
