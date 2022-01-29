@@ -2,12 +2,12 @@ class_name Player
 extends KinematicBody2D
 
 enum State {
-    # Player can be controlled.
-    CONTROLLABLE,
-    # Player is in a non-gameplay "starting level" or "ending level" animation, etc.
-    ANIMATING,
-    # Player is in a cutscene,
-    CUTSCENE,
+	# Player can be controlled.
+	CONTROLLABLE,
+	# Player is in a non-gameplay "starting level" or "ending level" animation, etc.
+	ANIMATING,
+	# Player is in a cutscene,
+	CUTSCENE,
 }
 
 # The current state of the player.
@@ -49,254 +49,301 @@ const JUMP_SQUASH_STRETCH = Vector2(0.8, 1.2)
 const LAND_SQUASH_STRETCH = Vector2(1.5, 0.4)
 const SQUASH_LERP_SPEED = 10
 
+# Phase Shift Animation state
+var phase_destination = Vector2(0,0)
+var phase_origin = Vector2(0,0)
+var is_phasing_animation = false;
+const TEST_PHASE_DIRECTION = Vector2(200,-20)
+const PHASE_ANIM_SPEED = 4;
+const PHASE_MOVE_SPEED = 400;
+
 
 func _ready():
-    add_to_group("player")
-    _update_sprite_flip()
+	add_to_group("player")
+	_update_sprite_flip()
 
 func _physics_process(delta):
-    if state != State.CONTROLLABLE:
-        return
-        
-    if Input.is_action_just_pressed("debug"):
-        _begin_phasing()
+	if state == State.ANIMATING && is_phasing_animation:
+		_handle_phase_animation(delta);
 
-    _animate_squash_stretch(delta)
-    _move_player(delta)
-    _update_sprite_flip()
+	if state != State.CONTROLLABLE:
+		return
+		
+	if Input.is_action_just_pressed("debug"):
+		_begin_phasing()
+		
+	if Input.is_action_just_pressed("debug_anim"):
+		_test_phase_anim();
+
+	_animate_squash_stretch(delta)
+	_move_player(delta)
+	_update_sprite_flip()
 
 func _move_player(delta):
-    was_airborne = is_airborne
+	was_airborne = is_airborne
 
-    var target_horizontal = 0
-    var fall_multiplier = 1.0
-    is_moving = false
+	var target_horizontal = 0
+	var fall_multiplier = 1.0
+	is_moving = false
 
-    if Input.is_action_pressed("move_left"):
-        target_horizontal -= HORIZONTAL_VEL
-        is_moving = true
-    if Input.is_action_pressed("move_right"):
-        target_horizontal += HORIZONTAL_VEL
-        is_moving = true
+	if Input.is_action_pressed("move_left"):
+		target_horizontal -= HORIZONTAL_VEL
+		is_moving = true
+	if Input.is_action_pressed("move_right"):
+		target_horizontal += HORIZONTAL_VEL
+		is_moving = true
 
-    if Input.is_action_just_pressed("jump") and _is_on_surface():
-        _jump()
-    
-    if target_horizontal != 0:
-        facing_right = target_horizontal > 0
+	if Input.is_action_just_pressed("jump") and _is_on_surface():
+		_jump()
+	
+	if target_horizontal != 0:
+		facing_right = target_horizontal > 0
 
-    # Apply gravity and fast falling
-    if is_airborne and Input.is_action_just_released("jump"):
-        is_fast_falling = true
-        if velocity.y * orientation_multiplier < 0:
-            velocity.y *= JUMP_RELEASE_MULTIPLIER
+	# Apply gravity and fast falling
+	if is_airborne and Input.is_action_just_released("jump"):
+		is_fast_falling = true
+		if velocity.y * orientation_multiplier < 0:
+			velocity.y *= JUMP_RELEASE_MULTIPLIER
 
-    if is_fast_falling:
-        fall_multiplier = FAST_FALL_MULTIPLIER
+	if is_fast_falling:
+		fall_multiplier = FAST_FALL_MULTIPLIER
 
-    # When we're nearing the top of the jump, decrease gravity.
-    var grav_multiplier = 1.0 if is_fast_falling or abs(velocity.y) > GRAVITY_DECREASE_THRESHOLD else GRAVITY_DECREASE_MULTIPLIER
-    
-    # TODO: Probably need to do something other than min/max if we want arbitrary momentum puzzles.
-    velocity.y = max(-TERM_VEL, min(TERM_VEL, velocity.y + GRAVITY * grav_multiplier * fall_multiplier * orientation_multiplier))
+	# When we're nearing the top of the jump, decrease gravity.
+	var grav_multiplier = 1.0 if is_fast_falling or abs(velocity.y) > GRAVITY_DECREASE_THRESHOLD else GRAVITY_DECREASE_MULTIPLIER
+	
+	# TODO: Probably need to do something other than min/max if we want arbitrary momentum puzzles.
+	velocity.y = max(-TERM_VEL, min(TERM_VEL, velocity.y + GRAVITY * grav_multiplier * fall_multiplier * orientation_multiplier))
 
-    # Lerp horizontal movement
-    velocity.x = lerp(velocity.x, target_horizontal, HORIZONTAL_ACCEL * delta)
+	# Lerp horizontal movement
+	velocity.x = lerp(velocity.x, target_horizontal, HORIZONTAL_ACCEL * delta)
 
-    previous_velocity = velocity
-    velocity = move_and_slide(velocity, Vector2.UP)
-    
-    if was_airborne and _is_on_surface():
-        _landed()
-    elif !was_airborne and !_is_on_surface():
-        # Fell off a cliff.
-        is_airborne = true
+	previous_velocity = velocity
+	velocity = move_and_slide(velocity, Vector2.UP)
+	
+	if was_airborne and _is_on_surface():
+		_landed()
+	elif !was_airborne and !_is_on_surface():
+		# Fell off a cliff.
+		is_airborne = true
 
-    if !is_airborne:
-        if is_moving:
-            #$animation.play("run")
-            pass
-        else:
-            #$animation.play("idle")
-            pass
+	if !is_airborne:
+		if is_moving:
+			#$animation.play("run")
+			pass
+		else:
+			#$animation.play("idle")
+			pass
 
 func _jump():
-    is_airborne = true
-    is_fast_falling = false
-    velocity.y = -JUMP_VEL * orientation_multiplier
-    #$animation.play("jump")
-    _apply_jump_squash_stretch()
-    sfx.play(sfx.JUMP)
+	is_airborne = true
+	is_fast_falling = false
+	velocity.y = -JUMP_VEL * orientation_multiplier
+	#$animation.play("jump")
+	_apply_jump_squash_stretch()
+	sfx.play(sfx.JUMP)
 
 func _landed():
-    is_airborne = false
-    var did_phase = false
-    # TODO: Only phase through certain materials?
-    if phase_through_enabled:
-        # Have to use previous velocity, because this is post-collision (so velocity would be 0).
-        did_phase = _check_phase_through(previous_velocity.normalized())
-        if did_phase:
-            # Since we phased through, we should retain the velocity we had before the surface collision.
-            velocity = previous_velocity
-    
-    # Only play the sfx if we didn't phase.
-    if !did_phase:
-        sfx.play(sfx.LAND, sfx.QUIET_DB)
+	is_airborne = false
+	var did_phase = false
+	# TODO: Only phase through certain materials?
+	if phase_through_enabled:
+		# Have to use previous velocity, because this is post-collision (so velocity would be 0).
+		did_phase = _check_phase_through(previous_velocity.normalized())
+		if did_phase:
+			# Since we phased through, we should retain the velocity we had before the surface collision.
+			velocity = previous_velocity
+	
+	# Only play the sfx if we didn't phase.
+	if !did_phase:
+		sfx.play(sfx.LAND, sfx.QUIET_DB)
 
 func _is_on_surface():
-    if orientation_multiplier == 1:
-        return is_on_floor()
-    else:
-        return is_on_ceiling()
+	if orientation_multiplier == 1:
+		return is_on_floor()
+	else:
+		return is_on_ceiling()
 
 func _begin_phasing():
-    phase_through_enabled = true
-    # Check immediately in case we're already on the ground.
-    if _is_on_surface():
-        _check_phase_through(Vector2.DOWN * orientation_multiplier)
+	phase_through_enabled = true
+	# Check immediately in case we're already on the ground.
+	if _is_on_surface():
+		_check_phase_through(Vector2.DOWN * orientation_multiplier)
 
 func _check_phase_through(direction: Vector2) -> bool:
-    if $raycast.is_colliding():
-        # We know that we're near a phaseable surface, so we resort to manually querying the space state.
-        var ray = direction * PHASEABLE_RAYCAST_LENGTH
-        var from = $raycast.global_position
-        var to = from + ray
-        var results = _levi_raycast(_get_space_state(), from, to, PHASEABLE_COLLISION_LAYER)
-        var entered = results[0]
-        var exited = results[1]
-        
-        if !entered.empty() and !exited.empty():
-            # Since we're flipping orientation, calculate the offset between the exit point (of the
-            # raycast) and the position we'll need to set the player at.
-            var opposite_position_offset = $raycast.global_position - global_position
-            # We multiply the opposite_position_offset by a slight extra amount so that we aren't
-            # touching the other surface. Otherwise, move_and_slide seems to just randomly "snap"
-            # and sets the velocity to 0 on the next frame.
-            global_position = exited[exited.size() - 1]["position"] + 1.3 * opposite_position_offset
-            _flip_orientation()
-        
-        phase_through_enabled = false
-        return true
+	if $raycast.is_colliding():
+		# We know that we're near a phaseable surface, so we resort to manually querying the space state.
+		var ray = direction * PHASEABLE_RAYCAST_LENGTH
+		var from = $raycast.global_position
+		var to = from + ray
+		var results = _levi_raycast(_get_space_state(), from, to, PHASEABLE_COLLISION_LAYER)
+		var entered = results[0]
+		var exited = results[1]
+		
+		if !entered.empty() and !exited.empty():
+			# Since we're flipping orientation, calculate the offset between the exit point (of the
+			# raycast) and the position we'll need to set the player at.
+			var opposite_position_offset = $raycast.global_position - global_position
+			# We multiply the opposite_position_offset by a slight extra amount so that we aren't
+			# touching the other surface. Otherwise, move_and_slide seems to just randomly "snap"
+			# and sets the velocity to 0 on the next frame.
+			global_position = exited[exited.size() - 1]["position"] + 1.3 * opposite_position_offset
+			_flip_orientation()
+		
+		phase_through_enabled = false
+		return true
 
-    # Disable, since we didn't end up finding a phase through.
-    phase_through_enabled = false
-    return false
+	# Disable, since we didn't end up finding a phase through.
+	phase_through_enabled = false
+	return false
 
 func _get_space_state():
-    var space_rid = get_world_2d().space
-    var space_state = Physics2DServer.space_get_direct_state(space_rid)
-    return space_state
+	var space_rid = get_world_2d().space
+	var space_state = Physics2DServer.space_get_direct_state(space_rid)
+	return space_state
 
 # Similar to Physics2DDirectSpaceState.intersect_ray.
 const RAY_EPSILON = 0.001
 func _double_raycast(space_state: Physics2DDirectSpaceState, from, to, collision_layer=2147483647, exclude_self=true, collide_with_bodies=true, collide_with_areas=true):
-    var dir = (to - from).normalized()
-    var rev_dir = (from - to).normalized()
+	var dir = (to - from).normalized()
+	var rev_dir = (from - to).normalized()
 
-    var exclude = [self] if exclude_self else []
-    
-    var entered = []
-    var exited = []
-    
-    # Get forward collisions along the ray.
-    var result = space_state.intersect_ray(from, to, exclude, collision_layer, collide_with_bodies, collide_with_areas)
-    # Keep track of the last collider and ignore re-collisions with the same collider. Godot should
-    # take care of this, but it's unfortunately broken for tilemaps due to https://github.com/godotengine/godot/issues/17090.
-    var last_collider = null
-    while !result.empty():
-        if result["collider"] != last_collider:
-            entered.push_back(result)
-        last_collider = result["collider"]
-        result = space_state.intersect_ray(result["position"] + RAY_EPSILON * dir, to, exclude + [result["collider"]], collision_layer, collide_with_bodies, collide_with_areas)
-    
-    # Get backward collisions along the ray.
-    result = space_state.intersect_ray(to, from, exclude, collision_layer, collide_with_bodies, collide_with_areas)
-    last_collider = null
-    while !result.empty():
-        if result["collider"] != last_collider:
-            exited.push_back(result)
-        last_collider = result["collider"]
-        result = space_state.intersect_ray(result["position"] + RAY_EPSILON * rev_dir, from, exclude + [result["collider"]], collision_layer, collide_with_bodies, collide_with_areas)
-    
-    return [entered, exited]
+	var exclude = [self] if exclude_self else []
+	
+	var entered = []
+	var exited = []
+	
+	# Get forward collisions along the ray.
+	var result = space_state.intersect_ray(from, to, exclude, collision_layer, collide_with_bodies, collide_with_areas)
+	# Keep track of the last collider and ignore re-collisions with the same collider. Godot should
+	# take care of this, but it's unfortunately broken for tilemaps due to https://github.com/godotengine/godot/issues/17090.
+	var last_collider = null
+	while !result.empty():
+		if result["collider"] != last_collider:
+			entered.push_back(result)
+		last_collider = result["collider"]
+		result = space_state.intersect_ray(result["position"] + RAY_EPSILON * dir, to, exclude + [result["collider"]], collision_layer, collide_with_bodies, collide_with_areas)
+	
+	# Get backward collisions along the ray.
+	result = space_state.intersect_ray(to, from, exclude, collision_layer, collide_with_bodies, collide_with_areas)
+	last_collider = null
+	while !result.empty():
+		if result["collider"] != last_collider:
+			exited.push_back(result)
+		last_collider = result["collider"]
+		result = space_state.intersect_ray(result["position"] + RAY_EPSILON * rev_dir, from, exclude + [result["collider"]], collision_layer, collide_with_bodies, collide_with_areas)
+	
+	return [entered, exited]
 
 const RAY_MARCH_DELTA := 8.0
 func _levi_raycast(
-        space_state: Physics2DDirectSpaceState,
-        from: Vector2,
-        to: Vector2,
-        collision_layer:=2147483647,
-        exclude_self:=true,
-        collide_with_bodies:=true,
-        collide_with_areas:=true) -> Array:
-    var dir := (to - from).normalized()
-    var rev_dir := (from - to).normalized()
-    var exclude := []
-    var enter_result := space_state.intersect_ray(
-            from,
-            to,
-            exclude,
-            collision_layer,
-            collide_with_bodies,
-            collide_with_areas)
-    var exit_cast_from: Vector2 = enter_result.position + RAY_MARCH_DELTA * dir
-    var exit_cast_to := from - (to - from)
-    var exit_result := space_state.intersect_ray(
-            exit_cast_from,
-            exit_cast_to,
-            exclude,
-            collision_layer,
-            collide_with_bodies,
-            collide_with_areas)
-    while is_equal_approx(exit_result.position.x, exit_cast_from.x) and \
-            is_equal_approx(exit_result.position.y, exit_cast_from.y):
-        exit_cast_from = exit_result.position + RAY_MARCH_DELTA * dir
-        exit_result = space_state.intersect_ray(
-                exit_cast_from,
-                exit_cast_to,
-                exclude,
-                collision_layer,
-                collide_with_bodies,
-                collide_with_areas)
-    
-    return [[enter_result], [exit_result]]
+		space_state: Physics2DDirectSpaceState,
+		from: Vector2,
+		to: Vector2,
+		collision_layer:=2147483647,
+		exclude_self:=true,
+		collide_with_bodies:=true,
+		collide_with_areas:=true) -> Array:
+	var dir := (to - from).normalized()
+	var rev_dir := (from - to).normalized()
+	var exclude := []
+	var enter_result := space_state.intersect_ray(
+			from,
+			to,
+			exclude,
+			collision_layer,
+			collide_with_bodies,
+			collide_with_areas)
+	var exit_cast_from: Vector2 = enter_result.position + RAY_MARCH_DELTA * dir
+	var exit_cast_to := from - (to - from)
+	var exit_result := space_state.intersect_ray(
+			exit_cast_from,
+			exit_cast_to,
+			exclude,
+			collision_layer,
+			collide_with_bodies,
+			collide_with_areas)
+	while is_equal_approx(exit_result.position.x, exit_cast_from.x) and \
+			is_equal_approx(exit_result.position.y, exit_cast_from.y):
+		exit_cast_from = exit_result.position + RAY_MARCH_DELTA * dir
+		exit_result = space_state.intersect_ray(
+				exit_cast_from,
+				exit_cast_to,
+				exclude,
+				collision_layer,
+				collide_with_bodies,
+				collide_with_areas)
+	
+	return [[enter_result], [exit_result]]
 
 func _flip_orientation():
-    orientation_multiplier *= -1
-    $sprite.flip_v = orientation_multiplier != 1
-    $raycast.cast_to *= -1
-    $raycast.position *= -1
-    $shape.position *= -1
+	orientation_multiplier *= -1
+	$sprite.flip_v = orientation_multiplier != 1
+	$raycast.cast_to *= -1
+	$raycast.position *= -1
+	$shape.position *= -1
 
 func _animate_squash_stretch(delta):
-    # TODO: This doesn't quite work when you "flip" and have a lot of momentum.
-    if is_airborne and velocity.y * orientation_multiplier < 0:
-        _apply_jump_squash_stretch()
-    else:
-        # We could make this framerate-independent by using delta properly here, but we don't
-        # have to since the delta comes from physics_process.
-        # https://www.construct.net/en/blogs/ashleys-blog-2/using-lerp-delta-time-924
-        var lerp_val = SQUASH_LERP_SPEED * delta
-        assert(lerp_val <= 1.0)
-        squash_stretch_scale.x = lerp(squash_stretch_scale.x, 1.0, lerp_val)
-        squash_stretch_scale.y = lerp(squash_stretch_scale.y, 1.0, lerp_val)
-    $sprite.scale = squash_stretch_scale
+	# TODO: This doesn't quite work when you "flip" and have a lot of momentum.
+	if is_airborne and velocity.y * orientation_multiplier < 0:
+		_apply_jump_squash_stretch()
+	else:
+		# We could make this framerate-independent by using delta properly here, but we don't
+		# have to since the delta comes from physics_process.
+		# https://www.construct.net/en/blogs/ashleys-blog-2/using-lerp-delta-time-924
+		var lerp_val = SQUASH_LERP_SPEED * delta
+		assert(lerp_val <= 1.0)
+		squash_stretch_scale.x = lerp(squash_stretch_scale.x, 1.0, lerp_val)
+		squash_stretch_scale.y = lerp(squash_stretch_scale.y, 1.0, lerp_val)
+	$sprite.scale = squash_stretch_scale
 
 func _apply_jump_squash_stretch():
-    squash_stretch_scale.x = range_lerp(abs(velocity.y), 0, JUMP_VEL, 1.0, JUMP_SQUASH_STRETCH.x)
-    squash_stretch_scale.y = range_lerp(abs(velocity.y), 0, JUMP_VEL, 1.0, JUMP_SQUASH_STRETCH.y)
-    $sprite.scale = squash_stretch_scale
+	squash_stretch_scale.x = range_lerp(abs(velocity.y), 0, JUMP_VEL, 1.0, JUMP_SQUASH_STRETCH.x)
+	squash_stretch_scale.y = range_lerp(abs(velocity.y), 0, JUMP_VEL, 1.0, JUMP_SQUASH_STRETCH.y)
+	$sprite.scale = squash_stretch_scale
 
 func _update_sprite_flip():
-    $sprite.flip_h = !facing_right
+	$sprite.flip_h = !facing_right
+
+	
+func _test_phase_anim():
+	state = State.ANIMATING;
+	is_phasing_animation = true;
+	phase_destination = position + TEST_PHASE_DIRECTION
+	phase_origin = position
+	$phase_sprite.visible = true;
+	$phase_particles.emitting = true;
+	
+	# TODO: Store old velocity
+	
+func _handle_phase_animation(delta):
+	# Used to transition into and out of block. Transition distance is quarter of the total phase distance
+	var quarter_distance = (phase_destination - phase_origin).length()/4.0
+	var phase_pos = min(min(position.distance_to(phase_origin), position.distance_to(phase_destination)), quarter_distance)
+	var speed_modulation = range_lerp(phase_pos, 0, quarter_distance, 1.0, 0.75);
+	
+	# Phase movement. Slows down inside block and speeds up as you exit.
+	position += (phase_destination - phase_origin).normalized()*PHASE_MOVE_SPEED*delta*speed_modulation
+	
+	# Shift between player sprite and phase sprite
+	$sprite.modulate.a = range_lerp(phase_pos, 0, quarter_distance, 1.0, 0);
+	$phase_sprite.modulate.a = range_lerp(phase_pos, 0, quarter_distance, 0, 1.0);
+	
+	# TODO: stretch sprites in direction of shift.
+	if phase_origin.distance_to(position) > phase_origin.distance_to(phase_destination):
+		is_phasing_animation = false;
+		state = State.CONTROLLABLE;
+		$phase_sprite.visible = false;
+		$phase_particles.emitting = false
+		# TODO: Apply exit speed
+
 
 func exit_cutscene():
-    state = State.CONTROLLABLE;
+	state = State.CONTROLLABLE;
 
 func enter_cutscene():
-    state = State.CUTSCENE;
+	state = State.CUTSCENE;
 
 func on_touched_crystal(crystal: Crystal) -> void:
-    crystal.queue_free()
-    sfx.play(sfx.CADENCE_SUCCESS)
-    screen.open_screen(ScreenController.CREDITS)
+	crystal.queue_free()
+	sfx.play(sfx.CADENCE_SUCCESS)
+	screen.open_screen(ScreenController.CREDITS)

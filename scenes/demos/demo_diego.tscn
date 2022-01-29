@@ -18,7 +18,7 @@ scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 3 )
 
 [node name="player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 46, 15 )
+position = Vector2( -228, -30 )
 
 [node name="TileMap32" type="TileMap" parent="."]
 tile_set = ExtResource( 4 )

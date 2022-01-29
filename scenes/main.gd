@@ -9,5 +9,5 @@ const START_LEVEL := GameScreen.DEMO_ZAVEN
 
 
 func _ready() -> void:
-    screen.set_level(START_LEVEL)
-    screen.open_screen(ScreenController.MAIN_MENU)
+	screen.set_level(START_LEVEL)
+	screen.open_screen(ScreenController.MAIN_MENU)
