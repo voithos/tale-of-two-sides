@@ -200,6 +200,8 @@ func _double_raycast(space_state: Physics2DDirectSpaceState, from, to, collision
     
     # Get forward collisions along the ray.
     var result = space_state.intersect_ray(from, to, exclude, collision_layer, collide_with_bodies, collide_with_areas)
+    # Keep track of the last collider and ignore re-collisions with the same collider. Godot should
+    # take care of this, but it's unfortunately broken for tilemaps due to https://github.com/godotengine/godot/issues/17090.
     var last_collider = null
     while !result.empty():
         if result["collider"] != last_collider:
@@ -264,6 +266,7 @@ func _flip_orientation():
     $sprite.flip_v = orientation_multiplier != 1
     $raycast.cast_to *= -1
     $raycast.position *= -1
+    $shape.position *= -1
 
 func _animate_squash_stretch(delta):
     # TODO: This doesn't quite work when you "flip" and have a lot of momentum.

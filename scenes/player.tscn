@@ -6,7 +6,7 @@
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 5.0
-height = 6.0
+height = 4.0
 
 [node name="player" type="KinematicBody2D" groups=["player"]]
 script = ExtResource( 3 )
@@ -17,6 +17,7 @@ texture = ExtResource( 1 )
 [node name="animation" type="AnimationPlayer" parent="."]
 
 [node name="shape" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 1 )
 shape = SubResource( 1 )
 
 [node name="player_camera" type="Camera2D" parent="."]
