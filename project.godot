@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "RigidBody2D",
+"class": "Crystal",
+"language": "GDScript",
+"path": "res://scenes/crystal.gd"
+}, {
 "base": "Reference",
 "class": "DTS",
 "language": "GDScript",
@@ -38,14 +43,33 @@ _global_script_classes=[ {
 "class": "DialogicUtil",
 "language": "GDScript",
 "path": "res://addons/dialogic/Other/DialogicUtil.gd"
+}, {
+"base": "Node",
+"class": "Music",
+"language": "GDScript",
+"path": "res://scripts/music.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Player",
+"language": "GDScript",
+"path": "res://scenes/player.gd"
+}, {
+"base": "Node",
+"class": "Sfx",
+"language": "GDScript",
+"path": "res://scripts/sfx.gd"
 } ]
 _global_script_class_icons={
+"Crystal": "",
 "DTS": "",
 "Dialogic": "",
 "DialogicBackgroundMusic": "",
 "DialogicDefinitionsUtil": "",
 "DialogicResources": "",
-"DialogicUtil": ""
+"DialogicUtil": "",
+"Music": "",
+"Player": "",
+"Sfx": ""
 }
 
 [application]

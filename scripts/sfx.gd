@@ -1,3 +1,4 @@
+class_name Sfx
 extends Node
 
 # Centralized SFX management.
@@ -12,11 +13,33 @@ const BACKGROUND_QUIET_DB = -40.0
 # ========================
 enum {
     # TODO: Replace with actual sounds
+    CADENCE_FAILURE,
+    CADENCE_SUCCESS,
+    CONTACT,
+    CONTACT2,
     JUMP,
+    JUMP_OLD,
+    LAND,
+    PHASE,
+    PHASE2,
+    PICKUP_CRYSTAL,
+    PICKUP_CRYSTAL2,
+    SCHISM,
 }
 
 const SAMPLES = {
+    CADENCE_FAILURE: preload("res://assets/sfx/cadence_failure.wav"),
+    CADENCE_SUCCESS: preload("res://assets/sfx/cadence_success.wav"),
+    CONTACT: preload("res://assets/sfx/contact.wav"),
+    CONTACT2: preload("res://assets/sfx/contact2.wav"),
     JUMP: preload("res://assets/sfx/jump.wav"),
+    JUMP_OLD: preload("res://assets/sfx/jump_old.wav"),
+    LAND: preload("res://assets/sfx/land.wav"),
+    PHASE: preload("res://assets/sfx/phase.wav"),
+    PHASE2: preload("res://assets/sfx/phase2.wav"),
+    PICKUP_CRYSTAL: preload("res://assets/sfx/pickup_crystal.wav"),
+    PICKUP_CRYSTAL2: preload("res://assets/sfx/pickup_crystal2.wav"),
+    SCHISM: preload("res://assets/sfx/schism.wav"),
 }
 # ========================
 
