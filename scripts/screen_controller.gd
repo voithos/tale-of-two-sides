@@ -69,7 +69,12 @@ func open_screen(screen_type: int) -> void:
     if is_instance_valid(current_screen) and \
             current_screen.type != GAME:
         # Close the previous screen.
+        print("Closing previous screen: %s" % \
+                get_screen_string(current_screen.type))
         current_screen.queue_free()
+    
+    print("Opening next screen: %s" % \
+            get_screen_string(screen_type))
     
     if screen_type == GAME:
         current_screen = game_screen
@@ -82,3 +87,18 @@ func open_screen(screen_type: int) -> void:
 
 func set_level(level_type: int) -> void:
     game_screen.set_level(level_type)
+
+
+static func get_screen_string(screen_type: int) -> String:
+    match screen_type:
+        CREDITS:
+            return "CREDITS"
+        GAME:
+            return "GAME"
+        MAIN_MENU:
+            return "MAIN_MENU"
+        PAUSE:
+            return "PAUSE"
+        _:
+            push_error("Invalid screen_type")
+            return "??"

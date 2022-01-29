@@ -41,7 +41,24 @@ func set_level(level_type: int) -> void:
     self.level_type = level_type
     level = PACKED_SCENES[level_type].instance()
     add_child(level)
+    
+    print("set_level: %s" % get_level_string(level_type))
 
 
 func on_screen_opened() -> void:
     screen.set_pause(false)
+
+
+static func get_level_string(level_type: int) -> String:
+    match level_type:
+        DEMO_BASE:
+            return "DEMO_BASE"
+        DEMO_DIEGO:
+            return "DEMO_DIEGO"
+        DEMO_LEVI:
+            return "DEMO_LEVI"
+        DEMO_ZAVEN:
+            return "DEMO_ZAVEN"
+        _:
+            push_error("Invalid level_type")
+            return "??"
