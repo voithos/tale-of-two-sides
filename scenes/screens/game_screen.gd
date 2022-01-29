@@ -29,4 +29,4 @@ func on_screen_opened() -> void:
     # TODO: Choose the correct level to render.
     if !is_instance_valid(current_level):
         current_level = DEMO_BASE.instance()
-        $ViewportContainer/Viewport.add_child(current_level)
+        add_child(current_level)
