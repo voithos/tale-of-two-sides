@@ -1,0 +1,24 @@
+{
+	"color": "#ff14e3bc",
+	"description": "",
+	"display_name": "",
+	"display_name_bool": false,
+	"id": "character-1643446850.json",
+	"mirror_portraits": false,
+	"name": "Dad",
+	"nickname": "",
+	"nickname_bool": false,
+	"offset_x": 0,
+	"offset_y": 0,
+	"portraits": [
+		{
+			"name": "Default",
+			"path": ""
+		},
+		{
+			"name": "player",
+			"path": "res://assets/player/player.png"
+		}
+	],
+	"scale": 100
+}

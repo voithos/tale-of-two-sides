@@ -1,0 +1,20 @@
+{
+	"color": "#ff0439ee",
+	"description": "",
+	"display_name": "",
+	"display_name_bool": false,
+	"id": "character-1643445742.json",
+	"mirror_portraits": false,
+	"name": "Crystal",
+	"nickname": "",
+	"nickname_bool": false,
+	"offset_x": 0,
+	"offset_y": 0,
+	"portraits": [
+		{
+			"name": "Default",
+			"path": ""
+		}
+	],
+	"scale": 100
+}

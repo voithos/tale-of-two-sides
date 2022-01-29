@@ -7,9 +7,10 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 69.5, 10 )
 
-[node name="demo_base" type="Node2D"]
+[node name="demo_base2" type="Node2D"]
 
 [node name="level_logic" parent="." instance=ExtResource( 1 )]
+next_level = ""
 background_music = 0
 
 [node name="block" type="StaticBody2D" parent="."]
