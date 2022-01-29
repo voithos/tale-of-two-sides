@@ -18,6 +18,7 @@ var packed_scenes := {
 
 var is_paused := false
 
+var screen_container: CanvasLayer
 var game_screen
 var current_screen
 
@@ -26,6 +27,9 @@ func _ready():
     set_pause_mode(PAUSE_MODE_PROCESS) # Never pause this node.
     if not OS.is_debug_build():
         OS.set_window_fullscreen(true)
+    
+    screen_container = CanvasLayer.new()
+    add_child(screen_container)
     
     game_screen = packed_scenes[GAME].instance()
     add_child(game_screen)
@@ -73,4 +77,4 @@ func open_screen(screen_type: int) -> void:
     else:
         var packed_scene: PackedScene = packed_scenes[screen_type]
         current_screen = packed_scene.instance()
-        add_child(current_screen)
+        screen_container.add_child(current_screen)
