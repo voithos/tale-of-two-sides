@@ -85,6 +85,11 @@ _global_script_classes=[ {
 "path": "res://scenes/screens/screen.gd"
 }, {
 "base": "Node",
+"class": "ScreenController",
+"language": "GDScript",
+"path": "res://scripts/screen_controller.gd"
+}, {
+"base": "Node",
 "class": "Sfx",
 "language": "GDScript",
 "path": "res://scripts/sfx.gd"
@@ -105,6 +110,7 @@ _global_script_class_icons={
 "PauseScreen": "",
 "Player": "",
 "Screen": "",
+"ScreenController": "",
 "Sfx": ""
 }
 
@@ -120,7 +126,7 @@ sfx="*res://scripts/sfx.gd"
 saving="*res://scripts/saving.gd"
 progression_store="*res://scripts/progression_store.gd"
 screenshot="*res://scripts/lib/screenshot.gd"
-screen="*res://scripts/screen.gd"
+screen="*res://scripts/screen_controller.gd"
 music="*res://scripts/music.gd"
 global_camera="*res://scripts/global_camera.gd"
 checkpoint_store="*res://scripts/checkpoint_store.gd"

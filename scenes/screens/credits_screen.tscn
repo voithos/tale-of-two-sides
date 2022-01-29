@@ -24,28 +24,28 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-margin_left = 47.0
+margin_left = 31.0
 margin_top = 16.0
-margin_right = 273.0
+margin_right = 289.0
 margin_bottom = 163.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
-margin_right = 226.0
+margin_right = 258.0
 margin_bottom = 23.0
 text = "Thanks for playing!"
 align = 1
 
 [node name="Spacer" type="Control" parent="CenterContainer/VBoxContainer"]
 margin_top = 27.0
-margin_right = 226.0
+margin_right = 258.0
 margin_bottom = 47.0
 rect_min_size = Vector2( 0, 20 )
 
 [node name="Label2" type="Label" parent="CenterContainer/VBoxContainer"]
 margin_top = 51.0
-margin_right = 226.0
+margin_right = 258.0
 margin_bottom = 71.0
 custom_fonts/font = ExtResource( 2 )
 text = "Credits:"
@@ -53,11 +53,11 @@ align = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer"]
 margin_top = 75.0
-margin_right = 226.0
+margin_right = 258.0
 margin_bottom = 147.0
 
 [node name="Diego" type="HBoxContainer" parent="CenterContainer/VBoxContainer/VBoxContainer"]
-margin_right = 226.0
+margin_right = 258.0
 margin_bottom = 15.0
 size_flags_horizontal = 3
 
@@ -87,23 +87,23 @@ align = 1
 
 [node name="Dash2" type="Label" parent="CenterContainer/VBoxContainer/VBoxContainer/Diego"]
 margin_left = 172.0
-margin_right = 172.0
+margin_right = 195.0
 margin_bottom = 15.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 4 )
 align = 1
 
 [node name="Link" type="LinkButton" parent="CenterContainer/VBoxContainer/VBoxContainer/Diego"]
-margin_left = 176.0
-margin_right = 226.0
+margin_left = 199.0
+margin_right = 258.0
 margin_bottom = 15.0
 size_flags_horizontal = 0
 custom_fonts/font = ExtResource( 4 )
-text = "TODO.com"
+text = "drgvdg.itch.io"
 
 [node name="Levi" type="HBoxContainer" parent="CenterContainer/VBoxContainer/VBoxContainer"]
 margin_top = 19.0
-margin_right = 226.0
+margin_right = 258.0
 margin_bottom = 34.0
 size_flags_horizontal = 3
 
@@ -133,15 +133,15 @@ align = 1
 
 [node name="Dash2" type="Label" parent="CenterContainer/VBoxContainer/VBoxContainer/Levi"]
 margin_left = 172.0
-margin_right = 187.0
+margin_right = 219.0
 margin_bottom = 15.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 4 )
 align = 1
 
 [node name="Link" type="LinkButton" parent="CenterContainer/VBoxContainer/VBoxContainer/Levi"]
-margin_left = 191.0
-margin_right = 226.0
+margin_left = 223.0
+margin_right = 258.0
 margin_bottom = 15.0
 focus_mode = 2
 size_flags_horizontal = 0
@@ -150,7 +150,7 @@ text = "levi.dev"
 
 [node name="Daisy" type="HBoxContainer" parent="CenterContainer/VBoxContainer/VBoxContainer"]
 margin_top = 38.0
-margin_right = 226.0
+margin_right = 258.0
 margin_bottom = 53.0
 size_flags_horizontal = 3
 
@@ -188,16 +188,16 @@ align = 1
 
 [node name="Link" type="LinkButton" parent="CenterContainer/VBoxContainer/VBoxContainer/Daisy"]
 margin_left = 176.0
-margin_right = 226.0
+margin_right = 258.0
 margin_bottom = 15.0
 focus_mode = 2
 size_flags_horizontal = 0
 custom_fonts/font = ExtResource( 4 )
-text = "TODO.com"
+text = "ladychamomile.ink"
 
 [node name="Zaven" type="HBoxContainer" parent="CenterContainer/VBoxContainer/VBoxContainer"]
 margin_top = 57.0
-margin_right = 226.0
+margin_right = 258.0
 margin_bottom = 72.0
 size_flags_horizontal = 3
 
@@ -227,15 +227,15 @@ align = 1
 
 [node name="Dash2" type="Label" parent="CenterContainer/VBoxContainer/VBoxContainer/Zaven"]
 margin_left = 172.0
-margin_right = 180.0
+margin_right = 212.0
 margin_bottom = 15.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 4 )
 align = 1
 
 [node name="Link" type="LinkButton" parent="CenterContainer/VBoxContainer/VBoxContainer/Zaven"]
-margin_left = 184.0
-margin_right = 226.0
+margin_left = 216.0
+margin_right = 258.0
 margin_bottom = 15.0
 focus_mode = 2
 size_flags_horizontal = 0

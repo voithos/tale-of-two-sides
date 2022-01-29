@@ -12,7 +12,7 @@ const DEMO_ZAVEN := preload("res://scenes/demos/demo_zaven.tscn")
 var current_level
 
 
-func _init().(screen.GAME, PAUSE_MODE_STOP) -> void:
+func _init().(ScreenController.GAME, PAUSE_MODE_STOP) -> void:
     pass
 
 

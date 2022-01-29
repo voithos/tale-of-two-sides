@@ -3,13 +3,12 @@ class_name CreditsScreen
 extends Screen
 
 
-func _init().(screen.CREDITS, PAUSE_MODE_PROCESS) -> void:
+func _init().(ScreenController.CREDITS, PAUSE_MODE_PROCESS) -> void:
     pass
 
 
 func _on_DiegoLink_pressed() -> void:
-    # TODO
-    OS.shell_open("https://github.com/voithos/global-game-jam-2022")
+    OS.shell_open("https://drgvdg.itch.io/")
     sfx.play(sfx.BUTTON_PRESS)
 
 
@@ -19,8 +18,7 @@ func _on_LeviLink_pressed() -> void:
 
 
 func _on_DaisyLink_pressed() -> void:
-    # TODO
-    OS.shell_open("https://github.com/voithos/global-game-jam-2022")
+    OS.shell_open("https://ladychamomile.ink")
     sfx.play(sfx.BUTTON_PRESS)
 
 

@@ -6,4 +6,4 @@ extends Node2D
 
 
 func _ready() -> void:
-    screen.open_screen(screen.MAIN_MENU)
+    screen.open_screen(ScreenController.MAIN_MENU)

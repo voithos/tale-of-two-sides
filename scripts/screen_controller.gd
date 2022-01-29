@@ -1,3 +1,4 @@
+class_name ScreenController
 extends Node
 
 
@@ -8,15 +9,17 @@ enum {
     PAUSE,
 }
 
-const CREDITS_SCENE := preload("res://scenes/screens/credits_screen.tscn")
-const GAME_SCENE := preload("res://scenes/screens/game_screen.tscn")
-const MAIN_MENU_SCENE := preload("res://scenes/screens/main_menu_screen.tscn")
-const PAUSE_SCENE := preload("res://scenes/screens/pause_screen.tscn")
+var packed_scenes := {
+    CREDITS: load("res://scenes/screens/credits_screen.tscn"),
+    GAME: load("res://scenes/screens/game_screen.tscn"),
+    MAIN_MENU: load("res://scenes/screens/main_menu_screen.tscn"),
+    PAUSE: load("res://scenes/screens/pause_screen.tscn"),
+}
 
 var is_paused := false
 
-var game_screen: Screen
-var current_screen: Screen
+var game_screen
+var current_screen
 
 
 func _ready():
@@ -24,7 +27,7 @@ func _ready():
     if not OS.is_debug_build():
         OS.set_window_fullscreen(true)
     
-    game_screen = GAME_SCENE.instance()
+    game_screen = packed_scenes[GAME].instance()
     add_child(game_screen)
 
 
@@ -68,21 +71,6 @@ func open_screen(screen_type: int) -> void:
         current_screen = game_screen
         game_screen.on_screen_opened()
     else:
-        var packed_scene := _get_packed_scene(screen_type)
+        var packed_scene: PackedScene = packed_scenes[screen_type]
         current_screen = packed_scene.instance()
         add_child(current_screen)
-
-
-func _get_packed_scene(screen_type: int) -> PackedScene:
-    match screen_type:
-        CREDITS:
-            return CREDITS_SCENE
-        GAME:
-            return GAME_SCENE
-        MAIN_MENU:
-            return MAIN_MENU_SCENE
-        PAUSE:
-            return PAUSE_SCENE
-        _:
-            push_error("Screen type not recognized")
-            return null

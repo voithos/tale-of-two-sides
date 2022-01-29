@@ -3,7 +3,7 @@ class_name PauseScreen
 extends Screen
 
 
-func _init().(screen.PAUSE, PAUSE_MODE_PROCESS) -> void:
+func _init().(ScreenController.PAUSE, PAUSE_MODE_PROCESS) -> void:
     pass
 
 
