@@ -38,4 +38,3 @@ texture = ExtResource( 3 )
 
 [node name="player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 143, 106 )
-facing_right = true

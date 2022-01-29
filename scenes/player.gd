@@ -22,7 +22,7 @@ var orientation_multiplier = 1
 var phase_through_enabled = false
 
 const PHASEABLE_COLLISION_LAYER = pow(2, 1)
-const PHASEABLE_RAYCAST_LENGTH = 20 # Length of the raycast to check entry/exit location for phasing.
+const PHASEABLE_RAYCAST_LENGTH = 50 # Length of the raycast to check entry/exit location for phasing.
 
 # Movement state.
 var velocity = Vector2.ZERO
@@ -136,6 +136,8 @@ func _landed():
         did_phase = _check_phase_through(previous_velocity.normalized())
         if did_phase:
             # Since we phased through, we should retain the velocity we had before the surface collision.
+            print(velocity)
+            print(previous_velocity)
             velocity = previous_velocity
     
     # Only play the sfx if we didn't phase.
@@ -162,19 +164,13 @@ func _check_phase_through(direction: Vector2) -> bool:
         var to = from + ray
         var results = _double_raycast(_get_space_state(), from, to, PHASEABLE_COLLISION_LAYER)
         var entered = results[0]
-        var exited = results[0]
+        var exited = results[1]
         
         if !entered.empty() and !exited.empty():
             # Since we're flipping orientation, calculate the offset between the exit point (of the
             # raycast) and the position we'll need to set the player at.
             var opposite_position_offset = $raycast.global_position - global_position
-            
-            print(global_position)
-            print(exited.size())
-            print(exited[0]["position"])
-            print(opposite_position_offset)
             global_position = exited[0]["position"] + opposite_position_offset
-            print(global_position)
             _flip_orientation()
         
         phase_through_enabled = false
