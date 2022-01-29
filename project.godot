@@ -44,6 +44,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/dialogic/Other/DialogicUtil.gd"
 }, {
+"base": "Screen",
+"class": "MainMenuScreen",
+"language": "GDScript",
+"path": "res://scenes/screens/main_menu_screen.gd"
+}, {
 "base": "Node",
 "class": "Music",
 "language": "GDScript",
@@ -53,6 +58,11 @@ _global_script_classes=[ {
 "class": "Player",
 "language": "GDScript",
 "path": "res://scenes/player.gd"
+}, {
+"base": "PanelContainer",
+"class": "Screen",
+"language": "GDScript",
+"path": "res://scenes/screens/screen.gd"
 }, {
 "base": "Node",
 "class": "Sfx",
@@ -67,8 +77,10 @@ _global_script_class_icons={
 "DialogicDefinitionsUtil": "",
 "DialogicResources": "",
 "DialogicUtil": "",
+"MainMenuScreen": "",
 "Music": "",
 "Player": "",
+"Screen": "",
 "Sfx": ""
 }
 
