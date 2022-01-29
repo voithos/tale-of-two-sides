@@ -10,7 +10,7 @@ extents = Vector2( 69.5, 10 )
 [node name="demo_base" type="Node2D"]
 
 [node name="level_logic" parent="." instance=ExtResource( 1 )]
-background_music = 0
+background_music = 1
 
 [node name="block2" type="StaticBody2D" parent="."]
 position = Vector2( 98, 38 )

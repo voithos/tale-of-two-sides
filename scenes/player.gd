@@ -122,7 +122,7 @@ func _jump():
 
 func _landed():
     is_airborne = false
-    sfx.play(sfx.LAND)
+    sfx.play(sfx.LAND, sfx.QUIET_DB)
 
 func _is_on_surface():
     if orientation_multiplier == 1:

@@ -3,10 +3,9 @@ extends Node
 
 # Centralized SFX management.
 
-const SFX_DB = -8.0
-const QUIET_DB = -12.0
-const EXTRA_QUIET_DB = -20.0
-const EVEN_QUIETER_DB = -25.0
+const SFX_DB = -22.0
+const LOUD_DB = -12.0
+const QUIET_DB = -25.0
 const BACKGROUND_QUIET_DB = -40.0
 
 # Preloaded sound effects.
