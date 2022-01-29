@@ -200,15 +200,20 @@ func _double_raycast(space_state: Physics2DDirectSpaceState, from, to, collision
     
     # Get forward collisions along the ray.
     var result = space_state.intersect_ray(from, to, exclude, collision_layer, collide_with_bodies, collide_with_areas)
+    var last_collider = null
     while !result.empty():
-        entered.push_back(result)
-        print(result)
+        if result["collider"] != last_collider:
+            entered.push_back(result)
+        last_collider = result["collider"]
         result = space_state.intersect_ray(result["position"] + RAY_EPSILON * dir, to, exclude + [result["collider"]], collision_layer, collide_with_bodies, collide_with_areas)
     
     # Get backward collisions along the ray.
     result = space_state.intersect_ray(to, from, exclude, collision_layer, collide_with_bodies, collide_with_areas)
+    last_collider = null
     while !result.empty():
-        exited.push_back(result)
+        if result["collider"] != last_collider:
+            exited.push_back(result)
+        last_collider = result["collider"]
         result = space_state.intersect_ray(result["position"] + RAY_EPSILON * rev_dir, from, exclude + [result["collider"]], collision_layer, collide_with_bodies, collide_with_areas)
     
     return [entered, exited]
