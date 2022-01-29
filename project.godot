@@ -53,11 +53,6 @@ _global_script_classes=[ {
 "class": "Player",
 "language": "GDScript",
 "path": "res://scenes/player.gd"
-}, {
-"base": "Node",
-"class": "Sfx",
-"language": "GDScript",
-"path": "res://scripts/sfx.gd"
 } ]
 _global_script_class_icons={
 "Crystal": "",
@@ -68,8 +63,7 @@ _global_script_class_icons={
 "DialogicResources": "",
 "DialogicUtil": "",
 "Music": "",
-"Player": "",
-"Sfx": ""
+"Player": ""
 }
 
 [application]

@@ -118,11 +118,11 @@ func _jump():
     velocity.y = -JUMP_VEL * orientation_multiplier
     #$animation.play("jump")
     _apply_jump_squash_stretch()
-    sfx.play(Sfx.JUMP)
+    sfx.play(sfx.JUMP)
 
 func _landed():
     is_airborne = false
-    sfx.play(Sfx.LAND)
+    sfx.play(sfx.LAND)
 
 func _is_on_surface():
     if orientation_multiplier == 1:
@@ -164,4 +164,4 @@ func enter_cutscene():
 
 func on_touched_crystal(crystal: Crystal) -> void:
     crystal.queue_free()
-    sfx.play(Sfx.CADENCE_SUCCESS)
+    sfx.play(sfx.CADENCE_SUCCESS)
