@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/phase-cadence-success.wav-122314ac77da9ed8c378a233b1ab2292.sample"
+
+[deps]
+
+source_file="res://assets/sfx/phase-cadence-success.wav"
+dest_files=[ "res://.import/phase-cadence-success.wav-122314ac77da9ed8c378a233b1ab2292.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

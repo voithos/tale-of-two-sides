@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/phase-up.ogg-97e064f4ab7d2e43ef820fc4802a84c7.oggstr"
+
+[deps]
+
+source_file="res://assets/music/phase-up.ogg"
+dest_files=[ "res://.import/phase-up.ogg-97e064f4ab7d2e43ef820fc4802a84c7.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

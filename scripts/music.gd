@@ -9,11 +9,13 @@ const MUSIC_DB = -24.0
 # Add music here
 # =======================
 enum {
-    EXAMPLE
+    EXAMPLE,
+    PHASE_UP,
 }
 
 const SAMPLES = {
     EXAMPLE: preload("res://assets/music/example.mp3"),
+    PHASE_UP: preload("res://assets/music/phase-up.wav"),
 }
 # =======================
 
