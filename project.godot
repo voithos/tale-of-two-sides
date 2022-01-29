@@ -205,6 +205,11 @@ debug={
  ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Normal"
+2d_physics/layer_2="Phaseable"
+
 [physics]
 
 common/enable_pause_aware_picking=true

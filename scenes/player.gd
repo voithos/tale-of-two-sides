@@ -4,7 +4,7 @@ extends KinematicBody2D
 enum State {
     # Player can be controlled.
     CONTROLLABLE,
-    # Player is in a non-gameplay "starting level" or "ending level" animation.
+    # Player is in a non-gameplay "starting level" or "ending level" animation, etc.
     ANIMATING,
     # Player is in a cutscene,
     CUTSCENE,
@@ -14,13 +14,19 @@ enum State {
 var state = State.CONTROLLABLE
 var previous_state = state
 
-# Tracking variables for vertical and horizontal sprite flipping.
+# Tracking variables for phase-through mechanic, and vertical and horizontal sprite flipping.
 export (bool) var facing_right = true
 # Either 1.0 if player is right-side-up, or -1.0 if player is upside down.
 var orientation_multiplier = 1
+# When this is true, the first contact with a phaseable floor will trigger phasing.
+var phase_through_enabled = false
+
+const PHASEABLE_COLLISION_LAYER = pow(2, 1)
+const PHASEABLE_RAYCAST_LENGTH = 20 # Length of the raycast to check entry/exit location for phasing.
 
 # Movement state.
 var velocity = Vector2.ZERO
+var previous_velocity = Vector2.ZERO
 var is_moving = false
 var is_airborne = false
 var was_airborne = false
@@ -53,7 +59,7 @@ func _physics_process(delta):
         return
         
     if Input.is_action_just_pressed("debug"):
-        _flip_orientation()
+        _begin_phasing()
 
     _animate_squash_stretch(delta)
     _move_player(delta)
@@ -96,6 +102,7 @@ func _move_player(delta):
     # Lerp horizontal movement
     velocity.x = lerp(velocity.x, target_horizontal, HORIZONTAL_ACCEL * delta)
 
+    previous_velocity = velocity
     velocity = move_and_slide(velocity, Vector2.UP)
     
     if was_airborne and _is_on_surface():
@@ -122,7 +129,18 @@ func _jump():
 
 func _landed():
     is_airborne = false
-    sfx.play(sfx.LAND, sfx.QUIET_DB)
+    var did_phase = false
+    # TODO: Only phase through certain materials?
+    if phase_through_enabled:
+        # Have to use previous velocity, because this is post-collision (so velocity would be 0).
+        did_phase = _check_phase_through(previous_velocity.normalized())
+        if did_phase:
+            # Since we phased through, we should retain the velocity we had before the surface collision.
+            velocity = previous_velocity
+    
+    # Only play the sfx if we didn't phase.
+    if !did_phase:
+        sfx.play(sfx.LAND, sfx.QUIET_DB)
 
 func _is_on_surface():
     if orientation_multiplier == 1:
@@ -130,8 +148,73 @@ func _is_on_surface():
     else:
         return is_on_ceiling()
 
+func _begin_phasing():
+    phase_through_enabled = true
+    # Check immediately in case we're already on the ground.
+    if _is_on_surface():
+        _check_phase_through(Vector2.DOWN * orientation_multiplier)
+
+func _check_phase_through(direction: Vector2) -> bool:
+    if $raycast.is_colliding():
+        # We know that we're near a phaseable surface, so we resort to manually querying the space state.
+        var ray = direction * PHASEABLE_RAYCAST_LENGTH
+        var from = $raycast.global_position
+        var to = from + ray
+        var results = _double_raycast(_get_space_state(), from, to, PHASEABLE_COLLISION_LAYER)
+        var entered = results[0]
+        var exited = results[0]
+        
+        if !entered.empty() and !exited.empty():
+            # Since we're flipping orientation, calculate the offset between the exit point (of the
+            # raycast) and the position we'll need to set the player at.
+            var opposite_position_offset = $raycast.global_position - global_position
+            
+            print(global_position)
+            print(exited.size())
+            print(exited[0]["position"])
+            print(opposite_position_offset)
+            global_position = exited[0]["position"] + opposite_position_offset
+            print(global_position)
+            _flip_orientation()
+        
+        phase_through_enabled = false
+        return true
+
+    # Disable, since we didn't end up finding a phase through.
+    phase_through_enabled = false
+    return false
+
+func _get_space_state():
+    var space_rid = get_world_2d().space
+    var space_state = Physics2DServer.space_get_direct_state(space_rid)
+    return space_state
+
+# Similar to Physics2DDirectSpaceState.intersect_ray.
+func _double_raycast(space_state: Physics2DDirectSpaceState, from, to, collision_layer=2147483647, exclude_self=true, collide_with_bodies=true, collide_with_areas=true):
+    var exclude = [self] if exclude_self else []
+    
+    var entered = []
+    var exited = []
+    
+    # Get forward collisions along the ray.
+    var result = space_state.intersect_ray(from, to, exclude, collision_layer, collide_with_bodies, collide_with_areas)
+    while !result.empty():
+        entered.push_back(result)
+        result = space_state.intersect_ray(result["position"], to, exclude + [result["collider"]], collision_layer, collide_with_bodies, collide_with_areas)
+    
+    # Get backward collisions along the ray.
+    result = space_state.intersect_ray(to, from, exclude, collision_layer, collide_with_bodies, collide_with_areas)
+    while !result.empty():
+        exited.push_back(result)
+        result = space_state.intersect_ray(result["position"], from, exclude + [result["collider"]], collision_layer, collide_with_bodies, collide_with_areas)
+    
+    return [entered, exited]
+
 func _flip_orientation():
     orientation_multiplier *= -1
+    $sprite.flip_v = orientation_multiplier != 1
+    $raycast.cast_to *= -1
+    $raycast.position *= -1
 
 func _animate_squash_stretch(delta):
     # TODO: This doesn't quite work when you "flip" and have a lot of momentum.
@@ -154,7 +237,6 @@ func _apply_jump_squash_stretch():
 
 func _update_sprite_flip():
     $sprite.flip_h = !facing_right
-    $sprite.flip_v = orientation_multiplier != 1
 
 func exit_cutscene():
     state = State.CONTROLLABLE;

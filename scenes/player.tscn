@@ -23,3 +23,10 @@ shape = SubResource( 1 )
 current = true
 smoothing_enabled = true
 script = ExtResource( 2 )
+
+[node name="raycast" type="RayCast2D" parent="."]
+position = Vector2( 0, 7 )
+enabled = true
+cast_to = Vector2( 0, 3 )
+collision_mask = 2
+collide_with_areas = true
