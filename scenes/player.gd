@@ -47,7 +47,9 @@ const JUMP_RELEASE_MULTIPLIER = 0.5 # Multiplied by velocity if button released 
 var squash_stretch_scale = Vector2.ONE
 const JUMP_SQUASH_STRETCH = Vector2(0.8, 1.2)
 const LAND_SQUASH_STRETCH = Vector2(1.5, 0.4)
+const PHASE_SQUASH_STRETCH = Vector2(0.8, 1.2)
 const SQUASH_LERP_SPEED = 10
+
 
 # Phase Shift Animation state
 var phase_destination = Vector2(0,0)
@@ -266,8 +268,6 @@ func _initiate_phase_anim(origin, destination):
 	is_phasing_animation = true;
 	$phase_sprite.visible = true;
 	$phase_particles.emitting = true;
-	
-	# TODO: Store old velocity
 
 func _handle_phase_animation(delta):
 	# Used to transition into and out of block. Transition distance is quarter of the total phase distance
@@ -282,6 +282,13 @@ func _handle_phase_animation(delta):
 	$sprite.modulate.a = range_lerp(phase_pos, 0, quarter_distance, 1.0, 0);
 	$phase_sprite.modulate.a = range_lerp(phase_pos, 0, quarter_distance, 0, 1.0);
 	
+	squash_stretch_scale.x = range_lerp(phase_pos, 0, quarter_distance, 1.0, PHASE_SQUASH_STRETCH.x)
+	squash_stretch_scale.y = range_lerp(phase_pos, 0, quarter_distance, 1.0, PHASE_SQUASH_STRETCH.y)
+	$phase_sprite.scale = squash_stretch_scale
+	$phase_sprite.rotation = Vector2(0,1).angle_to((phase_destination-phase_origin).normalized())
+	
+	# Stretch phase sprite in direction of shift.
+	
 	# TODO: stretch sprites in direction of shift.
 	if phase_origin.distance_to(global_position) > phase_origin.distance_to(phase_destination):
 		is_phasing_animation = false;
@@ -289,6 +296,7 @@ func _handle_phase_animation(delta):
 		$phase_sprite.visible = false;
 		$phase_particles.emitting = false
 		# TODO: Apply exit speed
+
 
 func _apply_jump_squash_stretch():
 	squash_stretch_scale.x = range_lerp(abs(velocity.y), 0, JUMP_VEL, 1.0, JUMP_SQUASH_STRETCH.x)

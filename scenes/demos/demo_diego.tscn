@@ -34,4 +34,4 @@ position = Vector2( 304, 151 )
 dialog = "intro_jump"
 
 [node name="player" parent="." instance=ExtResource( 2 )]
-position = Vector2( -228, -30 )
+position = Vector2( -646, -32 )
