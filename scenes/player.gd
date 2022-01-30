@@ -21,7 +21,7 @@ var orientation_multiplier = 1
 # When this is true, the first contact with a phaseable floor will trigger phasing.
 var phase_through_enabled = false
 
-const PHASEABLE_COLLISION_LAYER = pow(2, 1)
+const PHASEABLE_COLLISION_LAYER = int(pow(2, 1))
 const PHASEABLE_RAYCAST_LENGTH = 10000 # Length of the raycast to check entry/exit location for phasing.
 
 # Movement state.
@@ -173,7 +173,13 @@ func _begin_phasing():
         _check_phase_through(Vector2.DOWN * orientation_multiplier)
 
 func _check_phase_through(direction: Vector2) -> bool:
-    if $raycast.is_colliding():
+    var is_colliding_with_phaseable = false
+    for i in get_slide_count():
+        var collision = get_slide_collision(i)
+        if collision.collider.get_collision_layer() & PHASEABLE_COLLISION_LAYER:
+            is_colliding_with_phaseable = true
+
+    if is_colliding_with_phaseable:
         # We know that we're near a phaseable surface, so we resort to manually querying the space state.
         var ray = direction * PHASEABLE_RAYCAST_LENGTH
         var from = $raycast.global_position
