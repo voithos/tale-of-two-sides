@@ -1,24 +1,20 @@
 {
 	"color": "#ff00ff0a",
 	"description": "",
-	"display_name": "",
-	"display_name_bool": false,
+	"display_name": "Kid",
+	"display_name_bool": true,
 	"id": "character-1643445734.json",
 	"mirror_portraits": false,
 	"name": "Player",
 	"nickname": "",
 	"nickname_bool": false,
 	"offset_x": 0,
-	"offset_y": -70,
+	"offset_y": -50,
 	"portraits": [
 		{
 			"name": "Default",
-			"path": "res://assets/player/player.png"
-		},
-		{
-			"name": "Player",
-			"path": "res://assets/player/player.png"
+			"path": "res://assets/player/PlayerPortrait.png"
 		}
 	],
-	"scale": 100
+	"scale": 10
 }
