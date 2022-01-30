@@ -92,8 +92,10 @@ func _physics_process(delta):
         _on_fall_out_of_bounds()
         return
     
-    if Input.is_action_just_pressed("phase"):
+    if Input.is_action_pressed("phase"):
         _begin_phasing()
+    else:
+        _end_phasing()
     
     if Input.is_action_just_pressed("debug_anim"):
         pass
@@ -192,6 +194,9 @@ func _begin_phasing():
     if _is_on_surface():
         _check_phase_through(Vector2.DOWN * orientation_multiplier)
 
+func _end_phasing():
+    phase_through_enabled = false
+
 func _check_phase_through(direction: Vector2) -> bool:
     var is_colliding_with_phaseable = false
     for i in get_slide_count():
@@ -221,12 +226,9 @@ func _check_phase_through(direction: Vector2) -> bool:
             var destination = exited[exited.size() - 1]["position"] + 1.3 * opposite_position_offset
             _initiate_phase_anim(origin, destination)
             _flip_orientation()
-        
-        phase_through_enabled = false
         return true
 
-    # Disable, since we didn't end up finding a phase through.
-    phase_through_enabled = false
+    # We didn't end up finding a phase through.
     return false
 
 func _get_space_state():
