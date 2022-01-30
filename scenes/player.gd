@@ -34,6 +34,8 @@ var level_logic
 
 var is_destroyed := false
 
+onready var camera = $player_camera
+
 # Movement state.
 var velocity = Vector2.ZERO
 var previous_velocity = Vector2.ZERO
@@ -93,8 +95,8 @@ func _physics_process(delta):
 
     if state != State.CONTROLLABLE:
         return
-        
-    $phase_particles.emitting = phase_through_enabled;
+    
+    _update_phase_particles()
     
     if !fall_boundary.has_point(position):
         _on_fall_out_of_bounds()
@@ -234,6 +236,8 @@ func _check_phase_through(direction: Vector2) -> bool:
             var destination = exited[exited.size() - 1]["position"] + 1.3 * opposite_position_offset
             _initiate_phase_anim(origin, destination)
             _flip_orientation()
+            sfx.play(sfx.PHASE, sfx.LOUD_DB)
+            global_camera.shake(0.15, 30, 2)
         return true
 
     # We didn't end up finding a phase through.
@@ -400,6 +404,10 @@ func _apply_jump_squash_stretch():
     squash_stretch_scale.x = range_lerp(abs(velocity.y), 0, JUMP_VEL, 1.0, JUMP_SQUASH_STRETCH.x)
     squash_stretch_scale.y = range_lerp(abs(velocity.y), 0, JUMP_VEL, 1.0, JUMP_SQUASH_STRETCH.y)
     $sprite.scale = squash_stretch_scale
+
+func _update_phase_particles():
+    $phase_particles.emitting = phase_through_enabled or is_phasing_animation
+    $phase_particles.process_material.direction = -Vector3(velocity.x, velocity.y, 0)
 
 func _update_sprite_flip():
     $sprite.flip_h = !facing_right
