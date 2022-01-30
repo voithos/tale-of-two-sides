@@ -20,7 +20,7 @@ var packed_scenes := {
     DEMO_ZAVEN: load("res://scenes/demos/demo_zaven.tscn"),
     TUTORIAL: load("res://scenes/levels/tutorial_level.tscn"),
     FLING: load("res://scenes/levels/fling_level.tscn"),
-    VERTICAL: load("res//scenes/levels/vertical_level.tscn")
+    VERTICAL: load("res://scenes/levels/vertical_level.tscn")
 }
 
 const START_LEVEL := DEMO_BASE
