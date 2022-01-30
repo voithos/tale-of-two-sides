@@ -2,7 +2,7 @@ class_name PhaseTileMap
 extends TileMap
 
 
-const _MODULATION_DURATION := 0.6
+const _MODULATION_DURATION := 0.4
 
 const _MIN_FLOOR_SATURATION := 0.1
 const _MAX_FLOOR_SATURATION := 1.0

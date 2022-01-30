@@ -4,6 +4,7 @@ extends Node
 # Centralized SFX management.
 
 const SFX_DB = -22.0
+const EXTRA_LOUD_DB = -6.0
 const LOUD_DB = -12.0
 const QUIET_DB = -25.0
 const BACKGROUND_QUIET_DB = -40.0
@@ -50,8 +51,13 @@ var pool = []
 # Index of the current audio player in the pool.
 var next_player = 0
 
+var timer: Timer
+
 func _ready():
     _init_stream_players()
+    timer = Timer.new()
+    add_child(timer)
+    timer.connect("timeout", self, "_reset_music_volume")
 
 func _init_stream_players():
     # warning-ignore:unused_variable
@@ -77,3 +83,20 @@ func play_with_player(player, sample, db=SFX_DB):
     player.stream = stream
     player.volume_db = db
     player.play()
+
+func play_cadence(is_success: bool) -> void:
+    music.last_musicbox.set_volume_db(Music.MOSTLY_MUTED_DB)
+    
+    timer.stop()
+    timer.wait_time = 2.0
+    timer.one_shot = true
+    timer.start()
+    
+    var sfx_type := \
+            CADENCE_SUCCESS if \
+            is_success else \
+            CADENCE_FAILURE
+    play(sfx_type, EXTRA_LOUD_DB)
+
+func _reset_music_volume() -> void:
+    music.last_musicbox.set_volume_db(Music.MUSIC_DB)

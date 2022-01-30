@@ -448,12 +448,12 @@ func enter_cutscene():
 
 func on_touched_crystal(crystal: Crystal) -> void:
     crystal.queue_free()
-    sfx.play(sfx.CADENCE_SUCCESS, sfx.LOUD_DB)
+    sfx.play_cadence(true)
     screen.on_level_complete()
 
 func _on_fall_out_of_bounds() -> void:
     is_destroyed = true
-    sfx.play(sfx.CADENCE_FAILURE, sfx.LOUD_DB)
+    sfx.play_cadence(false)
     global_camera.shake(0.3, 30, 2)
     # Wait a bit before continuing.
     yield(get_tree().create_timer(1), "timeout")

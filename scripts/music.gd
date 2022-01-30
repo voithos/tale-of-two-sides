@@ -6,6 +6,7 @@ extends Node
 const FADE_TIME = 10
 const MIN_DB = -80.0
 const MUSIC_DB = -24.0
+const MOSTLY_MUTED_DB = -36.0
 
 # Add music here
 # =======================
