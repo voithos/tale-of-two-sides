@@ -80,6 +80,14 @@ func _physics_process(delta):
     if is_destroyed:
         return
     
+    if state == State.CUTSCENE:
+        # Do simple movement when in cutscene.
+        velocity.y = max(-TERM_VEL, min(TERM_VEL, velocity.y + GRAVITY))
+        velocity.x = lerp(velocity.x, 0, HORIZONTAL_ACCEL * delta)
+        velocity = move_and_slide(velocity, Vector2.UP)
+        $animation.play("idle")
+        return;
+    
     if state == State.ANIMATING && is_phasing_animation:
         _handle_phase_animation(delta);
 

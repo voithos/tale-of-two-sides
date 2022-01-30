@@ -2,9 +2,13 @@ extends Node2D
 
 
 export(String) var dialog = "intro"
+export(Vector2) var box_size = Vector2(10,10)
 
 var started = false;
 onready var player = $"../player"
+
+func _ready():
+    $Area2D/CollisionShape2D.get_shape().set_extents(box_size);
 
 func create_dialog():
     started = true;
