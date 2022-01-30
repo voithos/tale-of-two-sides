@@ -41,14 +41,14 @@ margin_right = 96.0
 margin_bottom = 38.0
 rect_min_size = Vector2( 0, 20 )
 
-[node name="CloseButton" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="UnpauseButton" type="Button" parent="CenterContainer/VBoxContainer"]
 margin_top = 42.0
 margin_right = 96.0
 margin_bottom = 66.0
 rect_min_size = Vector2( 96, 24 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
-text = "Exit"
+text = "Unpause"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -75,18 +75,18 @@ margin_top = 102.0
 margin_right = 96.0
 margin_bottom = 102.0
 
-[node name="UnpauseButton" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="CloseButton" type="Button" parent="CenterContainer/VBoxContainer"]
 margin_top = 106.0
 margin_right = 96.0
 margin_bottom = 130.0
 rect_min_size = Vector2( 96, 24 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
-text = "Unpause"
+text = "Exit"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="pressed" from="CenterContainer/VBoxContainer/CloseButton" to="." method="_on_CloseButton_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/RestartButton" to="." method="_on_RestartButton_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/UnpauseButton" to="." method="_on_UnpauseButton_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/RestartButton" to="." method="_on_RestartButton_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/CloseButton" to="." method="_on_CloseButton_pressed"]
