@@ -36,6 +36,7 @@ var fall_boundary: Rect2
 
 var level_logic
 
+var is_level_finished := false
 var is_destroyed := false
 
 onready var camera = $player_camera
@@ -454,11 +455,14 @@ func enter_cutscene():
     state = State.CUTSCENE;
 
 func on_touched_crystal(crystal: Crystal) -> void:
+    is_level_finished = true
     crystal.queue_free()
     sfx.play_cadence(true)
     screen.on_level_complete()
 
 func _on_fall_out_of_bounds() -> void:
+    if is_level_finished:
+        return
     is_destroyed = true
     sfx.play_cadence(false)
     global_camera.shake(0.3, 30, 2)
