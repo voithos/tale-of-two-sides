@@ -11,7 +11,7 @@
 [node name="level_logic" parent="." instance=ExtResource( 1 )]
 next_level = 2
 
-[node name="PhaseTileMap" parent="." instance=ExtResource( 4 )]
+[node name="PhaseTileMap" parent="." groups=["tiles"] instance=ExtResource( 4 )]
 tile_data = PoolIntArray( 458758, 1, 0, 458767, 1, 0, 524293, 0, 196609, 524294, 0, 196610, 524295, 0, 196610, 524296, 0, 196610, 524297, 0, 196610, 524298, 0, 196610, 524299, 0, 196610, 524300, 0, 196610, 524301, 0, 196610, 524302, 0, 196610, 524303, 0, 196611 )
 
 [node name="test_hires" type="Sprite" parent="."]

@@ -24,6 +24,16 @@ var phase_through_enabled = false
 const PHASEABLE_COLLISION_LAYER = int(pow(2, 1))
 const PHASEABLE_RAYCAST_LENGTH = 10000 # Length of the raycast to check entry/exit location for phasing.
 
+const TILE_REGION_CAMERA_BOUNDARY_MARGIN := 128.0
+const TILE_REGION_FALL_BOUNDARY_MARGIN := \
+        TILE_REGION_CAMERA_BOUNDARY_MARGIN * 1.5
+
+var fall_boundary: Rect2
+
+var level_logic
+
+var is_destroyed := false
+
 # Movement state.
 var velocity = Vector2.ZERO
 var previous_velocity = Vector2.ZERO
@@ -63,17 +73,26 @@ func _ready():
     add_to_group("player")
     _update_sprite_flip()
     $animation.play("idle")
+    level_logic = _get_level_logic()
+    _set_boundaries()
 
 func _physics_process(delta):
+    if is_destroyed:
+        return
+    
     if state == State.ANIMATING && is_phasing_animation:
         _handle_phase_animation(delta);
 
     if state != State.CONTROLLABLE:
         return
-        
+    
+    if !fall_boundary.has_point(position):
+        _on_fall_out_of_bounds()
+        return
+    
     if Input.is_action_just_pressed("debug"):
         _begin_phasing()
-        
+    
     if Input.is_action_just_pressed("debug_anim"):
         pass
 #		_test_phase_anim()
@@ -247,6 +266,42 @@ func _double_raycast(space_state: Physics2DDirectSpaceState, from, to, collision
     
     return [entered, exited]
 
+func _set_boundaries() -> void:
+    var tile_map_region: Rect2 = level_logic.get_combined_tile_map_region()
+    var player_half_size := Vector2(
+            $shape.shape.radius,
+            $shape.shape.height + $shape.shape.radius)
+    
+    var camera_boundary := \
+            tile_map_region.grow(TILE_REGION_CAMERA_BOUNDARY_MARGIN)
+    fall_boundary = tile_map_region \
+            .grow(TILE_REGION_FALL_BOUNDARY_MARGIN) \
+            .grow_individual(
+                -player_half_size.x,
+                -player_half_size.y,
+                -player_half_size.x,
+                -player_half_size.y)
+    
+    $player_camera.limit_left = camera_boundary.position.x
+    $player_camera.limit_top = camera_boundary.position.y
+    $player_camera.limit_right = camera_boundary.end.x
+    $player_camera.limit_bottom = camera_boundary.end.y
+
+func _get_level_logic():
+    var all_level_logics := get_tree().get_nodes_in_group("level")
+    var level_logics_in_level := []
+    for level_logic in all_level_logics:
+        var parent = get_parent()
+        # Loop to try to find a common ancestor with the current LevelLogic.
+        while is_instance_valid(parent) and \
+                not parent is Control:
+            if parent.is_a_parent_of(level_logic):
+                level_logics_in_level.push_back(level_logic)
+                break
+            parent = parent.get_parent()
+    assert(level_logics_in_level.size() == 1)
+    return level_logics_in_level[0]
+
 func _flip_orientation():
     orientation_multiplier *= -1
     $sprite.flip_v = orientation_multiplier != 1
@@ -323,3 +378,9 @@ func on_touched_crystal(crystal: Crystal) -> void:
     crystal.queue_free()
     sfx.play(sfx.CADENCE_SUCCESS)
     screen.on_level_complete()
+
+func _on_fall_out_of_bounds() -> void:
+    sfx.play(sfx.CADENCE_FAILURE)
+    level_logic.reset()
+    queue_free()
+    is_destroyed = true

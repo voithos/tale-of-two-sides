@@ -3,6 +3,7 @@
 [ext_resource path="res://scenes/tile_set_16.tres" type="TileSet" id=1]
 
 [node name="PhaseTileMap" type="TileMap"]
+z_index = -1
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )
 cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
