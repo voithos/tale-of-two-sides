@@ -1,28 +1,60 @@
 {
 	"events": [
 		{
+			"action": "join",
 			"character": "character-1643445734.json",
-			"event_id": "dialogic_001",
+			"event_id": "dialogic_002",
+			"mirror": false,
 			"portrait": "",
-			"text": "Woah whats that."
-		},
-		{
-			"character": "",
-			"event_id": "dialogic_001",
-			"portrait": "",
-			"text": "That's the result of your mistake. The world has been shattered into many islands such as this one. Each one with it's own crystal shard."
-		},
-		{
-			"character": "",
-			"event_id": "dialogic_001",
-			"portrait": "",
-			"text": "Grab one and you'll be brought to another island with a shard. Collect them all and you might have a chance at fixing this.."
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			}
 		},
 		{
 			"character": "character-1643445734.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": ".. Sounds simple enough!"
+			"text": "Hey, about the whole world splitting thing.."
+		},
+		{
+			"character": "character-1643536152.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Yes I’m familiar."
+		},
+		{
+			"character": "character-1643445734.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Can it be fixed?"
+		},
+		{
+			"character": "character-1643536152.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Yes thankfully. The world gem shattered, but it can be put back together. Each fragment is on a cluster of floating islands. All you need to do is collect them all and put the intact gem back into its pedestal at the temple you found it in."
+		},
+		{
+			"character": "character-1643445734.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Sounds simple enough! How do I get there?"
+		},
+		{
+			"character": "character-1643536152.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "The gems attract one another, once you pick one up, it’ll bring you close to the next. Follow the chain and you’ll get to the temple eventually."
+		},
+		{
+			"character": "character-1643536152.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "There’s one up ahead. Let's get going."
 		}
 	],
 	"metadata": {

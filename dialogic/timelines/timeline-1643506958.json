@@ -18,7 +18,7 @@
 			"character": "character-1643445734.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Ugh, what just happened.."
+			"text": "Agh, what was that.."
 		},
 		{
 			"character": "",
@@ -27,16 +27,46 @@
 			"text": "[i]You hear a voice in your head[/i]"
 		},
 		{
-			"character": "",
+			"character": "character-1643536152.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Get up and start moving. Use the [b] arrow keys [/b]. Your goal lies to the right."
+			"text": "Get up, there's no time to waste."
 		},
 		{
 			"character": "character-1643445734.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "I wonder what that was.."
+			"text": "Huh? Who was that?"
+		},
+		{
+			"character": "character-1643536152.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Someone who's going to help you clean up your mess. Use the [b]arrow keys[/b] or [b]WASD[/b] to walk around."
+		},
+		{
+			"character": "character-1643536152.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Go to the right, it should be close by."
+		},
+		{
+			"character": "character-1643445734.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "What's close by?"
+		},
+		{
+			"character": "character-1643536152.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Just get moving."
+		},
+		{
+			"character": "character-1643445734.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "… aren’t you a nice one?"
 		}
 	],
 	"metadata": {

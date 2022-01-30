@@ -1,22 +1,66 @@
 {
 	"events": [
 		{
+			"action": "join",
+			"character": "character-1643445734.json",
+			"event_id": "dialogic_002",
+			"mirror": false,
+			"portrait": "",
+			"position": {
+				"0": true,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			}
+		},
+		{
 			"character": "character-1643445734.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Hm, now where do I go from here?"
+			"text": "Okay now this wall is way too high to jump."
 		},
 		{
-			"character": "",
+			"character": "character-1643536152.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Thanks to your meddling, you've unlocked the power of [b] phasing [/b]"
+			"text": " Looks like it’s time to Phase."
 		},
 		{
-			"character": "",
+			"character": "character-1643445734.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Press [b]d[/b] to phase through the environment."
+			"text": "Huh? What’s that?"
+		},
+		{
+			"character": "character-1643536152.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Breaking the world crystal split the world in two. Right now everything from your world has been cut in half and laid out over two worlds."
+		},
+		{
+			"character": "character-1643445734.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "That sounds bad!"
+		},
+		{
+			"character": "character-1643445734.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": ".. but how is that going to help me get over this wall."
+		},
+		{
+			"character": "character-1643536152.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Hmph."
+		},
+		{
+			"character": "character-1643536152.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "You were close enough to the split that you remained connected to the two halves. You can travel between them by [b]phasing[/b]. You can do that by pressing [b]Z[/b] or [b]M[/b]. Try it."
 		}
 	],
 	"metadata": {

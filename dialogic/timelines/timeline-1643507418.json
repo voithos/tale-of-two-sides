@@ -1,16 +1,36 @@
 {
 	"events": [
 		{
-			"character": "",
-			"event_id": "dialogic_001",
+			"action": "join",
+			"character": "character-1643445734.json",
+			"event_id": "dialogic_002",
+			"mirror": false,
 			"portrait": "",
-			"text": "Sometimes you'll need to jump. Press the [b] space key [/b] to do so."
+			"position": {
+				"0": true,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			}
 		},
 		{
 			"character": "character-1643445734.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "..thanks for the tip."
+			"text": "Hmm, this ledge is a bit high."
+		},
+		{
+			"character": "character-1643536152.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": " How perceptive of you, you’ll have to jump using [b]space[/b] to get over it."
+		},
+		{
+			"character": "character-1643445734.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": ".. Thanks."
 		}
 	],
 	"metadata": {

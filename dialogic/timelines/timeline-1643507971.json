@@ -1,16 +1,66 @@
 {
 	"events": [
 		{
-			"character": "",
-			"event_id": "dialogic_001",
+			"action": "join",
+			"character": "character-1643445734.json",
+			"event_id": "dialogic_002",
+			"mirror": false,
 			"portrait": "",
-			"text": "Momentum is conserved when phasing. As wise woman once said:"
+			"position": {
+				"0": true,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			}
 		},
 		{
-			"character": "",
+			"character": "character-1643445734.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Speedy thing go in, speedy thing go out."
+			"text": "Woah that was awesome!"
+		},
+		{
+			"character": "character-1643536152.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "I’m glad you’re enjoying the power you got from throwing this world into chaos."
+		},
+		{
+			"character": "character-1643445734.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": ".. I didn’t mean to do it!"
+		},
+		{
+			"character": "character-1643536152.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "And yet it still happened. But that's not important now. To get through this next bit you’ll have to understand how phasing affects momentum, or rather, how it does not."
+		},
+		{
+			"character": "character-1643536152.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Gravity is different on each side, but your velocity doesn't change as you go from one side to another."
+		},
+		{
+			"character": "character-1643445734.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": ".. meaning?"
+		},
+		{
+			"character": "character-1643536152.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "As a wise woman once said, ‘Speedy thing go in, Speedy thing come out’"
+		},
+		{
+			"character": "character-1643445734.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Ah, gotcha."
 		}
 	],
 	"metadata": {
