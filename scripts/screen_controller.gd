@@ -56,12 +56,13 @@ func _input(event):
 
 
 func _notification(notification: int) -> void:
+    pass
     # Pause when the window loses focus.
-    match notification:
-        MainLoop.NOTIFICATION_WM_FOCUS_OUT:
-            set_pause(true)
-        MainLoop.NOTIFICATION_WM_QUIT_REQUEST:
-            _on_app_close()
+#    match notification:
+#        MainLoop.NOTIFICATION_WM_FOCUS_OUT:
+#            set_pause(true)
+#        MainLoop.NOTIFICATION_WM_QUIT_REQUEST:
+#            _on_app_close()
 
 
 func close_app() -> void:
