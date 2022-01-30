@@ -1,0 +1,33 @@
+{
+	"events": [
+		{
+			"character": "character-1643445734.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Woah whats that."
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "That's the result of your mistake. The world has been shattered into many islands such as this one. Each one with it's own crystal shard."
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Grab one and you'll be brought to another island with a shard. Collect them all and you might have a chance at fixing this.."
+		},
+		{
+			"character": "character-1643445734.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": ".. Sounds simple enough!"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.3",
+		"file": "timeline-1643508022.json",
+		"name": "TutorialShards"
+	}
+}

@@ -9,14 +9,14 @@
 	"nickname": "",
 	"nickname_bool": false,
 	"offset_x": 0,
-	"offset_y": 0,
+	"offset_y": -70,
 	"portraits": [
 		{
 			"name": "Default",
-			"path": ""
+			"path": "res://assets/player/player.png"
 		},
 		{
-			"name": "player",
+			"name": "Player",
 			"path": "res://assets/player/player.png"
 		}
 	],

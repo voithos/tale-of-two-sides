@@ -8,6 +8,7 @@ enum {
     DEMO_DIEGO = 2,
     DEMO_LEVI = 3,
     DEMO_ZAVEN = 4,
+    TUTORIAL_1 = 5,
 }
 
 var packed_scenes := {
@@ -15,6 +16,7 @@ var packed_scenes := {
     DEMO_DIEGO: load("res://scenes/demos/demo_diego.tscn"),
     DEMO_LEVI: load("res://scenes/demos/demo_levi.tscn"),
     DEMO_ZAVEN: load("res://scenes/demos/demo_zaven.tscn"),
+    TUTORIAL_1: load("res://scenes/levels/tutorial_level.tscn"),
 }
 
 const START_LEVEL := DEMO_BASE

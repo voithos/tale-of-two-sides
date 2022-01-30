@@ -1,15 +1,16 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/level_logic.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/props/test_hires.png" type="Texture" id=3]
 [ext_resource path="res://scenes/tile_set_32.tres" type="TileSet" id=4]
 [ext_resource path="res://scenes/dialog_trigger.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/crystal.tscn" type="PackedScene" id=6]
 
 [node name="demo_base" type="Node2D"]
 
 [node name="level_logic" parent="." instance=ExtResource( 1 )]
-next_level = ""
+next_level = 5
 background_music = 0
 
 [node name="test_hires" type="Sprite" parent="."]
@@ -28,10 +29,14 @@ tile_data = PoolIntArray( -65527, 0, 8, -65526, 0, 10, -65525, 0, 10, -65524, 0,
 
 [node name="dialog_trigger" parent="." instance=ExtResource( 5 )]
 position = Vector2( 45, 151 )
+dialog = "TutorialWalking"
 
 [node name="dialog_trigger2" parent="." instance=ExtResource( 5 )]
 position = Vector2( 304, 151 )
-dialog = "intro_jump"
+dialog = "TutorialJumping"
 
 [node name="player" parent="." instance=ExtResource( 2 )]
-position = Vector2( -646, -32 )
+position = Vector2( 46, -18 )
+
+[node name="Crystal" parent="." instance=ExtResource( 6 )]
+position = Vector2( 163, 146 )
