@@ -470,6 +470,10 @@ func queue_dialog(dialog):
     next_dialog = dialog;
     
 func create_dialog():
+    if npc_store.has_spoken_with_npc(next_dialog):
+        next_dialog = ""
+        return;
+    npc_store.record_npc_interaction(next_dialog)
     var new_dialog = Dialogic.start(next_dialog)
     new_dialog.connect("timeline_end", self, "_dialog_end")
     enter_cutscene();
