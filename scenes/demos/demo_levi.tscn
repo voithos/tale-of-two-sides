@@ -1,14 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/level_logic.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/props/test_hires.png" type="Texture" id=3]
-[ext_resource path="res://scenes/tile_set_32.tres" type="TileSet" id=4]
-[ext_resource path="res://scenes/tile_set_16.tres" type="TileSet" id=5]
+[ext_resource path="res://scenes/phase_tile_map.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/crystal.tscn" type="PackedScene" id=6]
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 69.5, 10 )
 
 [node name="demo_base" type="Node2D"]
 
@@ -16,34 +12,13 @@ extents = Vector2( 69.5, 10 )
 next_level = ""
 background_music = 0
 
-[node name="block" type="StaticBody2D" parent="."]
-position = Vector2( 104, 126 )
-
-[node name="shape" type="CollisionShape2D" parent="block"]
-position = Vector2( 59.5, 0 )
-shape = SubResource( 1 )
-__meta__ = {
-"_edit_lock_": true
-}
+[node name="PhaseTileMap" parent="." instance=ExtResource( 4 )]
+tile_data = PoolIntArray( 458758, 1, 0, 458767, 1, 0, 524293, 0, 196609, 524294, 0, 196610, 524295, 0, 196610, 524296, 0, 196610, 524297, 0, 196610, 524298, 0, 196610, 524299, 0, 196610, 524300, 0, 196610, 524301, 0, 196610, 524302, 0, 196610, 524303, 0, 196611 )
 
 [node name="test_hires" type="Sprite" parent="."]
 position = Vector2( 11, 10 )
 scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 3 )
-
-[node name="TileMap32" type="TileMap" parent="."]
-tile_set = ExtResource( 4 )
-cell_size = Vector2( 32, 32 )
-cell_custom_transform = Transform2D( 32, 0, 0, 32, 0, 0 )
-format = 1
-tile_data = PoolIntArray( 131073, 0, 0, 131081, 0, 0, 196609, 0, 65536, 196617, 0, 65536, 262145, 0, 65536, 262153, 0, 65536, 327681, 0, 131073, 327682, 0, 196610, 327683, 0, 196610, 327684, 0, 196610, 327685, 0, 196610, 327686, 0, 196610, 327687, 0, 196610, 327688, 0, 196610, 327689, 0, 131075 )
-
-[node name="TileMap16" type="TileMap" parent="."]
-tile_set = ExtResource( 5 )
-cell_size = Vector2( 16, 16 )
-cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
-format = 1
-tile_data = PoolIntArray( 851973, 0, 8, 851974, 0, 10, 851975, 0, 10, 851976, 0, 10, 851977, 0, 10, 851978, 0, 10, 851979, 0, 10, 851980, 0, 10, 851981, 0, 10, 851982, 0, 10, 851983, 0, 10, 851984, 0, 10, 851985, 0, 11, 917509, 0, 131076, 917510, 0, 196617, 917511, 0, 196617, 917512, 0, 196617, 917513, 0, 196617, 917514, 0, 196617, 917515, 0, 196617, 917516, 0, 196617, 917517, 0, 196617, 917518, 0, 196617, 917519, 0, 196617, 917520, 0, 196617, 917521, 0, 131079, 983045, 0, 65536, 983057, 0, 65536, 1048581, 0, 65536, 1048585, 0, 196609, 1048586, 0, 2, 1048587, 0, 196610, 1048588, 0, 2, 1048589, 0, 196611, 1048593, 0, 65536, 1114116, 0, 196609, 1114117, 0, 131074, 1114118, 0, 196611, 1114122, 0, 65536, 1114124, 0, 65536, 1114128, 0, 196609, 1114129, 0, 131074, 1114130, 0, 196611, 1179658, 0, 131073, 1179659, 0, 196610, 1179660, 0, 131075 )
 
 [node name="player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 165, 106 )
