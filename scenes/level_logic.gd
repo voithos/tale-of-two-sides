@@ -70,7 +70,7 @@ static func get_tile_map_bounds_in_world_coordinates(
     var used_rect := tile_map.get_used_rect()
     var cell_size := tile_map.cell_size
     return Rect2(
-            used_rect.position.x * cell_size.x,
-            used_rect.position.y * cell_size.y,
+            tile_map.position.x + used_rect.position.x * cell_size.x,
+            tile_map.position.y + used_rect.position.y * cell_size.y,
             used_rect.size.x * cell_size.x,
             used_rect.size.y * cell_size.y)
