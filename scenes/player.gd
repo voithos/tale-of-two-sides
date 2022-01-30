@@ -85,6 +85,8 @@ func _physics_process(delta):
 
     if state != State.CONTROLLABLE:
         return
+        
+    $phase_particles.emitting = phase_through_enabled;
     
     if !fall_boundary.has_point(position):
         _on_fall_out_of_bounds()
