@@ -57,7 +57,6 @@ const TEST_PHASE_DIRECTION = Vector2(200,-20)
 const PHASE_ANIM_SPEED = 4;
 const PHASE_MOVE_SPEED = 400;
 
-
 func _ready():
 	add_to_group("player")
 	_update_sprite_flip()
@@ -73,7 +72,8 @@ func _physics_process(delta):
 		_begin_phasing()
 		
 	if Input.is_action_just_pressed("debug_anim"):
-		_test_phase_anim();
+		pass
+#		_test_phase_anim()
 
 	_animate_squash_stretch(delta)
 	_move_player(delta)
@@ -175,7 +175,7 @@ func _check_phase_through(direction: Vector2) -> bool:
 		var ray = direction * PHASEABLE_RAYCAST_LENGTH
 		var from = $raycast.global_position
 		var to = from + ray
-		var results = _levi_raycast(_get_space_state(), from, to, PHASEABLE_COLLISION_LAYER)
+		var results = _double_raycast(_get_space_state(), from, to, PHASEABLE_COLLISION_LAYER)
 		var entered = results[0]
 		var exited = results[1]
 		
@@ -186,7 +186,11 @@ func _check_phase_through(direction: Vector2) -> bool:
 			# We multiply the opposite_position_offset by a slight extra amount so that we aren't
 			# touching the other surface. Otherwise, move_and_slide seems to just randomly "snap"
 			# and sets the velocity to 0 on the next frame.
-			global_position = exited[exited.size() - 1]["position"] + 1.3 * opposite_position_offset
+			
+			# trigger phase animation
+			var origin = global_position;
+			var destination = exited[exited.size() - 1]["position"] + 1.3 * opposite_position_offset
+			_initiate_phase_anim(origin, destination)
 			_flip_orientation()
 		
 		phase_through_enabled = false
@@ -234,47 +238,6 @@ func _double_raycast(space_state: Physics2DDirectSpaceState, from, to, collision
 	
 	return [entered, exited]
 
-const RAY_MARCH_DELTA := 8.0
-func _levi_raycast(
-		space_state: Physics2DDirectSpaceState,
-		from: Vector2,
-		to: Vector2,
-		collision_layer:=2147483647,
-		exclude_self:=true,
-		collide_with_bodies:=true,
-		collide_with_areas:=true) -> Array:
-	var dir := (to - from).normalized()
-	var rev_dir := (from - to).normalized()
-	var exclude := []
-	var enter_result := space_state.intersect_ray(
-			from,
-			to,
-			exclude,
-			collision_layer,
-			collide_with_bodies,
-			collide_with_areas)
-	var exit_cast_from: Vector2 = enter_result.position + RAY_MARCH_DELTA * dir
-	var exit_cast_to := from - (to - from)
-	var exit_result := space_state.intersect_ray(
-			exit_cast_from,
-			exit_cast_to,
-			exclude,
-			collision_layer,
-			collide_with_bodies,
-			collide_with_areas)
-	while is_equal_approx(exit_result.position.x, exit_cast_from.x) and \
-			is_equal_approx(exit_result.position.y, exit_cast_from.y):
-		exit_cast_from = exit_result.position + RAY_MARCH_DELTA * dir
-		exit_result = space_state.intersect_ray(
-				exit_cast_from,
-				exit_cast_to,
-				exclude,
-				collision_layer,
-				collide_with_bodies,
-				collide_with_areas)
-	
-	return [[enter_result], [exit_result]]
-
 func _flip_orientation():
 	orientation_multiplier *= -1
 	$sprite.flip_v = orientation_multiplier != 1
@@ -296,6 +259,37 @@ func _animate_squash_stretch(delta):
 		squash_stretch_scale.y = lerp(squash_stretch_scale.y, 1.0, lerp_val)
 	$sprite.scale = squash_stretch_scale
 
+func _initiate_phase_anim(origin, destination):
+	phase_origin = origin
+	phase_destination = destination
+	state = State.ANIMATING;
+	is_phasing_animation = true;
+	$phase_sprite.visible = true;
+	$phase_particles.emitting = true;
+	
+	# TODO: Store old velocity
+
+func _handle_phase_animation(delta):
+	# Used to transition into and out of block. Transition distance is quarter of the total phase distance
+	var quarter_distance = (phase_destination - phase_origin).length()/4.0
+	var phase_pos = min(min(global_position.distance_to(phase_origin), global_position.distance_to(phase_destination)), quarter_distance)
+	var speed_modulation = range_lerp(phase_pos, 0, quarter_distance, 1.0, 0.75);
+	
+	# Phase movement. Slows down inside block and speeds up as you exit.
+	global_position += (phase_destination - phase_origin).normalized()*PHASE_MOVE_SPEED*delta*speed_modulation
+	
+	# Shift between player sprite and phase sprite
+	$sprite.modulate.a = range_lerp(phase_pos, 0, quarter_distance, 1.0, 0);
+	$phase_sprite.modulate.a = range_lerp(phase_pos, 0, quarter_distance, 0, 1.0);
+	
+	# TODO: stretch sprites in direction of shift.
+	if phase_origin.distance_to(global_position) > phase_origin.distance_to(phase_destination):
+		is_phasing_animation = false;
+		state = State.CONTROLLABLE;
+		$phase_sprite.visible = false;
+		$phase_particles.emitting = false
+		# TODO: Apply exit speed
+
 func _apply_jump_squash_stretch():
 	squash_stretch_scale.x = range_lerp(abs(velocity.y), 0, JUMP_VEL, 1.0, JUMP_SQUASH_STRETCH.x)
 	squash_stretch_scale.y = range_lerp(abs(velocity.y), 0, JUMP_VEL, 1.0, JUMP_SQUASH_STRETCH.y)
@@ -303,39 +297,6 @@ func _apply_jump_squash_stretch():
 
 func _update_sprite_flip():
 	$sprite.flip_h = !facing_right
-
-	
-func _test_phase_anim():
-	state = State.ANIMATING;
-	is_phasing_animation = true;
-	phase_destination = position + TEST_PHASE_DIRECTION
-	phase_origin = position
-	$phase_sprite.visible = true;
-	$phase_particles.emitting = true;
-	
-	# TODO: Store old velocity
-	
-func _handle_phase_animation(delta):
-	# Used to transition into and out of block. Transition distance is quarter of the total phase distance
-	var quarter_distance = (phase_destination - phase_origin).length()/4.0
-	var phase_pos = min(min(position.distance_to(phase_origin), position.distance_to(phase_destination)), quarter_distance)
-	var speed_modulation = range_lerp(phase_pos, 0, quarter_distance, 1.0, 0.75);
-	
-	# Phase movement. Slows down inside block and speeds up as you exit.
-	position += (phase_destination - phase_origin).normalized()*PHASE_MOVE_SPEED*delta*speed_modulation
-	
-	# Shift between player sprite and phase sprite
-	$sprite.modulate.a = range_lerp(phase_pos, 0, quarter_distance, 1.0, 0);
-	$phase_sprite.modulate.a = range_lerp(phase_pos, 0, quarter_distance, 0, 1.0);
-	
-	# TODO: stretch sprites in direction of shift.
-	if phase_origin.distance_to(position) > phase_origin.distance_to(phase_destination):
-		is_phasing_animation = false;
-		state = State.CONTROLLABLE;
-		$phase_sprite.visible = false;
-		$phase_particles.emitting = false
-		# TODO: Apply exit speed
-
 
 func exit_cutscene():
 	state = State.CONTROLLABLE;

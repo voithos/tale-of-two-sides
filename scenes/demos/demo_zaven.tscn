@@ -37,9 +37,6 @@ position = Vector2( 11, 10 )
 scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 3 )
 
-[node name="player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 143, 106 )
-
 [node name="TileMap16" type="TileMap" parent="."]
 tile_set = ExtResource( 4 )
 cell_size = Vector2( 16, 16 )
@@ -55,3 +52,6 @@ cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
 collision_layer = 3
 format = 1
 tile_data = PoolIntArray( 1245198, 0, 196609, 1245199, 0, 196610, 1245200, 0, 196610, 1245201, 0, 196610, 1245202, 0, 196611 )
+
+[node name="player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 143, 106 )
