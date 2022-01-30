@@ -143,6 +143,7 @@ music="*res://scripts/music.gd"
 global_camera="*res://scripts/global_camera.gd"
 checkpoint_store="*res://scripts/checkpoint_store.gd"
 levels="*res://scripts/level_manifest.gd"
+npc_store="*res://scripts/npc_store.gd"
 
 [display]
 
