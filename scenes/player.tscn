@@ -153,4 +153,4 @@ process_material = SubResource( 4 )
 [node name="shockwave" parent="." instance=ExtResource( 5 )]
 speed = 3.0
 acceleration = 5.0
-distortion_strength = 0.1
+distortion_strength = 0.08

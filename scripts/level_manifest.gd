@@ -38,6 +38,14 @@ static func get_level_string(level_type: int) -> String:
             return "DEMO_LEVI"
         DEMO_ZAVEN:
             return "DEMO_ZAVEN"
+        TUTORIAL:
+            return "TUTORIAL"
+        FLING:
+            return "FLING"
+        VERTICAL:
+            return "VERTICAL"
+        TEMPLE: 
+            return "TEMPLE"
         _:
             push_error("Invalid level_type")
             return "??"
