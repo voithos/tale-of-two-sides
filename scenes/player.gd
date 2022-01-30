@@ -22,7 +22,7 @@ var orientation_multiplier = 1
 var phase_through_enabled = false
 
 const PHASEABLE_COLLISION_LAYER = pow(2, 1)
-const PHASEABLE_RAYCAST_LENGTH = 100 # Length of the raycast to check entry/exit location for phasing.
+const PHASEABLE_RAYCAST_LENGTH = 10000 # Length of the raycast to check entry/exit location for phasing.
 
 # Movement state.
 var velocity = Vector2.ZERO
