@@ -40,8 +40,7 @@ func _input(event):
         if event.scancode == KEY_ESCAPE:
             if OS.is_debug_build() and \
                     not OS.has_feature("HTML5"):
-                _on_app_close()
-                get_tree().quit()
+                close_app()
             else:
                 set_pause(not is_paused)
         
@@ -63,6 +62,11 @@ func _notification(notification: int) -> void:
             set_pause(true)
         MainLoop.NOTIFICATION_WM_QUIT_REQUEST:
             _on_app_close()
+
+
+func close_app() -> void:
+    _on_app_close()
+    get_tree().quit()
 
 
 func _on_app_close() -> void:
