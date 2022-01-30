@@ -22,7 +22,7 @@ var orientation_multiplier = 1
 var phase_through_enabled = false
 
 const PHASEABLE_COLLISION_LAYER = pow(2, 1)
-const PHASEABLE_RAYCAST_LENGTH = 100 # Length of the raycast to check entry/exit location for phasing.
+const PHASEABLE_RAYCAST_LENGTH = 10000 # Length of the raycast to check entry/exit location for phasing.
 
 # Movement state.
 var velocity = Vector2.ZERO
@@ -38,7 +38,7 @@ const HORIZONTAL_ACCEL = 20 # How quickly we accelerate to max speed
 const GRAVITY = 6.0
 const GRAVITY_DECREASE_THRESHOLD = 10 # The speed below which gravity is decreased.
 const GRAVITY_DECREASE_MULTIPLIER = 0.5 # The amount of decrease for low gravity (at the height of a jump).
-const JUMP_VEL = 160
+const JUMP_VEL = 200
 const TERM_VEL = JUMP_VEL * 2
 const FAST_FALL_MULTIPLIER = 1.7 # How much faster fast fall is compared to gravity
 const JUMP_RELEASE_MULTIPLIER = 0.5 # Multiplied by velocity if button released during the initial part of the jump.
