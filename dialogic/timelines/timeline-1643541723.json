@@ -63,6 +63,12 @@
 			"event_id": "dialogic_001",
 			"portrait": "",
 			"text": "… I’ll take that as a no then."
+		},
+		{
+			"character": "character-1643540292.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "If you're really that hungry, I swear I can hear that walking excuse for a vegetable somewhere below."
 		}
 	],
 	"metadata": {
