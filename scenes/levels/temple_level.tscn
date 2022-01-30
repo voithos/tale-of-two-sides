@@ -27,6 +27,7 @@ tile_data = PoolIntArray( -131089, 0, 8, -131088, 0, 10, -131087, 0, 262144, -13
 [node name="level_logic" parent="." instance=ExtResource( 4 )]
 
 [node name="player" parent="." instance=ExtResource( 3 )]
+facing_right = false
 
 [node name="PhaseTileMap2" parent="." instance=ExtResource( 2 )]
 tile_set = ExtResource( 1 )
