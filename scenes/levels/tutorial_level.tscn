@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/phase_tile_map.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/level_logic.tscn" type="PackedScene" id=2]
@@ -6,6 +6,16 @@
 [ext_resource path="res://scenes/crystal.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/dialog_trigger.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/background.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/dialog_trigger.gd" type="Script" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 25, 206.5 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 25, 226 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 25, 259.5 )
 
 [node name="Node2D" type="Node2D"]
 position = Vector2( 1, 0 )
@@ -32,22 +42,49 @@ position = Vector2( -272, 27 )
 dialog = "TutorialWalking"
 box_size = Vector2( 10, 100 )
 
-[node name="dialog_trigger2" parent="." instance=ExtResource( 5 )]
+[node name="dialog_trigger2" type="Node2D" parent="."]
 position = Vector2( -47, 34 )
+script = ExtResource( 7 )
 dialog = "TutorialJumping"
 box_size = Vector2( 10, 100 )
+
+[node name="Area2D" type="Area2D" parent="dialog_trigger2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dialog_trigger2/Area2D"]
+position = Vector2( 0, 7.5 )
+shape = SubResource( 1 )
 
 [node name="dialog_trigger3" parent="." instance=ExtResource( 5 )]
 position = Vector2( 184, 7 )
 dialog = "TutorialPhasing"
 
-[node name="dialog_trigger4" parent="." instance=ExtResource( 5 )]
+[node name="dialog_trigger4" type="Node2D" parent="."]
 position = Vector2( 277, -99 )
+script = ExtResource( 7 )
 dialog = "TutorialMomentum"
+box_size = Vector2( 25, 25 )
 
-[node name="dialog_trigger5" parent="." instance=ExtResource( 5 )]
+[node name="Area2D" type="Area2D" parent="dialog_trigger4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dialog_trigger4/Area2D"]
+position = Vector2( 0, 106 )
+shape = SubResource( 2 )
+
+[node name="dialog_trigger5" type="Node2D" parent="."]
 position = Vector2( 517, -106 )
+script = ExtResource( 7 )
 dialog = "TutorialShards"
+box_size = Vector2( 25, 25 )
+
+[node name="Area2D" type="Area2D" parent="dialog_trigger5"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dialog_trigger5/Area2D"]
+position = Vector2( 0, 110.5 )
+shape = SubResource( 3 )
 
 [node name="Crystal" parent="." instance=ExtResource( 4 )]
 position = Vector2( 566, -98 )
+
+[connection signal="body_entered" from="dialog_trigger2/Area2D" to="dialog_trigger2" method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="dialog_trigger4/Area2D" to="dialog_trigger4" method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="dialog_trigger5/Area2D" to="dialog_trigger5" method="_on_Area2D_body_entered"]
