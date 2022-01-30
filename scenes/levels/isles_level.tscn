@@ -75,6 +75,7 @@ position = Vector2( -501, 26 )
 position = Vector2( -445, 15 )
 script = ExtResource( 5 )
 dialog = "TutorialPlatforms"
+require_box = false
 
 [node name="Area2D" type="Area2D" parent="dialog_trigger"]
 
@@ -86,6 +87,7 @@ shape = SubResource( 1 )
 position = Vector2( -38, -2 )
 script = ExtResource( 5 )
 dialog = "TutorialMultiphase"
+require_box = false
 
 [node name="Area2D" type="Area2D" parent="dialog_trigger2"]
 
@@ -94,4 +96,6 @@ position = Vector2( 0, 37.5 )
 shape = SubResource( 2 )
 
 [connection signal="body_entered" from="dialog_trigger/Area2D" to="dialog_trigger" method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="dialog_trigger/Area2D" to="dialog_trigger" method="_on_Area2D_body_exited"]
 [connection signal="body_entered" from="dialog_trigger2/Area2D" to="dialog_trigger2" method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="dialog_trigger2/Area2D" to="dialog_trigger2" method="_on_Area2D_body_exited"]

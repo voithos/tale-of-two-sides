@@ -48,6 +48,7 @@ starting_in_midair = true
 position = Vector2( -272, 27 )
 script = ExtResource( 7 )
 dialog = "TutorialWalking"
+require_box = false
 
 [node name="Area2D" type="Area2D" parent="dialog_trigger"]
 
@@ -58,6 +59,7 @@ shape = SubResource( 1 )
 position = Vector2( -47, 34 )
 script = ExtResource( 7 )
 dialog = "TutorialJumping"
+require_box = false
 
 [node name="Area2D" type="Area2D" parent="dialog_trigger2"]
 
@@ -68,11 +70,13 @@ shape = SubResource( 4 )
 [node name="dialog_trigger3" parent="." instance=ExtResource( 5 )]
 position = Vector2( 184, 7 )
 dialog = "TutorialPhasing"
+require_box = false
 
 [node name="dialog_trigger4" type="Node2D" parent="."]
 position = Vector2( 277, -99 )
 script = ExtResource( 7 )
 dialog = "TutorialMomentum"
+require_box = false
 
 [node name="Area2D" type="Area2D" parent="dialog_trigger4"]
 
@@ -84,6 +88,7 @@ shape = SubResource( 2 )
 position = Vector2( 517, -106 )
 script = ExtResource( 7 )
 dialog = "TutorialShards"
+require_box = false
 
 [node name="Area2D" type="Area2D" parent="dialog_trigger5"]
 
@@ -95,6 +100,10 @@ shape = SubResource( 3 )
 position = Vector2( 566, -98 )
 
 [connection signal="body_entered" from="dialog_trigger/Area2D" to="dialog_trigger" method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="dialog_trigger/Area2D" to="dialog_trigger" method="_on_Area2D_body_exited"]
 [connection signal="body_entered" from="dialog_trigger2/Area2D" to="dialog_trigger2" method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="dialog_trigger2/Area2D" to="dialog_trigger2" method="_on_Area2D_body_exited"]
 [connection signal="body_entered" from="dialog_trigger4/Area2D" to="dialog_trigger4" method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="dialog_trigger4/Area2D" to="dialog_trigger4" method="_on_Area2D_body_exited"]
 [connection signal="body_entered" from="dialog_trigger5/Area2D" to="dialog_trigger5" method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="dialog_trigger5/Area2D" to="dialog_trigger5" method="_on_Area2D_body_exited"]

@@ -96,8 +96,9 @@ func _physics_process(delta):
     if state == State.CUTSCENE:
         # Do simple movement when in cutscene.
         velocity.y = max(-TERM_VEL, min(TERM_VEL, velocity.y + GRAVITY*orientation_multiplier))
-        velocity.x = lerp(velocity.x, 0, HORIZONTAL_ACCEL * delta)
+        velocity.x = 0;
         velocity = move_and_slide(velocity, Vector2.UP)
+        $phase_particles.emitting = false;
         $sprite.scale = Vector2(1,1)
         $animation.play("idle")
         return;
@@ -472,6 +473,9 @@ func _on_fall_out_of_bounds() -> void:
 
 func queue_dialog(dialog):
     next_dialog = dialog;
+    
+func dequeue_dialog():
+    next_dialog = "";
     
 func create_dialog():
     if npc_store.has_spoken_with_npc(next_dialog):
