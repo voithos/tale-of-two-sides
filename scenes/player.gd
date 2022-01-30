@@ -152,10 +152,10 @@ func _move_player(delta):
 
     if !is_airborne:
         if is_moving:
-            #$animation.play("run")
+            $animation.play("run")
             pass
         else:
-            #$animation.play("idle")
+            $animation.play("idle")
             pass
 
 func _jump():
