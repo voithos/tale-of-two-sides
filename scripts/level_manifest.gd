@@ -11,6 +11,7 @@ enum {
     TUTORIAL = 5,
     FLING = 6,
     VERTICAL = 7,
+    TEMPLE = 8,
 }
 
 var packed_scenes := {
@@ -20,10 +21,11 @@ var packed_scenes := {
     DEMO_ZAVEN: load("res://scenes/demos/demo_zaven.tscn"),
     TUTORIAL: load("res://scenes/levels/tutorial_level.tscn"),
     FLING: load("res://scenes/levels/fling_level.tscn"),
-    VERTICAL: load("res://scenes/levels/vertical_level.tscn")
+    VERTICAL: load("res://scenes/levels/vertical_level.tscn"),
+    TEMPLE: load("res://scenes/levels/temple_level.tscn"),
 }
 
-const START_LEVEL := DEMO_BASE
+const START_LEVEL := TUTORIAL
 
 
 static func get_level_string(level_type: int) -> String:

@@ -4,17 +4,17 @@
 	"display_name": "",
 	"display_name_bool": false,
 	"id": "character-1643540454.json",
-	"mirror_portraits": false,
+	"mirror_portraits": true,
 	"name": "PenguinProgrammer",
 	"nickname": "",
 	"nickname_bool": false,
-	"offset_x": 0,
-	"offset_y": 0,
+	"offset_x": -10,
+	"offset_y": -35,
 	"portraits": [
 		{
 			"name": "Default",
 			"path": "res://assets/NPCs/PenguinProgrammer.png"
 		}
 	],
-	"scale": 100
+	"scale": 10
 }
