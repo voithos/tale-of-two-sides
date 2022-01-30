@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/shockwave.gd" type="Script" id=1]
+[ext_resource path="res://assets/fx/shockwave_radial.png" type="Texture" id=2]
+[ext_resource path="res://scenes/shockwave.shader" type="Shader" id=3]
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 3 )
+shader_param/distortion_strength = null
+shader_param/mask_contribution = null
+shader_param/mask = ExtResource( 2 )
+
+[node name="shockwave" type="Sprite"]
+material = SubResource( 2 )
+texture = ExtResource( 2 )
+script = ExtResource( 1 )

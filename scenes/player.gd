@@ -251,6 +251,8 @@ func _check_phase_through(direction: Vector2) -> bool:
             _flip_orientation()
             sfx.play(sfx.PHASE, sfx.LOUD_DB)
             global_camera.shake(0.15, 30, 2)
+            #$shockwave.global_position = $raycast.global_position
+            $shockwave.shockwave($raycast.global_position)
             time_since_last_phase = 0
         return true
 
