@@ -83,7 +83,6 @@ texture = ExtResource( 5 )
 position = Vector2( -240, -67 )
 script = ExtResource( 9 )
 dialog = "ElderSmalltalk"
-box_size = Vector2( 25, 25 )
 
 [node name="Area2D" type="Area2D" parent="dialog_trigger"]
 
