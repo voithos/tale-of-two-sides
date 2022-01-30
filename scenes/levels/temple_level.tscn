@@ -30,7 +30,7 @@ tile_data = PoolIntArray( -131089, 0, 8, -131088, 0, 10, -131087, 0, 262144, -13
 
 [node name="PhaseTileMap2" parent="." instance=ExtResource( 2 )]
 tile_set = ExtResource( 1 )
-tile_data = PoolIntArray( -1179664, 0, 8, -1179663, 0, 11, -1114128, 0, 196616, -1114127, 0, 196619 )
+tile_data = PoolIntArray( -1638416, 12, 0, -1179664, 0, 8, -1179663, 0, 11, -1114128, 0, 196616, -1114127, 0, 196619 )
 
 [node name="PhaseTileMap3" parent="." instance=ExtResource( 2 )]
 tile_set = ExtResource( 1 )
@@ -62,7 +62,7 @@ lifetime = 4.0
 process_material = SubResource( 1 )
 
 [node name="Crystal" parent="." instance=ExtResource( 6 )]
-position = Vector2( -238, -411 )
+position = Vector2( -239, -427 )
 
 [node name="dialog_trigger3" parent="." instance=ExtResource( 7 )]
 position = Vector2( -24, -307 )

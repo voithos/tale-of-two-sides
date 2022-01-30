@@ -1,7 +1,8 @@
-[gd_resource type="TileSet" load_steps=145 format=2]
+[gd_resource type="TileSet" load_steps=146 format=2]
 
 [ext_resource path="res://assets/tiles/temple_tiles.png" type="Texture" id=1]
 [ext_resource path="res://assets/tiles/decorative_tiles.png" type="Texture" id=2]
+[ext_resource path="res://assets/tiles/decorative_temple_tiles.png" type="Texture" id=3]
 
 [sub_resource type="OccluderPolygon2D" id=1]
 polygon = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
@@ -1179,3 +1180,38 @@ points = PoolVector2Array( 0, 0, 8, 0, 0, 16 )
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 10/z_index = 0
+11/name = "decorative_temple_tiles.png 11"
+11/texture = ExtResource( 3 )
+11/tex_offset = Vector2( -2, -2 )
+11/modulate = Color( 1, 1, 1, 1 )
+11/region = Rect2( 0, 0, 200, 120 )
+11/tile_mode = 2
+11/autotile/icon_coordinate = Vector2( 0, 0 )
+11/autotile/tile_size = Vector2( 20, 20 )
+11/autotile/spacing = 0
+11/autotile/occluder_map = [  ]
+11/autotile/navpoly_map = [  ]
+11/autotile/priority_map = [  ]
+11/autotile/z_index_map = [  ]
+11/occluder_offset = Vector2( 0, 0 )
+11/navigation_offset = Vector2( 0, 0 )
+11/shape_offset = Vector2( 0, 0 )
+11/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+11/shape_one_way = false
+11/shape_one_way_margin = 0.0
+11/shapes = [  ]
+11/z_index = 0
+12/name = "decorative_temple_tiles.png 12"
+12/texture = ExtResource( 3 )
+12/tex_offset = Vector2( -2, -2 )
+12/modulate = Color( 1, 1, 1, 1 )
+12/region = Rect2( 0, 0, 40, 20 )
+12/tile_mode = 0
+12/occluder_offset = Vector2( 0, 0 )
+12/navigation_offset = Vector2( 0, 0 )
+12/shape_offset = Vector2( 0, 0 )
+12/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+12/shape_one_way = false
+12/shape_one_way_margin = 0.0
+12/shapes = [  ]
+12/z_index = 0
