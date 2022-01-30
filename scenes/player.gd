@@ -403,6 +403,7 @@ func _handle_phase_animation(delta):
     if phase_origin.distance_to(global_position) > phase_origin.distance_to(phase_destination):
         is_phasing_animation = false;
         state = State.CONTROLLABLE;
+        $sprite.modulate.a = 1.0;
         $phase_sprite.visible = false;
         $phase_particles.emitting = false
         # TODO: Apply exit speed
