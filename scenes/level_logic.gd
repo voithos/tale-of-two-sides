@@ -14,7 +14,6 @@ func _ready() -> void:
 
 
 func on_level_complete() -> void:
-    music.stop()
     if next_level != LevelManifest.UNKNOWN:
         _begin_next_level_transition()
     else:
@@ -37,7 +36,6 @@ func _delayed_begin_next_level_transition() -> void:
 
 
 func reset() -> void:
-    music.stop()
     var transition = get_tree().get_nodes_in_group("transition")[0]
     transition.connect("fade_complete", self, "_reset_level")
     transition.begin_fade()
