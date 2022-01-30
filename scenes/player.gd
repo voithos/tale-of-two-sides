@@ -23,6 +23,8 @@ var phase_through_enabled = false
 
 const PHASEABLE_COLLISION_LAYER = int(pow(2, 1))
 const PHASEABLE_RAYCAST_LENGTH = 10000 # Length of the raycast to check entry/exit location for phasing.
+const PHASE_TIMEOUT = 0.5 # seconds
+var time_since_last_phase = 0
 
 const TILE_REGION_CAMERA_BOUNDARY_MARGIN := 128.0
 const TILE_REGION_FALL_BOUNDARY_MARGIN := \
@@ -95,7 +97,9 @@ func _physics_process(delta):
 
     if state != State.CONTROLLABLE:
         return
-    
+        
+    # Assume that we phased if we get to this point (or similar)
+    time_since_last_phase += delta
     _update_phase_particles()
     
     if !fall_boundary.has_point(position):
@@ -208,6 +212,9 @@ func _end_phasing():
     phase_through_enabled = false
 
 func _check_phase_through(direction: Vector2) -> bool:
+    if time_since_last_phase < PHASE_TIMEOUT:
+        return false
+
     var is_colliding_with_phaseable = false
     for i in get_slide_count():
         var collision = get_slide_collision(i)
@@ -238,6 +245,7 @@ func _check_phase_through(direction: Vector2) -> bool:
             _flip_orientation()
             sfx.play(sfx.PHASE, sfx.LOUD_DB)
             global_camera.shake(0.15, 30, 2)
+            time_since_last_phase = 0
         return true
 
     # We didn't end up finding a phase through.
