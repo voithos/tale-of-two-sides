@@ -16,6 +16,8 @@ var previous_state = state
 
 # Tracking variables for phase-through mechanic, and vertical and horizontal sprite flipping.
 export (bool) var facing_right = true
+# Whether we're in midair.
+export (bool) var starting_in_midair = false
 # Either 1.0 if player is right-side-up, or -1.0 if player is upside down.
 var orientation_multiplier = 1
 # When this is true, the first contact with a phaseable floor will trigger phasing.
@@ -76,7 +78,10 @@ const PHASE_MOVE_SPEED = 400;
 func _ready():
     add_to_group("player")
     _update_sprite_flip()
-    $animation.play("idle")
+    if starting_in_midair:
+        $animation.play("jump")
+    else:
+        $animation.play("idle")
     level_logic = _get_level_logic()
     _set_boundaries()
 

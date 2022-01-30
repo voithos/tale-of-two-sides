@@ -45,7 +45,6 @@ position = Vector2( 160, 100 )
 scale = Vector2( 20, 20 )
 texture = ExtResource( 1 )
 hframes = 34
-frame = 31
 
 [node name="animation" type="AnimationPlayer" parent="."]
 anims/fade = SubResource( 1 )
