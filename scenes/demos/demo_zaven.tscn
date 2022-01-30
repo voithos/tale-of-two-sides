@@ -3,7 +3,7 @@
 [ext_resource path="res://scenes/level_logic.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/props/test_hires.png" type="Texture" id=3]
-[ext_resource path="res://scenes/tile_set_16.tres" type="TileSet" id=4]
+[ext_resource path="res://scenes/phase_tile_map.tscn" type="PackedScene" id=4]
 
 [node name="demo_base" type="Node2D"]
 
@@ -14,21 +14,8 @@ position = Vector2( 11, 10 )
 scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 3 )
 
-[node name="TileMap16" type="TileMap" parent="."]
-tile_set = ExtResource( 4 )
-cell_size = Vector2( 16, 16 )
-cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
-collision_layer = 3
-format = 1
-tile_data = PoolIntArray( 1048581, 0, 8, 1048582, 0, 10, 1048583, 0, 10, 1048584, 0, 10, 1048585, 0, 10, 1048586, 0, 10, 1048587, 0, 10, 1048588, 0, 10, 1048589, 0, 10, 1048590, 0, 10, 1048591, 0, 10, 1048592, 0, 10, 1048593, 0, 11, 1114113, 0, 196609, 1114114, 0, 196610, 1114115, 0, 196610, 1114116, 0, 196610, 1114117, 0, 196613, 1114118, 0, 196617, 1114119, 0, 196617, 1114120, 0, 196617, 1114121, 0, 196617, 1114122, 0, 131077, 1114123, 0, 131081, 1114124, 0, 131078, 1114125, 0, 196617, 1114126, 0, 196617, 1114127, 0, 196617, 1114128, 0, 196617, 1114129, 0, 196614, 1114130, 0, 196610, 1114131, 0, 196610, 1114132, 0, 196611, 1179658, 0, 196616, 1179659, 0, 196617, 1179660, 0, 196619 )
-
-[node name="TileMap17" type="TileMap" parent="."]
-tile_set = ExtResource( 4 )
-cell_size = Vector2( 16, 16 )
-cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
-collision_layer = 3
-format = 1
-tile_data = PoolIntArray( 1245198, 0, 196609, 1245199, 0, 196610, 1245200, 0, 196610, 1245201, 0, 196610, 1245202, 0, 196611 )
-
 [node name="player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 187, 247 )
+position = Vector2( 163, 118 )
+
+[node name="PhaseTileMap" parent="." instance=ExtResource( 4 )]
+tile_data = PoolIntArray( 458758, 1, 0, 458767, 1, 0, 524293, 0, 196609, 524294, 0, 196610, 524295, 0, 196610, 524296, 0, 196610, 524297, 0, 196610, 524298, 0, 196610, 524299, 0, 196610, 524300, 0, 196610, 524301, 0, 196610, 524302, 0, 196610, 524303, 0, 196611 )

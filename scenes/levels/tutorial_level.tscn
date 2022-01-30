@@ -7,6 +7,7 @@
 [ext_resource path="res://scenes/dialog_trigger.tscn" type="PackedScene" id=5]
 
 [node name="Node2D" type="Node2D"]
+position = Vector2( 1, 0 )
 
 [node name="level_logic" parent="." instance=ExtResource( 2 )]
 next_level = 6
