@@ -92,7 +92,7 @@ func _physics_process(delta):
         _on_fall_out_of_bounds()
         return
     
-    if Input.is_action_just_pressed("debug"):
+    if Input.is_action_just_pressed("phase"):
         _begin_phasing()
     
     if Input.is_action_just_pressed("debug_anim"):
