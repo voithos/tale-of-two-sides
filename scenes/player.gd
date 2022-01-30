@@ -315,4 +315,4 @@ func enter_cutscene():
 func on_touched_crystal(crystal: Crystal) -> void:
 	crystal.queue_free()
 	sfx.play(sfx.CADENCE_SUCCESS)
-	screen.open_screen(ScreenController.CREDITS)
+	screen.on_level_complete()

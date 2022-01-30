@@ -30,7 +30,7 @@ func _delayed_begin_next_level_transition():
     transition.connect("fade_complete", self, "_load_next_level")
     transition.begin_fade()
 
-func begin_reset_transition():
+func reset():
     var transition = get_tree().get_nodes_in_group("transition")[0]
     transition.connect("fade_complete", self, "_reset_level")
     transition.begin_fade()
@@ -41,4 +41,4 @@ func _load_next_level():
     screen.set_level(next_level)
 
 func _reset_level():
-    get_tree().reload_current_scene()
+    screen.reset_level()

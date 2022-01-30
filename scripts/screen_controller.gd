@@ -42,10 +42,13 @@ func _input(event):
             get_tree().quit()
         if event.scancode == KEY_F11:
             OS.window_fullscreen = not OS.window_fullscreen
-
-        if OS.is_debug_build():
-            if event.scancode == KEY_P:
-                set_pause(not is_paused)
+    
+    if Input.is_action_just_pressed("pause"):
+        set_pause(not is_paused)
+    
+    if Input.is_action_just_pressed("reset"):
+        print("Resetting level")
+        game_screen.level_logic.reset()
 
 
 func set_pause(is_paused: bool) -> void:
@@ -55,8 +58,10 @@ func set_pause(is_paused: bool) -> void:
     get_tree().set_pause(is_paused)
     
     if is_paused and current_screen.type == GAME:
+        print("Pausing")
         open_screen(PAUSE)
     elif was_paused and current_screen.type == PAUSE:
+        print("Unpausing")
         open_screen(GAME)
 
 
@@ -87,6 +92,10 @@ func open_screen(screen_type: int) -> void:
 
 func set_level(level_type: int) -> void:
     game_screen.set_level(level_type)
+
+
+func reset_level() -> void:
+    game_screen.reset_level()
 
 
 func on_level_complete() -> void:

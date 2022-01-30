@@ -35,6 +35,20 @@ func set_level(level_type: int) -> void:
     print("set_level: %s" % LevelManifest.get_level_string(level_type))
 
 
+func reset_level() -> void:
+    assert(is_instance_valid(level))
+    
+    level.queue_free()
+    
+    self.level_type = level_type
+    level = levels.packed_scenes[level_type].instance()
+    add_child(level)
+    
+    level_logic = _get_level_logic(level)
+    
+    print("reset_level: %s" % LevelManifest.get_level_string(level_type))
+
+
 func _get_level_logic(level) -> LevelLogic:
     if !is_instance_valid(level):
         return null
