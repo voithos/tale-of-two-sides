@@ -84,6 +84,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scenes/screens/pause_screen.gd"
 }, {
+"base": "TileMap",
+"class": "PhaseTileMap",
+"language": "GDScript",
+"path": "res://scenes/phase_tile_map.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Player",
 "language": "GDScript",
@@ -120,6 +125,7 @@ _global_script_class_icons={
 "MainMenuScreen": "",
 "Music": "",
 "PauseScreen": "",
+"PhaseTileMap": "",
 "Player": "",
 "Screen": "",
 "ScreenController": "",

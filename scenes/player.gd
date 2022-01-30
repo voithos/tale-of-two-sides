@@ -372,6 +372,9 @@ func _flip_orientation():
     $raycast.cast_to *= -1
     $raycast.position *= -1
     $shape.position *= -1
+    
+    for tile_map in get_tree().get_nodes_in_group("tiles"):
+        tile_map.set_phase_mode(orientation_multiplier > 0)
 
 func _animate_squash_stretch(delta):
     # TODO: This doesn't quite work when you "flip" and have a lot of momentum.

@@ -1,11 +1,21 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/tile_set_16.tres" type="TileSet" id=1]
+[ext_resource path="res://scenes/phase_tile_map_shader.gdshader" type="Shader" id=2]
+[ext_resource path="res://scenes/phase_tile_map.gd" type="Script" id=3]
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 2 )
+shader_param/floor_saturation = 0.5
+shader_param/ceiling_saturation = 0.2
 
 [node name="PhaseTileMap" type="TileMap" groups=["tiles"]]
+material = SubResource( 2 )
 z_index = -1
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )
 cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
 collision_layer = 3
 format = 1
+tile_data = PoolIntArray( 131078, 0, 196609, 131079, 0, 196610, 131080, 0, 196611 )
+script = ExtResource( 3 )
