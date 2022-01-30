@@ -212,7 +212,15 @@ func _begin_phasing():
     phase_through_enabled = true
     # Check immediately in case we're already on the ground.
     if _is_on_surface():
-        _check_phase_through(Vector2.DOWN * orientation_multiplier)
+        # Take into account horizontal input.
+        var dir = Vector2.DOWN * orientation_multiplier
+        if Input.is_action_pressed("move_left"):
+            dir.x -= 1
+        if Input.is_action_pressed("move_right"):
+            dir.x += 1
+        # TODO: Choose this or the input based approach above.
+        dir.x = velocity.x / (2*HORIZONTAL_VEL)
+        _check_phase_through(dir.normalized())
 
 func _end_phasing():
     phase_through_enabled = false
