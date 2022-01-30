@@ -1,11 +1,11 @@
 {
-	"color": "#ff504357",
+	"color": "#ff7a989b",
 	"description": "",
 	"display_name": "",
 	"display_name_bool": false,
-	"id": "character-1643536152.json",
+	"id": "character-1643540454.json",
 	"mirror_portraits": false,
-	"name": "???",
+	"name": "PenguinProgrammer",
 	"nickname": "",
 	"nickname_bool": false,
 	"offset_x": 0,
@@ -13,7 +13,7 @@
 	"portraits": [
 		{
 			"name": "Default",
-			"path": ""
+			"path": "res://assets/NPCs/PenguinProgrammer.png"
 		}
 	],
 	"scale": 100

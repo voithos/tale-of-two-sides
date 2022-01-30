@@ -1,0 +1,91 @@
+{
+	"events": [
+		{
+			"action": "join",
+			"character": "character-1643445734.json",
+			"event_id": "dialogic_002",
+			"mirror": false,
+			"portrait": "",
+			"position": {
+				"0": true,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			}
+		},
+		{
+			"action": "join",
+			"character": "character-1643445742.json",
+			"event_id": "dialogic_002",
+			"mirror": false,
+			"portrait": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": true
+			}
+		},
+		{
+			"character": "character-1643445742.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Hello young one, it's good to finally meet you in person."
+		},
+		{
+			"character": "character-1643445734.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Who are you?"
+		},
+		{
+			"character": "character-1643445742.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "I’m the one who has been speaking to you through the crystal shards."
+		},
+		{
+			"character": "character-1643445734.json",
+			"event_id": "dialogic_001",
+			"portrait": "Ready",
+			"text": "Oh! I thought I was talking to a crystal!"
+		},
+		{
+			"character": "character-1643445742.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "… Let's disregard the mechanics behind how something like that would even work. I have been tasked with safeguarding the crystal and as such, have a strong connection to it. I’ve been able to use connection to speak to you since the calamity."
+		},
+		{
+			"character": "character-1643445734.json",
+			"event_id": "dialogic_001",
+			"portrait": "Default",
+			"text": "Makes sense… but hey, why weren’t you there to stop me in the first place?"
+		},
+		{
+			"character": "character-1643445742.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "…I had to step out."
+		},
+		{
+			"character": "character-1643445734.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Isn’t it your job to not step out?"
+		},
+		{
+			"character": "character-1643445742.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "There is no time. You are almost at the temple. Hurry young one."
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.3",
+		"file": "timeline-1643540506.json",
+		"name": "ElderReveal"
+	}
+}

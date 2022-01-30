@@ -1,19 +1,19 @@
 {
-	"color": "#ff504357",
+	"color": "#ffffbfc8",
 	"description": "",
 	"display_name": "",
 	"display_name_bool": false,
-	"id": "character-1643445742.json",
+	"id": "character-1643540407.json",
 	"mirror_portraits": false,
-	"name": "Elder",
-	"nickname": "???, Crystal",
+	"name": "SnakeMom",
+	"nickname": "",
 	"nickname_bool": false,
 	"offset_x": -10,
-	"offset_y": -25,
+	"offset_y": 0,
 	"portraits": [
 		{
 			"name": "Default",
-			"path": "res://assets/NPCs/Elder.png"
+			"path": "res://assets/NPCs/SnakeMom.png"
 		}
 	],
 	"scale": 10

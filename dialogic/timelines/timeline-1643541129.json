@@ -1,0 +1,103 @@
+{
+	"events": [
+		{
+			"action": "join",
+			"character": "character-1643445734.json",
+			"event_id": "dialogic_002",
+			"mirror": false,
+			"portrait": "",
+			"position": {
+				"0": true,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			}
+		},
+		{
+			"action": "join",
+			"character": "character-1643445742.json",
+			"event_id": "dialogic_002",
+			"mirror": false,
+			"portrait": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": true
+			}
+		},
+		{
+			"character": "character-1643445734.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": " So was it boring living in that temple all those years?"
+		},
+		{
+			"character": "character-1643445742.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Not at all. There were many activities I could do while watching over the temple."
+		},
+		{
+			"character": "character-1643445734.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Like what?"
+		},
+		{
+			"character": "character-1643445742.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "I greatly enjoy bird watching."
+		},
+		{
+			"character": "character-1643445734.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "… huh. Did not expect that one."
+		},
+		{
+			"character": "character-1643445734.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "But wait, can you even see birds from inside the temple?"
+		},
+		{
+			"character": "character-1643445742.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "There are a few windows. Sometimes I ta.. hmm. Yes, yes, there are windows."
+		},
+		{
+			"character": "character-1643445734.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Sometimes you what? Step out?"
+		},
+		{
+			"character": "character-1643445742.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": ".. occasionally."
+		},
+		{
+			"character": "character-1643445734.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "I was able to walk into this sacred temple and shatter the world, because you were out bird watching?"
+		},
+		{
+			"character": "character-1643445742.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "… HURRY YOUNG ONE THE TEMPLE IS JUST UP AHEAD."
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.3",
+		"file": "timeline-1643541129.json",
+		"name": "ElderSmalltalk"
+	}
+}

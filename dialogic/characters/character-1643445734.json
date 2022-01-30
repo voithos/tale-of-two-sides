@@ -1,5 +1,5 @@
 {
-	"color": "#ff00ff0a",
+	"color": "#ffbf4a26",
 	"description": "",
 	"display_name": "Kid",
 	"display_name_bool": true,
@@ -8,12 +8,16 @@
 	"name": "Player",
 	"nickname": "",
 	"nickname_bool": false,
-	"offset_x": 0,
-	"offset_y": -50,
+	"offset_x": 10,
+	"offset_y": -25,
 	"portraits": [
 		{
 			"name": "Default",
-			"path": "res://assets/player/PlayerPortrait.png"
+			"path": "res://assets/player/PlayerPortrait2.png"
+		},
+		{
+			"name": "Ready",
+			"path": "res://assets/player/PlayerPortrait1.png"
 		}
 	],
 	"scale": 10

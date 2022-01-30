@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/phase_tile_map.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/level_logic.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/crystal.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/NPCs/Elder.png" type="Texture" id=5]
+[ext_resource path="res://scenes/dialog_trigger.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/NPCs/FoodMerchant.png" type="Texture" id=7]
+[ext_resource path="res://assets/NPCs/MagicMerchant.png" type="Texture" id=8]
 
 [node name="Node2D" type="Node2D"]
 
@@ -26,3 +30,30 @@ position = Vector2( -79, 1 )
 
 [node name="Crystal" parent="." instance=ExtResource( 4 )]
 position = Vector2( 39, -380 )
+
+[node name="dialog_trigger" parent="." instance=ExtResource( 6 )]
+position = Vector2( -4, -1 )
+dialog = "ElderReveal"
+
+[node name="Sprite" type="Sprite" parent="dialog_trigger"]
+position = Vector2( 7, 5 )
+scale = Vector2( 0.03, 0.03 )
+texture = ExtResource( 5 )
+
+[node name="dialog_trigger2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 312, 58 )
+dialog = "MagicMerchant"
+
+[node name="Sprite" type="Sprite" parent="dialog_trigger2"]
+position = Vector2( 14, 1 )
+scale = Vector2( -0.03, -0.03 )
+texture = ExtResource( 8 )
+
+[node name="dialog_trigger3" parent="." instance=ExtResource( 6 )]
+position = Vector2( 295, -355 )
+dialog = "FoodMerchant"
+
+[node name="Sprite" type="Sprite" parent="dialog_trigger3"]
+position = Vector2( -8, 8 )
+scale = Vector2( 0.03, 0.03 )
+texture = ExtResource( 7 )

@@ -1,19 +1,19 @@
 {
-	"color": "#ff504357",
+	"color": "#ffe7d1d4",
 	"description": "",
 	"display_name": "",
 	"display_name_bool": false,
-	"id": "character-1643445742.json",
-	"mirror_portraits": false,
-	"name": "Elder",
-	"nickname": "???, Crystal",
+	"id": "character-1643540436.json",
+	"mirror_portraits": true,
+	"name": "SnakeDaughter",
+	"nickname": "",
 	"nickname_bool": false,
 	"offset_x": -10,
 	"offset_y": -25,
 	"portraits": [
 		{
 			"name": "Default",
-			"path": "res://assets/NPCs/Elder.png"
+			"path": "res://assets/NPCs/SnakeDaughter.png"
 		}
 	],
 	"scale": 10

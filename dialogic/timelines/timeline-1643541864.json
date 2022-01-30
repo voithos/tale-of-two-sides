@@ -1,0 +1,85 @@
+{
+	"events": [
+		{
+			"action": "join",
+			"character": "character-1643445734.json",
+			"event_id": "dialogic_002",
+			"mirror": false,
+			"portrait": "",
+			"position": {
+				"0": true,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			}
+		},
+		{
+			"action": "join",
+			"character": "character-1643540387.json",
+			"event_id": "dialogic_002",
+			"mirror": false,
+			"portrait": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": true
+			}
+		},
+		{
+			"character": "character-1643540387.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Finally! I’m free of that Cat!"
+		},
+		{
+			"character": "character-1643445734.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Huh? Don’t you miss your friend?"
+		},
+		{
+			"character": "character-1643540387.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Friend?! All they do is steal my business! Everyone thinks magic items are so cool and never want to buy my vegetables, even though they can heal all wounds!"
+		},
+		{
+			"character": "character-1643445734.json",
+			"event_id": "dialogic_001",
+			"portrait": "Ready",
+			"text": "Woah that sounds pretty cool!"
+		},
+		{
+			"character": "character-1643540387.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "I know right! Like even broken bones, poof, fixed!"
+		},
+		{
+			"character": "character-1643445734.json",
+			"event_id": "dialogic_001",
+			"portrait": "Ready",
+			"text": "What sort of magic items do they have?"
+		},
+		{
+			"character": "character-1643540387.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": " … just so you know my hurt feelings are the one thing I can’t heal."
+		},
+		{
+			"character": "character-1643445734.json",
+			"event_id": "dialogic_001",
+			"portrait": "Default",
+			"text": "Err… I got to go save the world."
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.3",
+		"file": "timeline-1643541864.json",
+		"name": "FoodMerchant"
+	}
+}

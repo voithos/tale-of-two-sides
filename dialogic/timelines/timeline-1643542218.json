@@ -1,0 +1,79 @@
+{
+	"events": [
+		{
+			"action": "join",
+			"character": "character-1643445734.json",
+			"event_id": "dialogic_002",
+			"mirror": false,
+			"portrait": "",
+			"position": {
+				"0": true,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			}
+		},
+		{
+			"action": "join",
+			"character": "character-1643540454.json",
+			"event_id": "dialogic_002",
+			"mirror": false,
+			"portrait": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": true
+			}
+		},
+		{
+			"character": "character-1643445734.json",
+			"event_id": "dialogic_001",
+			"portrait": "Ready",
+			"text": "Do not worry sir! No need to fear, I will save you and this land!"
+		},
+		{
+			"character": "character-1643540454.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": ".. err did you say something? Sorry I was in the zone thinking up this game I’m working on."
+		},
+		{
+			"character": "character-1643445734.json",
+			"event_id": "dialogic_001",
+			"portrait": "Default",
+			"text": ".. I said I’m here to fix this world and save you."
+		},
+		{
+			"character": "character-1643540454.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Fix this world? What do you mea- WOAH. WHAT HAPPENED HERE, EVERTHINGS ALL SCREWY."
+		},
+		{
+			"character": "character-1643445734.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Did you really not notice?"
+		},
+		{
+			"character": "character-1643540454.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "THIS IS INSANE. Could make for a good game… SORRY I GOT TO THINK THIS THROUGH WHILE I HAVE THE MOTIVATION."
+		},
+		{
+			"character": "character-1643445734.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": ".. have fun, I’ll uh, go fix things."
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.3",
+		"file": "timeline-1643542218.json",
+		"name": "ProgrammerPenguin"
+	}
+}

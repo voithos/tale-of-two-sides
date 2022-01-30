@@ -1,19 +1,19 @@
 {
-	"color": "#ff504357",
+	"color": "#ff2c5c95",
 	"description": "",
 	"display_name": "",
 	"display_name_bool": false,
-	"id": "character-1643445742.json",
-	"mirror_portraits": false,
-	"name": "Elder",
-	"nickname": "???, Crystal",
+	"id": "character-1643540292.json",
+	"mirror_portraits": true,
+	"name": "Magic Merchant",
+	"nickname": "",
 	"nickname_bool": false,
 	"offset_x": -10,
 	"offset_y": -25,
 	"portraits": [
 		{
 			"name": "Default",
-			"path": "res://assets/NPCs/Elder.png"
+			"path": "res://assets/NPCs/MagicMerchant.png"
 		}
 	],
 	"scale": 10

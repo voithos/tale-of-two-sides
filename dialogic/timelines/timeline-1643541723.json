@@ -1,0 +1,73 @@
+{
+	"events": [
+		{
+			"action": "join",
+			"character": "character-1643445734.json",
+			"event_id": "dialogic_002",
+			"mirror": false,
+			"portrait": "",
+			"position": {
+				"0": true,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			}
+		},
+		{
+			"action": "join",
+			"character": "character-1643540292.json",
+			"event_id": "dialogic_002",
+			"mirror": false,
+			"portrait": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": true
+			}
+		},
+		{
+			"character": "character-1643540292.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Welcome friend, would you like to buy a magic trinket?"
+		},
+		{
+			"character": "character-1643445734.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "*stomach grumbles* got any food?"
+		},
+		{
+			"character": "character-1643540292.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Does it look like I’m a walking Radish."
+		},
+		{
+			"character": "character-1643445734.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Huh?"
+		},
+		{
+			"character": "character-1643540292.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "I sell [b]MAGICAL[/b] items, not [b]EDIBLE[/b] items."
+		},
+		{
+			"character": "character-1643445734.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "… I’ll take that as a no then."
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.3",
+		"file": "timeline-1643541723.json",
+		"name": "MagicMerchant"
+	}
+}
