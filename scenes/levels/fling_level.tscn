@@ -32,7 +32,7 @@ tile_data = PoolIntArray( -327633, 0, 8, -327632, 0, 10, -327631, 0, 10, -327630
 position = Vector2( 835, -94 )
 
 [node name="level_logic" parent="." instance=ExtResource( 4 )]
-next_level = 1
+next_level = 7
 
 [node name="dialog_trigger" parent="." instance=ExtResource( 5 )]
 position = Vector2( 62, 3 )
