@@ -1,6 +1,6 @@
-# Global Game Jam 2022
+# Tale of Two Sides
 
-Theme: **Duality**
+Built for the Global Game Jam 2022. Theme: **Duality**
 
 ## Deployment
 
@@ -12,8 +12,8 @@ Deploying to itch.io can be done via the `butler` tool. First, some one-time set
 Then to deploy an HTML build:
 
 1. Export HTML from Godot.
-1. Push the exported HTML directory: `butler push dist/html/ voithos/global-game-jam-2022:browser`
-1. Play it at https://voithos.itch.io/global-game-jam-2022
+1. Push the exported HTML directory: `butler push dist/html/ voithos/tale-of-two-sides:browser`
+1. Play it at https://voithos.itch.io/tale-of-two-sides
 
 ## Attribution
 
