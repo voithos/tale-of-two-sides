@@ -37,9 +37,14 @@ func _ready():
 
 func _input(event):
     if event is InputEventKey and event.is_pressed():
-        if event.scancode == KEY_ESCAPE and not OS.has_feature("HTML5"):
-            # Quitting doesn't make sense for web.
-            get_tree().quit()
+        if event.scancode == KEY_ESCAPE:
+            if OS.is_debug_build() and \
+                    not OS.has_feature("HTML5"):
+                _on_app_close()
+                get_tree().quit()
+            else:
+                set_pause(not is_paused)
+        
         if event.scancode == KEY_F11:
             OS.window_fullscreen = not OS.window_fullscreen
     
@@ -49,6 +54,20 @@ func _input(event):
     if Input.is_action_just_pressed("reset"):
         print("Resetting level")
         game_screen.level_logic.reset()
+
+
+func _notification(notification: int) -> void:
+    # Pause when the window loses focus.
+    match notification:
+        MainLoop.NOTIFICATION_WM_FOCUS_OUT:
+            set_pause(true)
+        MainLoop.NOTIFICATION_WM_QUIT_REQUEST:
+            _on_app_close()
+
+
+func _on_app_close() -> void:
+    if screenshot.was_screenshot_taken:
+        screenshot.open_screenshot_folder()
 
 
 func set_pause(is_paused: bool) -> void:

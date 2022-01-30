@@ -5,14 +5,9 @@ var was_screenshot_taken := false
 
 
 func _input(event):
-    if OS.is_debug_build():
-        if event is InputEventKey and event.is_pressed():
-            if event.scancode == KEY_ESCAPE and not OS.has_feature("HTML5"):
-                if was_screenshot_taken:
-                    open_screenshot_folder()
-        
-        if Input.is_action_just_pressed("screenshot"):
-            take_screenshot()
+    if Input.is_action_just_pressed("screenshot") and \
+            OS.is_debug_build():
+        take_screenshot()
 
 
 func take_screenshot() -> void:
@@ -26,6 +21,7 @@ func take_screenshot() -> void:
     if status != OK:
         push_error("Error saving screenshot: %s" % path)
     else:
+        print("Captured screenshot")
         was_screenshot_taken = true
 
 
