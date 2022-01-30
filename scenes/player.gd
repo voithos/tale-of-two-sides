@@ -91,9 +91,10 @@ func _physics_process(delta):
     
     if state == State.CUTSCENE:
         # Do simple movement when in cutscene.
-        velocity.y = max(-TERM_VEL, min(TERM_VEL, velocity.y + GRAVITY))
+        velocity.y = max(-TERM_VEL, min(TERM_VEL, velocity.y + GRAVITY*orientation_multiplier))
         velocity.x = lerp(velocity.x, 0, HORIZONTAL_ACCEL * delta)
         velocity = move_and_slide(velocity, Vector2.UP)
+        $sprite.scale = Vector2(1,1)
         $animation.play("idle")
         return;
     
