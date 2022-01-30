@@ -57,12 +57,13 @@ func set_pause(is_paused: bool) -> void:
     
     get_tree().set_pause(is_paused)
     
-    if is_paused and current_screen.type == GAME:
-        print("Pausing")
-        open_screen(PAUSE)
-    elif was_paused and current_screen.type == PAUSE:
-        print("Unpausing")
-        open_screen(GAME)
+    if is_instance_valid(current_screen):
+        if is_paused and current_screen.type == GAME:
+            print("Pausing")
+            open_screen(PAUSE)
+        elif was_paused and current_screen.type == PAUSE:
+            print("Unpausing")
+            open_screen(GAME)
 
 
 func open_screen(screen_type: int) -> void:

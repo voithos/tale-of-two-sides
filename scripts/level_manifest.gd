@@ -17,6 +17,8 @@ var packed_scenes := {
     DEMO_ZAVEN: load("res://scenes/demos/demo_zaven.tscn"),
 }
 
+const START_LEVEL := DEMO_BASE
+
 
 static func get_level_string(level_type: int) -> String:
     match level_type:
