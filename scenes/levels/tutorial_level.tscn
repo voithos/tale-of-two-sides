@@ -9,7 +9,7 @@
 [node name="Node2D" type="Node2D"]
 
 [node name="level_logic" parent="." instance=ExtResource( 2 )]
-next_level = 1
+next_level = 6
 
 [node name="PhaseTileMap" parent="." instance=ExtResource( 1 )]
 position = Vector2( -1, 0 )
