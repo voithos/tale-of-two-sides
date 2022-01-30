@@ -18,6 +18,7 @@ func on_level_complete() -> void:
         _begin_next_level_transition()
     else:
         screen.open_screen(ScreenController.CREDITS)
+        screen.game_screen.exit_level()
 
 
 func _begin_next_level_transition() -> void:

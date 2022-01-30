@@ -49,6 +49,12 @@ func reset_level() -> void:
     print("reset_level: %s" % LevelManifest.get_level_string(level_type))
 
 
+func exit_level() -> void:
+    level_logic = null
+    level.queue_free()
+    level_type = -1
+
+
 func _get_level_logic(level) -> LevelLogic:
     if !is_instance_valid(level):
         return null
