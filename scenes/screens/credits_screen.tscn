@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/screens/credits_screen.gd" type="Script" id=1]
-[ext_resource path="res://assets/fonts/Roboto/roboto_font_xxs.tres" type="DynamicFont" id=2]
+[ext_resource path="res://scenes/crystal.tres" type="SpriteFrames" id=2]
 [ext_resource path="res://default_theme.tres" type="Theme" id=3]
-[ext_resource path="res://assets/fonts/Roboto/roboto_font_s.tres" type="DynamicFont" id=4]
-[ext_resource path="res://assets/fonts/Roboto/roboto_font_xs.tres" type="DynamicFont" id=5]
+[ext_resource path="res://assets/fonts/Caveat/caveat_font_xxs.tres" type="DynamicFont" id=4]
+[ext_resource path="res://assets/fonts/Satisfy/satisfy_font_xs.tres" type="DynamicFont" id=5]
 
 [node name="CreditsScreen" type="PanelContainer"]
 pause_mode = 2
@@ -25,223 +25,236 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-margin_left = 30.0
-margin_top = 32.0
-margin_right = 289.0
-margin_bottom = 148.0
+margin_left = 37.0
+margin_top = 13.0
+margin_right = 283.0
+margin_bottom = 167.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
-margin_right = 259.0
-margin_bottom = 22.0
-custom_fonts/font = ExtResource( 4 )
+margin_right = 246.0
+margin_bottom = 23.0
+custom_fonts/font = ExtResource( 5 )
 text = "Thanks for playing!"
 align = 1
 
-[node name="Spacer" type="Control" parent="CenterContainer/VBoxContainer"]
-margin_top = 26.0
-margin_right = 259.0
-margin_bottom = 46.0
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+margin_left = 123.0
+margin_top = 27.0
+margin_right = 123.0
+margin_bottom = 47.0
+rect_min_size = Vector2( 0, 20 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Spacer" type="Control" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+margin_bottom = 20.0
 rect_min_size = Vector2( 0, 20 )
 
+[node name="AnimatedSprite" type="AnimatedSprite" parent="CenterContainer/VBoxContainer/HBoxContainer/Spacer"]
+frames = ExtResource( 2 )
+frame = 9
+playing = true
+offset = Vector2( 0, 10 )
+
 [node name="Label2" type="Label" parent="CenterContainer/VBoxContainer"]
-margin_top = 50.0
-margin_right = 259.0
-margin_bottom = 64.0
+margin_top = 51.0
+margin_right = 246.0
+margin_bottom = 74.0
 custom_fonts/font = ExtResource( 5 )
 text = "Credits:"
 align = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer"]
-margin_top = 68.0
-margin_right = 259.0
-margin_bottom = 116.0
+margin_top = 78.0
+margin_right = 246.0
+margin_bottom = 154.0
 
 [node name="Diego" type="HBoxContainer" parent="CenterContainer/VBoxContainer/VBoxContainer"]
-margin_right = 259.0
-margin_bottom = 9.0
+margin_right = 246.0
+margin_bottom = 16.0
 size_flags_horizontal = 3
 
 [node name="Name" type="Label" parent="CenterContainer/VBoxContainer/VBoxContainer/Diego"]
 margin_right = 80.0
-margin_bottom = 9.0
+margin_bottom = 16.0
 rect_min_size = Vector2( 80, 0 )
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = ExtResource( 4 )
 text = "Diego Gonzalez"
 
 [node name="Dash" type="Label" parent="CenterContainer/VBoxContainer/VBoxContainer/Diego"]
 margin_left = 84.0
 margin_right = 84.0
-margin_bottom = 9.0
+margin_bottom = 16.0
 size_flags_horizontal = 4
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = ExtResource( 4 )
 align = 1
 
 [node name="Role" type="Label" parent="CenterContainer/VBoxContainer/VBoxContainer/Diego"]
 margin_left = 88.0
 margin_right = 168.0
-margin_bottom = 9.0
+margin_bottom = 16.0
 rect_min_size = Vector2( 80, 0 )
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = ExtResource( 4 )
 text = "Programming"
 align = 1
 
 [node name="Dash2" type="Label" parent="CenterContainer/VBoxContainer/VBoxContainer/Diego"]
 margin_left = 172.0
-margin_right = 193.0
-margin_bottom = 9.0
+margin_right = 190.0
+margin_bottom = 16.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = ExtResource( 4 )
 align = 1
 
 [node name="Link" type="LinkButton" parent="CenterContainer/VBoxContainer/VBoxContainer/Diego"]
-margin_left = 197.0
-margin_right = 259.0
-margin_bottom = 9.0
+margin_left = 194.0
+margin_right = 246.0
+margin_bottom = 16.0
 size_flags_horizontal = 0
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = ExtResource( 4 )
 text = "drgvdg.itch.io"
 
 [node name="Levi" type="HBoxContainer" parent="CenterContainer/VBoxContainer/VBoxContainer"]
-margin_top = 13.0
-margin_right = 259.0
-margin_bottom = 22.0
+margin_top = 20.0
+margin_right = 246.0
+margin_bottom = 36.0
 size_flags_horizontal = 3
 
 [node name="Name" type="Label" parent="CenterContainer/VBoxContainer/VBoxContainer/Levi"]
 margin_right = 80.0
-margin_bottom = 9.0
+margin_bottom = 16.0
 rect_min_size = Vector2( 80, 0 )
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = ExtResource( 4 )
 text = "Levi Lindsey"
 
 [node name="Dash" type="Label" parent="CenterContainer/VBoxContainer/VBoxContainer/Levi"]
 margin_left = 84.0
 margin_right = 84.0
-margin_bottom = 9.0
+margin_bottom = 16.0
 size_flags_horizontal = 4
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = ExtResource( 4 )
 align = 1
 
 [node name="Role" type="Label" parent="CenterContainer/VBoxContainer/VBoxContainer/Levi"]
 margin_left = 88.0
 margin_right = 168.0
-margin_bottom = 9.0
+margin_bottom = 16.0
 rect_min_size = Vector2( 80, 0 )
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = ExtResource( 4 )
 text = "Programming"
 align = 1
 
 [node name="Dash2" type="Label" parent="CenterContainer/VBoxContainer/VBoxContainer/Levi"]
 margin_left = 172.0
-margin_right = 222.0
-margin_bottom = 9.0
+margin_right = 215.0
+margin_bottom = 16.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = ExtResource( 4 )
 align = 1
 
 [node name="Link" type="LinkButton" parent="CenterContainer/VBoxContainer/VBoxContainer/Levi"]
-margin_left = 226.0
-margin_right = 259.0
-margin_bottom = 9.0
+margin_left = 219.0
+margin_right = 246.0
+margin_bottom = 16.0
 focus_mode = 2
 size_flags_horizontal = 0
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = ExtResource( 4 )
 text = "levi.dev"
 
 [node name="Daisy" type="HBoxContainer" parent="CenterContainer/VBoxContainer/VBoxContainer"]
-margin_top = 26.0
-margin_right = 259.0
-margin_bottom = 35.0
+margin_top = 40.0
+margin_right = 246.0
+margin_bottom = 56.0
 size_flags_horizontal = 3
 
 [node name="Name" type="Label" parent="CenterContainer/VBoxContainer/VBoxContainer/Daisy"]
 margin_right = 80.0
-margin_bottom = 9.0
+margin_bottom = 16.0
 rect_min_size = Vector2( 80, 0 )
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = ExtResource( 4 )
 text = "Daisy Muradyan"
 
 [node name="Dash" type="Label" parent="CenterContainer/VBoxContainer/VBoxContainer/Daisy"]
 margin_left = 84.0
 margin_right = 84.0
-margin_bottom = 9.0
+margin_bottom = 16.0
 size_flags_horizontal = 4
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = ExtResource( 4 )
 align = 1
 
 [node name="Role" type="Label" parent="CenterContainer/VBoxContainer/VBoxContainer/Daisy"]
 margin_left = 88.0
 margin_right = 168.0
-margin_bottom = 9.0
+margin_bottom = 16.0
 rect_min_size = Vector2( 80, 0 )
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = ExtResource( 4 )
 text = "Art"
 align = 1
 
 [node name="Dash2" type="Label" parent="CenterContainer/VBoxContainer/VBoxContainer/Daisy"]
 margin_left = 172.0
 margin_right = 172.0
-margin_bottom = 9.0
+margin_bottom = 16.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = ExtResource( 4 )
 align = 1
 
 [node name="Link" type="LinkButton" parent="CenterContainer/VBoxContainer/VBoxContainer/Daisy"]
 margin_left = 176.0
-margin_right = 259.0
-margin_bottom = 9.0
+margin_right = 246.0
+margin_bottom = 16.0
 focus_mode = 2
 size_flags_horizontal = 0
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = ExtResource( 4 )
 text = "ladychamomile.ink"
 
 [node name="Zaven" type="HBoxContainer" parent="CenterContainer/VBoxContainer/VBoxContainer"]
-margin_top = 39.0
-margin_right = 259.0
-margin_bottom = 48.0
+margin_top = 60.0
+margin_right = 246.0
+margin_bottom = 76.0
 size_flags_horizontal = 3
 
 [node name="Name" type="Label" parent="CenterContainer/VBoxContainer/VBoxContainer/Zaven"]
 margin_right = 80.0
-margin_bottom = 9.0
+margin_bottom = 16.0
 rect_min_size = Vector2( 80, 0 )
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = ExtResource( 4 )
 text = "Zaven Muradyan"
 
 [node name="Dash" type="Label" parent="CenterContainer/VBoxContainer/VBoxContainer/Zaven"]
 margin_left = 84.0
 margin_right = 84.0
-margin_bottom = 9.0
+margin_bottom = 16.0
 size_flags_horizontal = 4
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = ExtResource( 4 )
 align = 1
 
 [node name="Role" type="Label" parent="CenterContainer/VBoxContainer/VBoxContainer/Zaven"]
 margin_left = 88.0
 margin_right = 168.0
-margin_bottom = 9.0
+margin_bottom = 16.0
 rect_min_size = Vector2( 80, 0 )
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = ExtResource( 4 )
 text = "Programming"
 align = 1
 
 [node name="Dash2" type="Label" parent="CenterContainer/VBoxContainer/VBoxContainer/Zaven"]
 margin_left = 172.0
-margin_right = 211.0
-margin_bottom = 9.0
+margin_right = 206.0
+margin_bottom = 16.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = ExtResource( 4 )
 align = 1
 
 [node name="Link" type="LinkButton" parent="CenterContainer/VBoxContainer/VBoxContainer/Zaven"]
-margin_left = 215.0
-margin_right = 259.0
-margin_bottom = 9.0
+margin_left = 210.0
+margin_right = 246.0
+margin_bottom = 16.0
 focus_mode = 2
 size_flags_horizontal = 0
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = ExtResource( 4 )
 text = "voithos.io"
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/VBoxContainer/Diego/Link" to="." method="_on_DiegoLink_pressed"]
