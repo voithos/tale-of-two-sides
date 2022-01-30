@@ -5,9 +5,9 @@ extends Node2D
 ##     demo scene, use F6 to "Play Scene".
 
 
-const START_LEVEL := GameScreen.DEMO_ZAVEN
+const START_LEVEL := LevelManifest.DEMO_BASE
 
 
 func _ready() -> void:
-	screen.set_level(START_LEVEL)
-	screen.open_screen(ScreenController.MAIN_MENU)
+    screen.set_level(START_LEVEL)
+    screen.open_screen(ScreenController.MAIN_MENU)

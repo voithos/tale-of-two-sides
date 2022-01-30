@@ -89,6 +89,10 @@ func set_level(level_type: int) -> void:
     game_screen.set_level(level_type)
 
 
+func on_level_complete() -> void:
+    game_screen.level_logic.on_level_complete()
+
+
 static func get_screen_string(screen_type: int) -> String:
     match screen_type:
         CREDITS:

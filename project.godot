@@ -55,6 +55,16 @@ _global_script_classes=[ {
 "path": "res://scenes/screens/game_screen.gd"
 }, {
 "base": "Node2D",
+"class": "LevelLogic",
+"language": "GDScript",
+"path": "res://scenes/level_logic.gd"
+}, {
+"base": "Node",
+"class": "LevelManifest",
+"language": "GDScript",
+"path": "res://scripts/level_manifest.gd"
+}, {
+"base": "Node2D",
 "class": "Main",
 "language": "GDScript",
 "path": "res://scenes/main.gd"
@@ -104,6 +114,8 @@ _global_script_class_icons={
 "DialogicResources": "",
 "DialogicUtil": "",
 "GameScreen": "",
+"LevelLogic": "",
+"LevelManifest": "",
 "Main": "",
 "MainMenuScreen": "",
 "Music": "",
@@ -130,6 +142,7 @@ screen="*res://scripts/screen_controller.gd"
 music="*res://scripts/music.gd"
 global_camera="*res://scripts/global_camera.gd"
 checkpoint_store="*res://scripts/checkpoint_store.gd"
+levels="*res://scripts/level_manifest.gd"
 
 [display]
 
