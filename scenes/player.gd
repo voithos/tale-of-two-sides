@@ -75,6 +75,9 @@ const TEST_PHASE_DIRECTION = Vector2(200,-20)
 const PHASE_ANIM_SPEED = 4;
 const PHASE_MOVE_SPEED = 400;
 
+# next queued dialog. If empty string, no dialog is queued.
+var next_dialog = "";
+
 func _ready():
     add_to_group("player")
     _update_sprite_flip()
@@ -173,7 +176,11 @@ func _move_player(delta):
         is_airborne = true
 
     if !is_airborne:
-        if is_moving:
+        if next_dialog != "":
+            create_dialog()
+            next_dialog = ""
+            $animation.play("idle")
+        elif is_moving:
             $animation.play("run")
         else:
             $animation.play("idle")
@@ -458,3 +465,15 @@ func _on_fall_out_of_bounds() -> void:
     # Wait a bit before continuing.
     yield(get_tree().create_timer(1), "timeout")
     level_logic.reset()
+
+func queue_dialog(dialog):
+    next_dialog = dialog;
+    
+func create_dialog():
+    var new_dialog = Dialogic.start(next_dialog)
+    new_dialog.connect("timeline_end", self, "_dialog_end")
+    enter_cutscene();
+    get_parent().add_child(new_dialog)
+
+func _dialog_end(signal_type):
+    exit_cutscene();
