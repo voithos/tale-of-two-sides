@@ -17,7 +17,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 0, 16 ]
+"values": [ 0, 17 ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -34,17 +34,18 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 19, 31 ]
+"values": [ 18, 33 ]
 }
 
 [node name="transition" type="CanvasLayer"]
 script = ExtResource( 2 )
 
 [node name="sprite" type="Sprite" parent="."]
-position = Vector2( 160, 90 )
-scale = Vector2( 40, 24 )
+position = Vector2( 160, 100 )
+scale = Vector2( 20, 20 )
 texture = ExtResource( 1 )
-hframes = 32
+hframes = 34
+frame = 31
 
 [node name="animation" type="AnimationPlayer" parent="."]
 anims/fade = SubResource( 1 )
