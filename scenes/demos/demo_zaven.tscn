@@ -8,7 +8,6 @@
 [node name="demo_base" type="Node2D"]
 
 [node name="level_logic" parent="." instance=ExtResource( 1 )]
-background_music = 1
 
 [node name="test_hires" type="Sprite" parent="."]
 position = Vector2( 11, 10 )

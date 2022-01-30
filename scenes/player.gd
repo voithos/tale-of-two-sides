@@ -62,6 +62,7 @@ const PHASE_MOVE_SPEED = 400;
 func _ready():
     add_to_group("player")
     _update_sprite_flip()
+    $animation.play("idle")
 
 func _physics_process(delta):
     if state == State.ANIMATING && is_phasing_animation:
