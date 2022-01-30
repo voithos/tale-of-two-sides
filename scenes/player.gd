@@ -268,9 +268,7 @@ func _double_raycast(space_state: Physics2DDirectSpaceState, from, to, collision
 
 func _set_boundaries() -> void:
     var tile_map_region: Rect2 = level_logic.get_combined_tile_map_region()
-    var player_half_size := Vector2(
-            $shape.shape.radius,
-            $shape.shape.height + $shape.shape.radius)
+    var player_half_size := calculate_half_width_height($shape.shape, false)
     
     var camera_boundary := \
             tile_map_region.grow(TILE_REGION_CAMERA_BOUNDARY_MARGIN)
@@ -286,6 +284,33 @@ func _set_boundaries() -> void:
     $player_camera.limit_top = camera_boundary.position.y
     $player_camera.limit_right = camera_boundary.end.x
     $player_camera.limit_bottom = camera_boundary.end.y
+
+static func calculate_half_width_height(
+        shape: Shape2D,
+        is_rotated_90_degrees: bool) -> Vector2:
+    var half_width_height: Vector2
+    if shape is CircleShape2D:
+        half_width_height = Vector2(
+                shape.radius,
+                shape.radius)
+    elif shape is CapsuleShape2D:
+        half_width_height = Vector2(
+                shape.radius,
+                shape.radius + shape.height / 2.0)
+    elif shape is RectangleShape2D:
+        half_width_height = shape.extents
+    else:
+        push_error(
+                ("Invalid Shape2D provided to calculate_half_width_height: " +
+                "%s. The upported shapes are: CircleShape2D, " +
+                "CapsuleShape2D, RectangleShape2D.") % str(shape))
+    
+    if is_rotated_90_degrees:
+        var swap := half_width_height.x
+        half_width_height.x = half_width_height.y
+        half_width_height.y = swap
+        
+    return half_width_height
 
 func _get_level_logic():
     var all_level_logics := get_tree().get_nodes_in_group("level")
