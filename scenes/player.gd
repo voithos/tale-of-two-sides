@@ -153,16 +153,14 @@ func _move_player(delta):
     if !is_airborne:
         if is_moving:
             $animation.play("run")
-            pass
         else:
             $animation.play("idle")
-            pass
 
 func _jump():
     is_airborne = true
     is_fast_falling = false
     velocity.y = -JUMP_VEL * orientation_multiplier
-    #$animation.play("jump")
+    $animation.play("jump")
     _apply_jump_squash_stretch()
     sfx.play(sfx.JUMP)
 
@@ -176,6 +174,7 @@ func _landed():
         if did_phase:
             # Since we phased through, we should retain the velocity we had before the surface collision.
             velocity = previous_velocity
+            is_airborne = true
     
     # Only play the sfx if we didn't phase.
     if !did_phase:

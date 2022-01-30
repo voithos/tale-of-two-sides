@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/player/player.png" type="Texture" id=1]
 [ext_resource path="res://scenes/player_camera.gd" type="Script" id=2]
@@ -47,6 +47,24 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( 5, 0 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "jump"
+length = 0.5
+loop = true
+step = 0.083
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.415 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 2 ), Vector2( 3, 2 ) ]
 }
 
 [sub_resource type="Animation" id=8]
@@ -101,6 +119,7 @@ frame = 1
 [node name="animation" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 6 )
 anims/idle = SubResource( 7 )
+anims/jump = SubResource( 9 )
 anims/run = SubResource( 8 )
 
 [node name="shape" type="CollisionShape2D" parent="."]
