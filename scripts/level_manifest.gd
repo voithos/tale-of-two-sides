@@ -27,7 +27,7 @@ var packed_scenes := {
     TEMPLE: load("res://scenes/levels/temple_level.tscn"),
 }
 
-const START_LEVEL := TEMPLE
+const START_LEVEL := TUTORIAL
 
 
 static func get_level_string(level_type: int) -> String:
