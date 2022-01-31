@@ -7,6 +7,7 @@ enum {
     GAME,
     MAIN_MENU,
     PAUSE,
+    INTRO_STORY,
 }
 
 var packed_scenes := {
@@ -14,6 +15,7 @@ var packed_scenes := {
     GAME: load("res://scenes/screens/game_screen.tscn"),
     MAIN_MENU: load("res://scenes/screens/main_menu_screen.tscn"),
     PAUSE: load("res://scenes/screens/pause_screen.tscn"),
+    INTRO_STORY: load("res://scenes/screens/intro_story_screen.tscn"),
 }
 
 var is_paused := false
@@ -137,6 +139,8 @@ static func get_screen_string(screen_type: int) -> String:
             return "MAIN_MENU"
         PAUSE:
             return "PAUSE"
+        INTRO_STORY:
+            return "INTRO_STORY"
         _:
             push_error("Invalid screen_type")
             return "??"

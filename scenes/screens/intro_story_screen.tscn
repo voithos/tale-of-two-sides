@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/screens/intro_story_screen.gd" type="Script" id=1]
+[ext_resource path="res://assets/story/intro1.png" type="Texture" id=2]
+[ext_resource path="res://default_theme.tres" type="Theme" id=3]
+[ext_resource path="res://assets/story/intro2.png" type="Texture" id=4]
+
+[node name="IntroStoryScreen" type="PanelContainer"]
+pause_mode = 2
+margin_right = 320.0
+margin_bottom = 180.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 3 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+margin_right = 320.0
+margin_bottom = 180.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 160.0
+margin_top = 90.0
+margin_right = 160.0
+margin_bottom = 90.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Sprite" type="Sprite" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+scale = Vector2( 0.167, 0.167 )
+texture = ExtResource( 2 )
+
+[node name="Sprite2" type="Sprite" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+scale = Vector2( 0.167, 0.167 )
+texture = ExtResource( 4 )

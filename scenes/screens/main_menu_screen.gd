@@ -13,8 +13,7 @@ func _ready() -> void:
 
 func _on_Button_pressed() -> void:
     sfx.play(sfx.BUTTON_PRESS)
-    screen.set_level(levels.START_LEVEL)
-    screen.open_screen(ScreenController.GAME)
+    screen.open_screen(ScreenController.INTRO_STORY)
 
 
 func _input(event: InputEvent) -> void:

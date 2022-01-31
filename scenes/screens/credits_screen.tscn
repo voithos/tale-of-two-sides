@@ -54,7 +54,7 @@ rect_min_size = Vector2( 0, 20 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="CenterContainer/VBoxContainer/HBoxContainer/Spacer"]
 frames = ExtResource( 2 )
-frame = 3
+frame = 16
 playing = true
 offset = Vector2( 0, 10 )
 

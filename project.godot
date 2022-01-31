@@ -54,6 +54,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scenes/screens/game_screen.gd"
 }, {
+"base": "Screen",
+"class": "IntroStoryScreen",
+"language": "GDScript",
+"path": "res://scenes/screens/intro_story_screen.gd"
+}, {
 "base": "Node2D",
 "class": "LevelLogic",
 "language": "GDScript",
@@ -124,6 +129,7 @@ _global_script_class_icons={
 "DialogicResources": "",
 "DialogicUtil": "",
 "GameScreen": "",
+"IntroStoryScreen": "",
 "LevelLogic": "",
 "LevelManifest": "",
 "Main": "",
