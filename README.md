@@ -12,12 +12,10 @@ Deploying to itch.io can be done via the `butler` tool. First, some one-time set
 Then to deploy an HTML build:
 
 1. Export HTML from Godot.
-1. Push the exported HTML directory: `butler push dist/html/ voithos/tale-of-two-sides:browser`
+1. Push the exported HTML directory: `butler push dist/html/ voithos/tale-of-two-sides:html5`
 1. Play it at https://voithos.itch.io/tale-of-two-sides
 
-## Attribution
-
-<!-- Assets, etc, that were not created during the jam will be attributed here. -->
+---
 
 <p align="center">
   <img src="https://github.com/voithos/tale-of-two-sides/blob/main/assets/props/icon_128.gif"
