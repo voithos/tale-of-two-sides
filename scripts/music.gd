@@ -13,11 +13,13 @@ const MOSTLY_MUTED_DB = -36.0
 enum {
     EXAMPLE,
     PHASE_UP,
+    PHASE_MENU,
 }
 
 const SAMPLES = {
     EXAMPLE: preload("res://assets/music/example.mp3"),
     PHASE_UP: preload("res://assets/music/phase-up.wav"),
+    PHASE_MENU: preload("res://assets/music/phase-menu.wav"),
 }
 # =======================
 
@@ -103,6 +105,8 @@ func _load_music():
 func play(sample):
     assert(sample in SAMPLES)
     if current_music != sample:
+        if is_instance_valid(last_musicbox):
+            last_musicbox.stop()
         var musicbox = musicboxes[sample]
         musicbox.play()
         current_music = sample

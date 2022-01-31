@@ -7,6 +7,10 @@ func _init().(ScreenController.MAIN_MENU, PAUSE_MODE_PROCESS) -> void:
     pass
 
 
+func _ready() -> void:
+    music.play(Music.PHASE_MENU)
+
+
 func _on_Button_pressed() -> void:
     sfx.play(sfx.BUTTON_PRESS)
     screen.set_level(levels.START_LEVEL)
