@@ -142,7 +142,7 @@ _global_script_class_icons={
 
 config/name="Tale of Two Sides"
 run/main_scene="res://scenes/main.tscn"
-config/icon="res://icon.png"
+config/icon="res://assets/props/icon_128.png"
 
 [autoload]
 

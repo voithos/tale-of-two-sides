@@ -18,3 +18,8 @@ Then to deploy an HTML build:
 ## Attribution
 
 <!-- Assets, etc, that were not created during the jam will be attributed here. -->
+
+<p align="center">
+  <img src="https://github.com/voithos/tale-of-two-sides/blob/master/assets/props/icon_128.gif"
+       alt="An animated GIF showing a sparkling crystal.">
+</p>
