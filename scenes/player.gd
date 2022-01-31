@@ -527,6 +527,9 @@ func handle_dialog(signal_type):
         level_fading = true
         $"../fadeout".visible = true
         $"../fadeout".modulate.a = 0;
+    elif signal_type == "endingdone":
+        is_level_finished = true
+        screen.on_level_complete()
 
 func _dialog_end(signal_type):
     exit_cutscene();

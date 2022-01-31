@@ -1,11 +1,10 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scenes/tile_set_temple_16.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/phase_tile_map.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/level_logic.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/NPCs/PenguinProgrammer_small.png" type="Texture" id=5]
-[ext_resource path="res://scenes/crystal.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/dialog_trigger.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/background.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/dialog_trigger.gd" type="Script" id=9]
@@ -72,6 +71,7 @@ tile_set = ExtResource( 1 )
 tile_data = PoolIntArray( -262180, 0, 196609, -262179, 0, 5, -262178, 10, 3, -196643, 0, 65544, -196642, 0, 131083, -131107, 0, 65544, -131106, 10, 2, -131105, 10, 3, -65571, 0, 65544, -65570, 0, 131081, -65569, 10, 2, -65568, 10, 3, -35, 0, 65544, -34, 0, 131081, -33, 0, 131081, -32, 10, 2, -31, 10, 3, 65501, 0, 65544, 65502, 0, 131081, 65503, 0, 131081, 65504, 0, 131081, 65505, 10, 2, 65506, 0, 10, 65507, 10, 3, 131037, 0, 65544, 131038, 0, 131081, 131039, 0, 131081, 131040, 0, 131081, 131041, 0, 131081, 131042, 0, 131081, 131043, 10, 2, 131044, 0, 10, 131045, 0, 10, 131046, 0, 11, 196573, 0, 65544, 196574, 0, 131081, 196575, 0, 131081, 196576, 0, 131081, 196577, 0, 131081, 196578, 0, 131081, 196579, 0, 131081, 196580, 0, 131081, 196581, 10, 65538, 196582, 10, 65539, 262109, 10, 65536, 262110, 10, 65537, 262111, 0, 131081, 262112, 0, 131081, 262113, 0, 131081, 262114, 0, 131081, 262115, 0, 131081, 262116, 10, 65538, 262117, 10, 65539, 327646, 10, 65536, 327647, 0, 196617, 327648, 0, 196617, 327649, 0, 196617, 327650, 0, 196617, 327651, 0, 196617, 327652, 10, 65539 )
 
 [node name="player" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1, -1 )
 facing_right = false
 
 [node name="Particles2D" type="Particles2D" parent="."]
@@ -79,10 +79,6 @@ position = Vector2( -238, -43 )
 amount = 50
 lifetime = 4.0
 process_material = SubResource( 1 )
-
-[node name="Crystal" parent="." instance=ExtResource( 6 )]
-visible = false
-position = Vector2( -240, -498 )
 
 [node name="dialog_trigger3" parent="." instance=ExtResource( 7 )]
 position = Vector2( -24, -307 )

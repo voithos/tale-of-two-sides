@@ -71,6 +71,14 @@
 		},
 		{
 			"event_id": "dialogic_023",
+			"wait_seconds": 6
+		},
+		{
+			"emit_signal": "endingdone",
+			"event_id": "dialogic_040"
+		},
+		{
+			"event_id": "dialogic_023",
 			"wait_seconds": 600
 		}
 	],
