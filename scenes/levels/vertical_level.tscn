@@ -6,8 +6,8 @@
 [ext_resource path="res://scenes/crystal.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/NPCs/Elder.png" type="Texture" id=5]
 [ext_resource path="res://scenes/dialog_trigger.tscn" type="PackedScene" id=6]
-[ext_resource path="res://assets/NPCs/FoodMerchant.png" type="Texture" id=7]
-[ext_resource path="res://assets/NPCs/MagicMerchant.png" type="Texture" id=8]
+[ext_resource path="res://assets/NPCs/FoodMerchant_small.png" type="Texture" id=7]
+[ext_resource path="res://assets/NPCs/MagicMerchant_small.png" type="Texture" id=8]
 [ext_resource path="res://scenes/background.tscn" type="PackedScene" id=9]
 [ext_resource path="res://assets/NPCs/pixels/elder.png" type="Texture" id=10]
 
@@ -78,8 +78,8 @@ position = Vector2( 233, 179 )
 dialog = "MagicMerchant"
 
 [node name="Sprite" type="Sprite" parent="dialog_trigger2"]
-position = Vector2( 14, 1 )
-scale = Vector2( -0.03, -0.03 )
+position = Vector2( 13, -5 )
+scale = Vector2( -1, -1 )
 texture = ExtResource( 8 )
 
 [node name="dialog_trigger3" parent="." instance=ExtResource( 6 )]
@@ -87,8 +87,7 @@ position = Vector2( 118, -267 )
 dialog = "FoodMerchant"
 
 [node name="Sprite" type="Sprite" parent="dialog_trigger3"]
-position = Vector2( -8, 8 )
-scale = Vector2( 0.03, 0.03 )
+position = Vector2( -8, 14 )
 texture = ExtResource( 7 )
 
 [node name="player" parent="." instance=ExtResource( 2 )]

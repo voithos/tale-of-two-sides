@@ -4,7 +4,7 @@
 [ext_resource path="res://scenes/phase_tile_map.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/level_logic.tscn" type="PackedScene" id=4]
-[ext_resource path="res://assets/NPCs/PenguinProgrammer.png" type="Texture" id=5]
+[ext_resource path="res://assets/NPCs/PenguinProgrammer_small.png" type="Texture" id=5]
 [ext_resource path="res://scenes/crystal.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/dialog_trigger.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/background.tscn" type="PackedScene" id=8]
@@ -89,8 +89,7 @@ position = Vector2( -24, -307 )
 dialog = "ProgrammerPenguin"
 
 [node name="Sprite" type="Sprite" parent="dialog_trigger3"]
-position = Vector2( -8, 15 )
-scale = Vector2( 0.03, 0.03 )
+position = Vector2( 0, 15 )
 texture = ExtResource( 5 )
 
 [node name="dialog_trigger" type="Node2D" parent="."]
