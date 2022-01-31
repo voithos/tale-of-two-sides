@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/phase_tile_map.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/player.tscn" type="PackedScene" id=2]
@@ -9,6 +9,23 @@
 [ext_resource path="res://assets/NPCs/FoodMerchant.png" type="Texture" id=7]
 [ext_resource path="res://assets/NPCs/MagicMerchant.png" type="Texture" id=8]
 [ext_resource path="res://scenes/background.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/NPCs/pixels/elder.png" type="Texture" id=10]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 10 )
+region = Rect2( 0, 0, 20, 22 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 10 )
+region = Rect2( 20, 0, 20, 22 )
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 2.0
+} ]
 
 [node name="Node2D" type="Node2D"]
 
@@ -46,9 +63,15 @@ position = Vector2( -181, 87 )
 dialog = "ElderReveal"
 
 [node name="Sprite" type="Sprite" parent="dialog_trigger"]
+visible = false
 position = Vector2( 7, 5 )
 scale = Vector2( 0.03, 0.03 )
 texture = ExtResource( 5 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="dialog_trigger"]
+position = Vector2( 4, 9 )
+frames = SubResource( 3 )
+playing = true
 
 [node name="dialog_trigger2" parent="." instance=ExtResource( 6 )]
 position = Vector2( 233, 179 )

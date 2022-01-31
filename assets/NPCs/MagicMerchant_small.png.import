@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/daughter.png-58d5a905b21198f0be5d9c05fef69051.stex"
+path="res://.import/MagicMerchant_small.png-12f2980afba42414c1e187b7ea20727e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/NPCs/pixels/daughter.png"
-dest_files=[ "res://.import/daughter.png-58d5a905b21198f0be5d9c05fef69051.stex" ]
+source_file="res://assets/NPCs/MagicMerchant_small.png"
+dest_files=[ "res://.import/MagicMerchant_small.png-12f2980afba42414c1e187b7ea20727e.stex" ]
 
 [params]
 

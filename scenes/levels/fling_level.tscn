@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scenes/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/phase_tile_map.tscn" type="PackedScene" id=2]
@@ -8,6 +8,40 @@
 [ext_resource path="res://assets/NPCs/SnakeMom.png" type="Texture" id=6]
 [ext_resource path="res://assets/NPCs/SnakeDaughter.png" type="Texture" id=7]
 [ext_resource path="res://scenes/background.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/NPCs/pixels/daughter.png" type="Texture" id=9]
+[ext_resource path="res://assets/NPCs/pixels/mother.png" type="Texture" id=10]
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 10 )
+region = Rect2( 0, 0, 20, 22 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 10 )
+region = Rect2( 20, 0, 20, 22 )
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ SubResource( 4 ), SubResource( 5 ) ],
+"loop": true,
+"name": "default",
+"speed": 2.0
+} ]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 9 )
+region = Rect2( 0, 0, 20, 22 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 9 )
+region = Rect2( 20, 0, 20, 22 )
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 2.0
+} ]
 
 [node name="Node2D" type="Node2D"]
 
@@ -56,15 +90,28 @@ position = Vector2( 273, 63 )
 dialog = "SnakeMom"
 
 [node name="Sprite" type="Sprite" parent="dialog_trigger2"]
+visible = false
 position = Vector2( 12, -9 )
 scale = Vector2( 0.02, -0.02 )
 texture = ExtResource( 6 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="dialog_trigger2"]
+position = Vector2( 7, -11 )
+rotation = 3.14159
+frames = SubResource( 6 )
+playing = true
 
 [node name="dialog_trigger3" parent="." instance=ExtResource( 5 )]
 position = Vector2( 89, -25 )
 dialog = "SnakeDaughter"
 
 [node name="Sprite" type="Sprite" parent="dialog_trigger3"]
+visible = false
 position = Vector2( -17, 14 )
 scale = Vector2( 0.02, 0.02 )
 texture = ExtResource( 7 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="dialog_trigger3"]
+position = Vector2( -6, 13 )
+frames = SubResource( 3 )
+playing = true

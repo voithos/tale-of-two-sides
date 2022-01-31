@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/daughter.png-58d5a905b21198f0be5d9c05fef69051.stex"
+path="res://.import/FoodMerchant_small.png-362d7cf8e1b688e91d7b6f4abb79a30d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/NPCs/pixels/daughter.png"
-dest_files=[ "res://.import/daughter.png-58d5a905b21198f0be5d9c05fef69051.stex" ]
+source_file="res://assets/NPCs/FoodMerchant_small.png"
+dest_files=[ "res://.import/FoodMerchant_small.png-362d7cf8e1b688e91d7b6f4abb79a30d.stex" ]
 
 [params]
 
