@@ -79,9 +79,12 @@ const PHASE_MOVE_SPEED = 400;
 #end cutscene variables
 var crystal_descend = false
 var player_float = false;
+var level_fading = false;
 
 const DESCEND_SPEED = 10;
 const FLOAT_SPEED = 8;
+const FADE_SPEED = 0.4
+
 
 # next queued dialog. If empty string, no dialog is queued.
 var next_dialog = "";
@@ -103,6 +106,9 @@ func _physics_process(delta):
             crystal_descend = false;
     if player_float:
         global_position.y -= FLOAT_SPEED * delta;
+    
+    if level_fading:
+        $"../fadeout".modulate.a += FADE_SPEED*delta;
     
     if is_destroyed:
         return
@@ -517,6 +523,10 @@ func handle_dialog(signal_type):
         $"../particles_temple".visible = true;
         $"../particles_temple".emitting = true;
         pass;
+    elif signal_type == "fadeout":
+        level_fading = true
+        $"../fadeout".visible = true
+        $"../fadeout".modulate.a = 0;
 
 func _dialog_end(signal_type):
     exit_cutscene();

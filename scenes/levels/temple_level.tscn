@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scenes/tile_set_temple_16.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/phase_tile_map.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://scenes/background.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/dialog_trigger.gd" type="Script" id=9]
 [ext_resource path="res://assets/props/Crystal no shadow.png" type="Texture" id=10]
+[ext_resource path="res://assets/props/whitescreen.png" type="Texture" id=11]
 
 [sub_resource type="ParticlesMaterial" id=1]
 emission_shape = 2
@@ -126,6 +127,13 @@ amount = 50
 lifetime = 4.0
 local_coords = false
 process_material = SubResource( 3 )
+
+[node name="fadeout" type="Sprite" parent="."]
+visible = false
+position = Vector2( -61.5, -149.5 )
+scale = Vector2( 2.00625, 2.20833 )
+z_index = 4
+texture = ExtResource( 11 )
 
 [connection signal="body_entered" from="dialog_trigger/Area2D" to="dialog_trigger" method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="dialog_trigger/Area2D" to="dialog_trigger" method="_on_Area2D_body_exited"]
