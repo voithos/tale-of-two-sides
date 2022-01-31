@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scenes/tile_set_temple_16.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/phase_tile_map.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://scenes/dialog_trigger.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/background.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/dialog_trigger.gd" type="Script" id=9]
+[ext_resource path="res://assets/props/Crystal no shadow.png" type="Texture" id=10]
 
 [sub_resource type="ParticlesMaterial" id=1]
 emission_shape = 2
@@ -20,6 +21,17 @@ orbit_velocity_random = 0.0
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 25, 133 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 14.5, 15 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+emission_shape = 2
+emission_box_extents = Vector3( 50, 1, 1 )
+flag_disable_z = true
+gravity = Vector3( 0, -98, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
 
 [node name="Node2D" type="Node2D"]
 
@@ -36,7 +48,7 @@ tile_data = PoolIntArray( -1310745, 0, 8, -1310744, 0, 10, -1310743, 0, 11, -131
 
 [node name="PhaseTileMap5" parent="." instance=ExtResource( 2 )]
 tile_set = ExtResource( 1 )
-tile_data = PoolIntArray( -1769489, 10, 4, -1769486, 10, 5, -1703953, 0, 65540, -1703952, 0, 10, -1703951, 0, 10, -1703950, 0, 65543, -1638422, 0, 8, -1638421, 0, 10, -1638420, 10, 3, -1638417, 0, 65544, -1638416, 0, 131081, -1638415, 0, 131081, -1638414, 0, 131083, -1638406, 10, 0, -1638405, 0, 10, -1638404, 0, 11, -1572886, 0, 65544, -1572885, 0, 131081, -1572884, 10, 2, -1572883, 0, 10, -1572882, 0, 10, -1572881, 0, 65541, -1572880, 0, 131081, -1572879, 0, 131081, -1572878, 0, 65542, -1572877, 0, 10, -1572876, 0, 10, -1572875, 0, 10, -1572874, 0, 10, -1572873, 0, 10, -1572872, 0, 10, -1572871, 0, 10, -1572870, 10, 1, -1572869, 10, 65538, -1572868, 0, 196619, -1507350, 0, 196616, -1507349, 0, 196617, -1507348, 0, 196617, -1507347, 0, 196617, -1507346, 0, 196617, -1507345, 0, 196617, -1507344, 0, 196617, -1507343, 0, 196617, -1507342, 0, 196617, -1507341, 0, 196617, -1507340, 10, 65537, -1507339, 0, 131081, -1507338, 0, 131081, -1507337, 0, 131081, -1507336, 0, 131081, -1507335, 10, 65538, -1507334, 0, 196617, -1507333, 10, 65539, -1441804, 10, 65536, -1441803, 0, 196617, -1441802, 0, 196617, -1441801, 0, 196617, -1441800, 0, 196617, -1441799, 10, 65539 )
+tile_data = PoolIntArray( -1703953, 0, 8, -1703952, 0, 10, -1703951, 0, 10, -1703950, 0, 11, -1638422, 0, 8, -1638421, 0, 10, -1638420, 10, 3, -1638417, 0, 65544, -1638416, 0, 131081, -1638415, 0, 131081, -1638414, 0, 131083, -1638406, 10, 0, -1638405, 0, 10, -1638404, 0, 11, -1572886, 0, 65544, -1572885, 0, 131081, -1572884, 10, 2, -1572883, 0, 10, -1572882, 0, 10, -1572881, 0, 65541, -1572880, 0, 131081, -1572879, 0, 131081, -1572878, 0, 65542, -1572877, 0, 10, -1572876, 0, 10, -1572875, 0, 10, -1572874, 0, 10, -1572873, 0, 10, -1572872, 0, 10, -1572871, 0, 10, -1572870, 10, 1, -1572869, 10, 65538, -1572868, 0, 196619, -1507350, 0, 196616, -1507349, 0, 196617, -1507348, 0, 196617, -1507347, 0, 196617, -1507346, 0, 196617, -1507345, 0, 196617, -1507344, 0, 196617, -1507343, 0, 196617, -1507342, 0, 196617, -1507341, 0, 196617, -1507340, 10, 65537, -1507339, 0, 131081, -1507338, 0, 131081, -1507337, 0, 131081, -1507336, 0, 131081, -1507335, 10, 65538, -1507334, 0, 196617, -1507333, 10, 65539, -1441804, 10, 65536, -1441803, 0, 196617, -1441802, 0, 196617, -1441801, 0, 196617, -1441800, 0, 196617, -1441799, 10, 65539 )
 
 [node name="PhaseTileMap6" parent="." instance=ExtResource( 2 )]
 tile_set = ExtResource( 1 )
@@ -68,6 +80,7 @@ lifetime = 4.0
 process_material = SubResource( 1 )
 
 [node name="Crystal" parent="." instance=ExtResource( 6 )]
+visible = false
 position = Vector2( -240, -498 )
 
 [node name="dialog_trigger3" parent="." instance=ExtResource( 7 )]
@@ -90,5 +103,31 @@ dialog = "ElderSmalltalk"
 position = Vector2( 0, 32 )
 shape = SubResource( 2 )
 
+[node name="dialog_trigger2" type="Node2D" parent="."]
+position = Vector2( -240, -447 )
+script = ExtResource( 9 )
+dialog = "EndingSequence"
+
+[node name="Area2D" type="Area2D" parent="dialog_trigger2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dialog_trigger2/Area2D"]
+position = Vector2( 0, 3 )
+shape = SubResource( 4 )
+
+[node name="crystal_sprite" type="Sprite" parent="."]
+position = Vector2( -240, -650 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 10 )
+
+[node name="particles_temple" type="Particles2D" parent="."]
+position = Vector2( -239, -433 )
+emitting = false
+amount = 50
+lifetime = 4.0
+local_coords = false
+process_material = SubResource( 3 )
+
 [connection signal="body_entered" from="dialog_trigger/Area2D" to="dialog_trigger" method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="dialog_trigger/Area2D" to="dialog_trigger" method="_on_Area2D_body_exited"]
+[connection signal="body_entered" from="dialog_trigger2/Area2D" to="dialog_trigger2" method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="dialog_trigger2/Area2D" to="dialog_trigger2" method="_on_Area2D_body_exited"]
