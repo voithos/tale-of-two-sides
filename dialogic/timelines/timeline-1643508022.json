@@ -24,7 +24,7 @@
 			"character": "character-1643536152.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Yes I’m familiar."
+			"text": "Mmhm?"
 		},
 		{
 			"character": "character-1643445734.json",
@@ -36,7 +36,19 @@
 			"character": "character-1643536152.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Yes thankfully. The world gem shattered, but it can be put back together. Each fragment is on a cluster of floating islands. All you need to do is collect them all and put the intact gem back into its pedestal at the temple you found it in."
+			"text": "Thankfully, yes."
+		},
+		{
+			"character": "character-1643536152.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "The world gem shattered, but it can be put back together. Each fragment is on a cluster of floating islands."
+		},
+		{
+			"character": "character-1643536152.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "All you need to do is collect them all and put the intact gem back into its pedestal at the temple."
 		},
 		{
 			"character": "character-1643445734.json",
@@ -48,7 +60,13 @@
 			"character": "character-1643536152.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "The gems attract one another, once you pick one up, it’ll bring you close to the next. Follow the chain and you’ll get to the temple eventually."
+			"text": "The gems attract one another, once you pick one up, it’ll bring you close to the next."
+		},
+		{
+			"character": "character-1643536152.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Follow the chain and you’ll get to the temple eventually."
 		},
 		{
 			"character": "character-1643536152.json",

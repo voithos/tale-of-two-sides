@@ -56,7 +56,19 @@
 			"character": "character-1643445742.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "… Let's disregard the mechanics behind how something like that would even work. I have been tasked with safeguarding the crystal and as such, have a strong connection to it. I’ve been able to use connection to speak to you since the calamity."
+			"text": "… Let's disregard the mechanics behind how something like that would even work."
+		},
+		{
+			"character": "character-1643445742.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "I have been tasked with safeguarding the crystal and, as such, have a strong connection to it."
+		},
+		{
+			"character": "character-1643445742.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "I’ve been able to use connection to speak to you since the calamity."
 		},
 		{
 			"character": "character-1643445734.json",
@@ -68,19 +80,31 @@
 			"character": "character-1643445742.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "…I had to step out."
-		},
-		{
-			"character": "character-1643445734.json",
-			"event_id": "dialogic_001",
-			"portrait": "",
-			"text": "Isn’t it your job to not step out?"
+			"text": ".. Never mind that. More importantly, you have a responsibility to fix your mistake!"
 		},
 		{
 			"character": "character-1643445742.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "There is no time. You are almost at the temple. Hurry young one."
+			"text": "Ahead you'll find people who have been separated from their loved ones."
+		},
+		{
+			"character": "character-1643445742.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "The only way to help now is to gather all the pieces and recreate the crystal!"
+		},
+		{
+			"character": "character-1643445734.json",
+			"event_id": "dialogic_001",
+			"portrait": "Ready",
+			"text": "I'm ready!"
+		},
+		{
+			"character": "character-1643445742.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Good. You are almost at the temple. Hurry young one."
 		}
 	],
 	"metadata": {

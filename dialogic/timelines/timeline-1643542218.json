@@ -38,7 +38,7 @@
 			"character": "character-1643540454.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": ".. err did you say something? Sorry I was in the zone thinking up this game I’m working on."
+			"text": ".. Err did you say something? Sorry I was in the zone thinking about  this game I’m working on."
 		},
 		{
 			"character": "character-1643445734.json",
@@ -50,7 +50,7 @@
 			"character": "character-1643540454.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Fix this world? What do you mea- WOAH. WHAT HAPPENED HERE, EVERTHINGS ALL SCREWY."
+			"text": "Fix this world? What do you mea- WOAH. WHAT HAPPENED HERE, EVERTHINGS ALL WOOOO."
 		},
 		{
 			"character": "character-1643445734.json",
@@ -62,13 +62,31 @@
 			"character": "character-1643540454.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "THIS IS INSANE. Could make for a good game… SORRY I GOT TO THINK THIS THROUGH WHILE I HAVE THE MOTIVATION."
+			"text": "I AM FRIGHTENED."
+		},
+		{
+			"character": "character-1643540454.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "THIS IS MADNESS."
+		},
+		{
+			"character": "character-1643540454.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Could make for a good game, though…"
+		},
+		{
+			"character": "character-1643540454.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "SORRY I'VE GOTTA THINK THIS THROUGH WHILE I HAVE THE MOTIVATION."
 		},
 		{
 			"character": "character-1643445734.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": ".. have fun, I’ll uh, go fix things."
+			"text": ".. Right. I’ll uh, go fix things."
 		}
 	],
 	"metadata": {

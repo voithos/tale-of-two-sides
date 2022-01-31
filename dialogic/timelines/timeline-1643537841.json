@@ -18,7 +18,19 @@
 			"character": "character-1643536152.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Also, these islands can get tricky. Just know that you can always return to the start of the current island by pressing [b]R[/b]. You can also take a break anytime by pressing [b]P[/b]."
+			"text": "Also, these islands can get tricky."
+		},
+		{
+			"character": "character-1643536152.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Just know that you can always return to the start of the current island by pressing [b]R[/b]."
+		},
+		{
+			"character": "character-1643536152.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "You can also take a break anytime by pressing [b]P[/b]. Keep it up!"
 		}
 	],
 	"metadata": {

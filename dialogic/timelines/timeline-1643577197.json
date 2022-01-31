@@ -50,7 +50,13 @@
 			"character": "character-1643445742.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "If you can't get enough height with a single jump, try [b]choosing a different starting location[/b] and continue Phasing between the islands so that you don't lose your momentum."
+			"text": "If you can't get enough height with a single jump, try [b]choosing a different starting location[/b]."
+		},
+		{
+			"character": "character-1643445742.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Remember to continue Phasing between the islands so that you don't lose your momentum."
 		}
 	],
 	"metadata": {

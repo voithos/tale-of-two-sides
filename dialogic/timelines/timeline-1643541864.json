@@ -32,7 +32,7 @@
 			"character": "character-1643540387.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Finally! I’m free of that Cat!"
+			"text": "Finally! I’m free of that foul feline!"
 		},
 		{
 			"character": "character-1643445734.json",
@@ -44,7 +44,13 @@
 			"character": "character-1643540387.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Friend?! All they do is steal my business! Everyone thinks magic items are so cool and never want to buy my vegetables, even though they can heal all wounds!"
+			"text": "Friend?! All they do is steal my business!"
+		},
+		{
+			"character": "character-1643540387.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Everyone thinks magic items are so cool and never want to buy my vegetables, even though they can heal all wounds!"
 		},
 		{
 			"character": "character-1643445734.json",
@@ -56,25 +62,25 @@
 			"character": "character-1643540387.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "I know right! Like even broken bones, poof, fixed!"
+			"text": "Precisely! Even broken bones, poof, fixed!"
 		},
 		{
 			"character": "character-1643445734.json",
 			"event_id": "dialogic_001",
 			"portrait": "Ready",
-			"text": "What sort of magic items do they have?"
+			"text": "No, I meant the magic stuff. I wonder what sorts they sell..."
 		},
 		{
 			"character": "character-1643540387.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": " … just so you know my hurt feelings are the one thing I can’t heal."
+			"text": " … Just so you know, my hurt feelings are the one thing I can’t heal."
 		},
 		{
 			"character": "character-1643445734.json",
 			"event_id": "dialogic_001",
 			"portrait": "Default",
-			"text": "Err… I got to go save the world."
+			"text": "Err… I just remembered, I've gotta go save the world, bye!"
 		}
 	],
 	"metadata": {

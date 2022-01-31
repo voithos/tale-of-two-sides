@@ -32,19 +32,19 @@
 			"character": "character-1643540407.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Ssorry, have you sseen my Ssally? Ssomething happened and I losst ssight of her."
+			"text": "Ssorry, have you sseen my Ssally? Ssomething happened and I losst ssight of her. I'm sso worried..."
 		},
 		{
 			"character": "character-1643445734.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Err, do not worry! I’m on the case!"
+			"text": "Err, don't worry! I'll fix things and reunite you two!"
 		},
 		{
 			"character": "character-1643540407.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Sseriously? Thatss sso ssuper of you!"
+			"text": "Is that sso? Pleasse hurry!"
 		}
 	],
 	"metadata": {

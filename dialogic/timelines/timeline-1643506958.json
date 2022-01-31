@@ -30,25 +30,25 @@
 			"character": "character-1643536152.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Get up, there's no time to waste."
+			"text": "Get up, there's no time to waste!"
 		},
 		{
 			"character": "character-1643445734.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Huh? Who was that?"
+			"text": "Huh? Who ..?"
 		},
 		{
 			"character": "character-1643536152.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Someone who's going to help you clean up your mess. Use the [b]arrow keys[/b] or [b]WASD[/b] to walk around."
+			"text": "Someone who's going to help you clean up your mess, that's who!"
 		},
 		{
 			"character": "character-1643536152.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Go to the right, it should be close by."
+			"text": "Use the [b]arrow keys[/b] or [b]WASD[/b] to walk around. Go to the right, it should be close by."
 		},
 		{
 			"character": "character-1643445734.json",
@@ -60,7 +60,7 @@
 			"character": "character-1643536152.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Just get moving."
+			"text": "Less talking, more walking!"
 		},
 		{
 			"character": "character-1643445734.json",

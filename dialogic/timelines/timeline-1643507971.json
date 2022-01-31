@@ -33,10 +33,22 @@
 			"text": ".. I didn’t mean to do it!"
 		},
 		{
+			"character": "character-1643445734.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": ".. But I can't say this power's not cool."
+		},
+		{
 			"character": "character-1643536152.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "And yet it still happened. But that's not important now. To get through this next bit you’ll have to understand how phasing affects momentum, or rather, how it does not."
+			"text": "Indeed. But that's not important now."
+		},
+		{
+			"character": "character-1643536152.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": " To get through this next bit you’ll have to understand how phasing affects momentum, or rather, how it does not."
 		},
 		{
 			"character": "character-1643536152.json",
@@ -54,13 +66,13 @@
 			"character": "character-1643536152.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "As a wise woman once said, ‘Speedy thing go in, Speedy thing come out’"
+			"text": "As a wise woman once said, ‘Speedy thing go in, Speedy thing come out.’"
 		},
 		{
 			"character": "character-1643445734.json",
 			"event_id": "dialogic_001",
 			"portrait": "Ready",
-			"text": "Ah, gotcha."
+			"text": "Ah."
 		}
 	],
 	"metadata": {

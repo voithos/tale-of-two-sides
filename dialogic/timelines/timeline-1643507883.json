@@ -36,7 +36,13 @@
 			"character": "character-1643536152.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "When you broke the world crystal, you split everything. Right now everything from your world has been cut in half and laid out over two sides."
+			"text": "When you broke the world crystal, you split everything."
+		},
+		{
+			"character": "character-1643536152.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Right now everything from your world has been cut in half and laid out over two sides."
 		},
 		{
 			"character": "character-1643445734.json",
@@ -60,7 +66,13 @@
 			"character": "character-1643536152.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "You were close enough to the split that you remained connected to the two halves. You now can travel between them by [b]phasing[/b]."
+			"text": "You were close enough to the split that you remained connected to the two halves."
+		},
+		{
+			"character": "character-1643536152.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "You now can travel between them by [b]phasing[/b]."
 		},
 		{
 			"character": "character-1643536152.json",

@@ -50,7 +50,13 @@
 			"character": "character-1643445742.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "I greatly enjoy bird watching."
+			"text": "Like admiring the architecture, or the temple's glowy particles."
+		},
+		{
+			"character": "character-1643445742.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "I also greatly enjoy bird watching."
 		},
 		{
 			"character": "character-1643445734.json",
@@ -68,25 +74,25 @@
 			"character": "character-1643445742.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "There are a few windows. Sometimes I ta.. hmm. Yes, yes, there are windows."
+			"text": "There are a few windows. Sometimes I take a.. hmm. Yes, yes, there are windows."
 		},
 		{
 			"character": "character-1643445734.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Sometimes you what? Step out?"
+			"text": "Sometimes you what? Take a walk?"
 		},
 		{
 			"character": "character-1643445742.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": ".. occasionally."
+			"text": ".. Occasionally."
 		},
 		{
 			"character": "character-1643445734.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "I was able to walk into this sacred temple and shatter the world, because you were out bird watching?"
+			"text": ".. And that's why I was able to walk in and shatter the crystal, because you were out bird watching?"
 		},
 		{
 			"character": "character-1643445742.json",
