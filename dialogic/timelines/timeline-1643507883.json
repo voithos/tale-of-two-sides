@@ -18,7 +18,7 @@
 			"character": "character-1643445734.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Okay now this wall is way too high to jump."
+			"text": "Okay, now this wall is way too high to jump."
 		},
 		{
 			"character": "character-1643536152.json",
@@ -36,7 +36,7 @@
 			"character": "character-1643536152.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Breaking the world crystal split the world in two. Right now everything from your world has been cut in half and laid out over two worlds."
+			"text": "When you broke the world crystal, you split everything. Right now everything from your world has been cut in half and laid out over two sides."
 		},
 		{
 			"character": "character-1643445734.json",
@@ -48,19 +48,25 @@
 			"character": "character-1643445734.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": ".. but how is that going to help me get over this wall."
+			"text": ".. but how is that going to help me get over this wall?"
 		},
 		{
 			"character": "character-1643536152.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Hmph."
+			"text": "Hmph. Impatient, aren't you?"
 		},
 		{
 			"character": "character-1643536152.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "You were close enough to the split that you remained connected to the two halves. You can travel between them by [b]phasing[/b]. You can do that by pressing [b]Z[/b] or [b]M[/b]. Try it."
+			"text": "You were close enough to the split that you remained connected to the two halves. You now can travel between them by [b]phasing[/b]."
+		},
+		{
+			"character": "character-1643536152.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "You can activate it by holding [b]Z[/b] or [b]M[/b]. If you keep holding it before you land, you'll keep phasing. Try it."
 		}
 	],
 	"metadata": {
