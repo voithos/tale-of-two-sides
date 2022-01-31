@@ -20,6 +20,8 @@ var packed_scenes := {
     END_STORY: load("res://scenes/screens/end_story_screen.tscn"),
 }
 
+const FORCES_FULLSCREEN := false
+
 var is_paused := false
 
 var screen_container: CanvasLayer
@@ -29,7 +31,8 @@ var current_screen
 
 func _ready():
     set_pause_mode(PAUSE_MODE_PROCESS) # Never pause this node.
-    if not OS.is_debug_build():
+    if not OS.is_debug_build() or \
+            FORCES_FULLSCREEN:
         OS.set_window_fullscreen(true)
     
     screen_container = CanvasLayer.new()
