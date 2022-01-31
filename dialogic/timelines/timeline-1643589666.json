@@ -49,17 +49,17 @@
 			"event_id": "dialogic_040"
 		},
 		{
+			"action": "leaveall",
+			"character": "[All]",
+			"event_id": "dialogic_003"
+		},
+		{
 			"event_id": "dialogic_023",
 			"wait_seconds": 3
 		},
 		{
 			"emit_signal": "floatup",
 			"event_id": "dialogic_040"
-		},
-		{
-			"action": "leaveall",
-			"character": "[All]",
-			"event_id": "dialogic_003"
 		},
 		{
 			"event_id": "dialogic_023",
