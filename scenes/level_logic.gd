@@ -17,7 +17,7 @@ func on_level_complete() -> void:
     if next_level != LevelManifest.UNKNOWN:
         _begin_next_level_transition()
     else:
-        screen.open_screen(ScreenController.CREDITS)
+        screen.open_screen(ScreenController.END_STORY)
         screen.game_screen.exit_level()
 
 
