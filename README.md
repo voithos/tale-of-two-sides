@@ -1,8 +1,8 @@
 # Tale of Two Sides
 
-https://voithos.itch.io/tale-of-two-sides
+**Play now:** https://voithos.itch.io/tale-of-two-sides
 
-![Title art](assets/ui/cover.png)
+[![Title art](assets/ui/cover.png)](https://voithos.itch.io/tale-of-two-sides)
 
 Built for Global Game Jam 2022. Theme: **Duality**
 
