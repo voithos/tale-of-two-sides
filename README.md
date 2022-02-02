@@ -1,8 +1,27 @@
 # Tale of Two Sides
 
-Built for the Global Game Jam 2022. Theme: **Duality**
+https://voithos.itch.io/tale-of-two-sides
+
+![Title art](assets/ui/cover.png)
+
+Built for Global Game Jam 2022. Theme: **Duality**
+
+## Credits
+
+All art, sounds, music, and code was made by our 4-person team in 48 hours.
+
+- [Daisy Muradyan](https://ladychamomile.ink/)
+- [Diego Gonzalez](https://drgvdg.itch.io/)
+- [Levi Lindsey](https://www.levi.dev/)
+- [Zaven Muradyan](https://voithos.io/)
 
 ## Deployment
+
+### Automatic
+
+Creating a new release in Github will trigger a Github Action that will publish to itch.io.
+
+### Manual
 
 Deploying to itch.io can be done via the `butler` tool. First, some one-time setup:
 
